@@ -28,8 +28,8 @@ solution dyn_prog(graph_dist g) {
 		for(int node = 0; node < g.nodes; node++) {
 			dp[node][mask] = {DBL_MAX, -1};
 			if((mask & (1 << node)) == 0) continue;
-			if((mask ^ (1 << node)) == 0) {
-				dp[node][mask] = {0, -1};
+			if(mask == (1 << node)) {
+				if(node == 0) dp[node][mask] = {0, -1};
 				continue;
 			}
 			//this mask contains this node
@@ -56,6 +56,7 @@ solution dyn_prog(graph_dist g) {
 	}
 	double ans_value = best;
 	vector<int> ind = reconstruct(best_ind, max_mask - 1, g.nodes - 1);
+	printf("%.2f\n", g.get_value(ind));
 	return solution(ans_value, ind);
 }
 

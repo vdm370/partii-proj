@@ -3,9 +3,9 @@ using namespace std;
 struct unweighted_graph {
 	int nodes;
 	vector<vector<int>> adj;
-	unweighted_graph(int n);
+	unweighted_graph(int);
 	unweighted_graph();
-	void add_edge(int u, int v);
+	void add_edge(int, int);
 	void read();
 };
 

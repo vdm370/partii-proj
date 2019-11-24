@@ -4,6 +4,6 @@ struct solution {
 	double value;
 	vector<int> order;
 	solution();
-	solution(double val, vector<int> ind);
-	void print(bool path);
+	solution(double, vector<int>);
+	void print(bool);
 };
