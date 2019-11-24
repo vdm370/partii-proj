@@ -2,6 +2,10 @@
 solution::solution() {
 	value = DBL_MAX;
 }
+solution::solution(double val, vector<int> ind) {
+	value = val;
+	order = ind;
+}
 void solution::print(bool path) {
 	printf("Solved the TSP with: %.2f\n", value);
 	if(path) {
