@@ -9,6 +9,15 @@ graph_dist::graph_dist(int n) {
 		dist[i].resize(n);
 	}
 }
+void graph_dist::print() {
+	printf("%d\n", nodes);
+	for(int i = 0; i < nodes; i++) {
+		for(int j = 0; j < nodes; j++) {
+			printf("%.2f ", dist[i][j]);
+		}
+		printf("\n");
+	}
+}
 double graph_dist::get_value(vector<int> ind) {
 	double ans = 0;
 	for(int i = 0; i + 1 < (int)ind.size(); i++) {

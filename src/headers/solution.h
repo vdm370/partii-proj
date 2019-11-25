@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 struct solution {
 	double value;
@@ -6,4 +6,5 @@ struct solution {
 	solution();
 	solution(double, vector<int>);
 	void print(bool);
+	bool operator <(const solution&) const;
 };

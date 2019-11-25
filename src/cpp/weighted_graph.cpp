@@ -1,6 +1,5 @@
 #include "weighted_graph.h"
 
-#include <bits/stdc++.h>
 using namespace std;
 
 weighted_graph::weighted_graph() {

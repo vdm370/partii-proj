@@ -1,6 +1,5 @@
 #include "dyn_prog.h"
-
-#include <bits/stdc++.h>
+#include <float.h>
 using namespace std;
 
 // I will use the approach with the memoization

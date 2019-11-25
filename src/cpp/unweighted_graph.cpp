@@ -1,6 +1,5 @@
 #include "unweighted_graph.h"
 
-#include <bits/stdc++.h>
 using namespace std;
 
 unweighted_graph::unweighted_graph() {
