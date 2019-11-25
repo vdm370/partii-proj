@@ -1,3 +1,6 @@
+#ifndef SOLUTION_H
+#define SOLUTION_H
+
 #include <vector>
 using namespace std;
 struct solution {
@@ -8,3 +11,5 @@ struct solution {
 	void print(bool);
 	bool operator <(const solution&) const;
 };
+
+#endif

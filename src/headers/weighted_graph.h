@@ -1,3 +1,6 @@
+#ifndef WEIGHTED_GRAPH_H
+#define WEIGHTED_GRAPH_H
+
 #include <vector>
 using namespace std;
 struct weighted_graph {
@@ -10,3 +13,5 @@ struct weighted_graph {
 };
 
 weighted_graph read_weighted_graph();
+
+#endif

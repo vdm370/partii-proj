@@ -1,3 +1,6 @@
+#ifndef UNWEIGHTED_GRAPH_H
+#define UNWEIGHTED_GRAPH_H
+
 #include <vector>
 using namespace std;
 struct unweighted_graph {
@@ -10,3 +13,5 @@ struct unweighted_graph {
 };
 
 unweighted_graph read_unweighted_graph();
+
+#endif

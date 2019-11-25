@@ -1,3 +1,6 @@
+#ifndef GRAPH_DIST_H
+#define GRAPH_DIST_H
+
 #include <vector>
 using namespace std;
 struct graph_dist {
@@ -10,3 +13,5 @@ struct graph_dist {
 	void read();
 };
 graph_dist read_graph_dist();
+
+#endif
