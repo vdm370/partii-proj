@@ -1,6 +1,5 @@
 #include "bruteforce.h"
 
-#include <bits/stdc++.h>
 using namespace std;
 
 solution bruteforce(graph_dist g) {
@@ -25,13 +24,7 @@ solution bruteforce(graph_dist g) {
 
 int main() {
 	graph_dist g = read_graph_dist();
-	printf("%d\n", g.nodes);
-	for(int i = 0; i < g.nodes; i++) {
-		for(int j = 0; j < g.nodes; j++) {
-			printf("%.2f ", g.dist[i][j]);
-		}
-		printf("\n");
-	}
+	g.print();
 	solution s = bruteforce(g);
 	s.print(true);
 	return 0;
