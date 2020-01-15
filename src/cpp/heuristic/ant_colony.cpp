@@ -92,7 +92,7 @@ solution ant_colony(graph_dist g) {
 int main() {
 	graph_dist g = read_graph_dist();
 	g.print();
-	solution s = greedy(g);
+	solution s = ant_colony(g);
 	s.print(true);
 	return 0;
 }
