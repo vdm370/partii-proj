@@ -1,5 +1,8 @@
 #include "solution.h"
+#include "graph_dist.h"
 #include <float.h>
+
+const double EPS = 1e-8;
 solution::solution() {
 	value = DBL_MAX;
 }
@@ -9,6 +12,21 @@ solution::solution(double val, vector<int> ind) {
 }
 bool solution::operator<(const solution &other) const {
 	return value < other.value;
+}
+bool solution::sane(graph_dist &g) {
+	int n = g.nodes;
+	unordered_set<int> act;
+	for(auto &x : order) {
+		if(x < 0 || x >= n) return false;
+		act.insert(x);
+	}
+	if((int)act.size() != n) return false;
+	double cost = 0;
+	for(int i = 0; i + 1< n; i++) {
+		cost += g.dist[order[i]][order[i + 1]];
+	}
+	cost += g.dist[order.back()][order[0]];
+	return abs(cost - g.value < EPS);
 }
 void solution::print(bool path) {
 	printf("Solved the TSP with: %.2f\n", value);

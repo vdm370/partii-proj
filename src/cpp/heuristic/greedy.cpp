@@ -25,6 +25,7 @@ solution greedy(graph_dist g, int start) {
 	value += g.dist[cur][start];
 	return solution(value, order);
 }
+
 solution greedy(graph_dist g) {
 	solution ans;
 	for(int start = 0; start < g.nodes; start++) {
@@ -34,12 +35,4 @@ solution greedy(graph_dist g) {
 		}
 	}
 	return ans;
-}
-
-int main() {
-	graph_dist g = read_graph_dist();
-	g.print();
-	solution s = greedy(g);
-	s.print(true);
-	return 0;
 }

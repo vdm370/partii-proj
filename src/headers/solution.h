@@ -8,6 +8,7 @@ struct solution {
 	vector<int> order;
 	solution();
 	solution(double, vector<int>);
+	bool sane();
 	void print(bool);
 	bool operator <(const solution&) const;
 };
