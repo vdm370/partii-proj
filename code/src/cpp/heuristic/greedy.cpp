@@ -36,3 +36,17 @@ solution greedy(graph_dist g) {
 	}
 	return ans;
 }
+
+int main() {
+	graph_dist g = read_graph_dist();
+	printf("%d\n", g.nodes);
+	for(int i = 0; i < g.nodes; i++) {
+		for(int j = 0; j < g.nodes; j++) {
+			printf("%.2f ", g.dist[i][j]);
+		}
+		printf("\n");
+	}
+	solution s = greedy(g);
+	s.print(true);
+	return 0;
+}

@@ -1,5 +1,6 @@
 #include "solution.h"
 #include "graph_dist.h"
+#include <unordered_set>
 #include <float.h>
 
 const double EPS = 1e-8;
@@ -14,6 +15,8 @@ bool solution::operator<(const solution &other) const {
 	return value < other.value;
 }
 bool solution::sane(graph_dist &g) {
+	puts("checking sanity right now");
+	print(true);
 	int n = g.nodes;
 	unordered_set<int> act;
 	for(auto &x : order) {
@@ -21,12 +24,13 @@ bool solution::sane(graph_dist &g) {
 		act.insert(x);
 	}
 	if((int)act.size() != n) return false;
+	puts("all nodes are correct");
 	double cost = 0;
-	for(int i = 0; i + 1< n; i++) {
+	for(int i = 0; i + 1 < n; i++) {
 		cost += g.dist[order[i]][order[i + 1]];
 	}
 	cost += g.dist[order.back()][order[0]];
-	return abs(cost - g.value < EPS);
+	return abs(cost - value) < EPS;
 }
 void solution::print(bool path) {
 	printf("Solved the TSP with: %.2f\n", value);

@@ -1,21 +1,25 @@
-#include "random_insertion_heuristic.h"
+#include "cheapest_insertion_heuristic.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 inline double insert_cost(graph_dist &g, int i, int j, int k) {
+  //printf("asking for %d (%d %d %d)\n", g.nodes, i, j, k);
   return g.dist[i][j] + g.dist[j][k] - g.dist[i][k];
 }
 
-double get_smallest(int node, vector<int> &path) {
-    double ret = insert_cost(path[0], node, path[1]);
+double get_smallest(int node, vector<int> &path, graph_dist &g) {
+    //printf("get smallest %d\n", (int)path.size());
+    double ret = insert_cost(g, path[0], node, path[1]);
     for(int i = 1; i + 1 < (int)path.size(); i++) {
-      ret = min(ret, insert_cost(path[i], node, path[i + 1]));
+      ret = min(ret, insert_cost(g, path[i], node, path[i + 1]));
     }
     return ret;
 }
 
-solution random_ins(graph_dist &g, int start) {
+solution cheap_ins(graph_dist &g, int start) {
+    //printf("trying to get cheap_ins(n = %d, start = %d)\n", g.nodes, start);
     vector<int> path;
     path.push_back(start);
     path.push_back(start);
@@ -25,11 +29,13 @@ solution random_ins(graph_dist &g, int start) {
       if(i - start) untaken.push_back(i);
     }
     for(int steps = 0; steps < n - 1; steps++) {
+      //printf("step %d in progress", steps);
       //I need to chose one of untaken, randomly
       int idx = 0;
-      double val = get_smallest(untaken[idx], path);
+      double val = get_smallest(untaken[idx], path, g);
+      //printf("found %.2f\n", val);
       for(int i = 1; i < (int)untaken.size(); i++) {
-        double val_here = get_smallest(untaken[i], path);
+        double val_here = get_smallest(untaken[i], path, g);
         if(val_here < val) {
           val = val_here;
           idx = i;
@@ -38,9 +44,9 @@ solution random_ins(graph_dist &g, int start) {
       int node = untaken[idx];
       untaken.erase(untaken.begin() + idx);
       int best_place = 0;
-      double best_cost = insert_cost(path[0], node, path[1]);
+      double best_cost = insert_cost(g, path[0], node, path[1]);
       for(int i = 1; i < steps + 1; i++) {
-        double cost_here = insert_cost(path[i], node, path[i + 1]);
+        double cost_here = insert_cost(g, path[i], node, path[i + 1]);
         if(cost_here < best_cost) {
           best_cost = cost_here;
           best_place = i;
@@ -53,20 +59,17 @@ solution random_ins(graph_dist &g, int start) {
     return solution(g.get_value(path), path);
 }
 
-solution random_insertion_heuristic(graph_dist g) {
-  srand(time(NULL));
-  solution best = random_ins(g, 0);
+solution cheapest_insertion_heuristic(graph_dist g) {
+  solution best = cheap_ins(g, 0);
   for(int i = 1; i < g.nodes; i++) {
-    best = min(best, random_ins(g, i));
+    best = min(best, cheap_ins(g, i));
   }
   return best;
 }
 
 int main() {
-  graph_dist g;
-  g.read();
-  g.print();
-  auto sol = random_insertion_heuristic(g);
+  graph_dist g = read_graph_dist();
+  auto sol = cheapest_insertion_heuristic(g);
   sol.print(true);
   return 0;
 }

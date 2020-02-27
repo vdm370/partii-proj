@@ -18,8 +18,8 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 vector<pair<double, int>> costs(int A, int B, int C, int D, int E, int F, graph_dist &g) {
   vector<pair<double, int>> ret;
   ret.push_back({0, 1});
-  ret.push_back({g.dist[A][B} + g.dist[E][F] - g.dist[B][F} - g.dist[A][E], 2});
-  ret.push_back({g.dist[C][D] + g.dist[E][F} - g.dist[D][F] - g.dist[C][E], 3});
+  ret.push_back({g.dist[A][B] + g.dist[E][F] - g.dist[B][F] - g.dist[A][E], 2});
+  ret.push_back({g.dist[C][D] + g.dist[E][F] - g.dist[D][F] - g.dist[C][E], 3});
   ret.push_back({g.dist[A][B] + g.dist[C][D] + g.dist[E][F] - g.dist[A][D] - g.dist[B][F] - g.dist[E][C], 4});
   ret.push_back({g.dist[A][B] + g.dist[C][D] + g.dist[E][F] - g.dist[C][F] - g.dist[B][D] - g.dist[E][A], 5});
   ret.push_back({g.dist[B][A] + g.dist[D][C] - g.dist[C][A] - g.dist[B][D], 6});
@@ -43,7 +43,7 @@ void adapt(int n, vector<int> &path, int a, int b, int c, int type) {
   third_seg = vector<int>(path.begin() + b + 1, path.begin() + c + 1);
   switch(type) {
     case 1:
-      break
+      break;
     case 2:
       reverse(first_seg.begin(), first_seg.end());
       path.clear();
@@ -51,13 +51,6 @@ void adapt(int n, vector<int> &path, int a, int b, int c, int type) {
       concat(path, second_seg);
       concat(path, third_seg);
       break;
-    case 2:
-        reverse(first_seg.begin(), first_seg.end());
-        path.clear();
-        concat(path, first_seg);
-        concat(path, second_seg);
-        concat(path, third_seg);
-        break;
     case 3:
         reverse(third_seg.begin(), third_seg.end());
         path.clear();
@@ -126,27 +119,30 @@ bool opt3_improve(solution &sol, graph_dist &g) {
     c = uniform_int_distribution<int>(0, n - 1)(rng);
     sort3(a, b, c);
   } while(abs((a - b) % (n - 1)) <= 1 || abs((a - c) % (n - 1)) <= 1 || abs((b - c) % (n - 1)) <= 1);
-  int A = sol.path[a];
-  int B = sol.path[(a + 1) == n ? 0 : (a + 1)];
-  int C = sol.path[b];
-  int D = sol.path[(b + 1) == n ? 0 : (b + 1)];
-  int E = sol.path[c];
-  int F = sol.path[(c + 1) == n ? 0 : (c + 1)];
+  int A = sol.order[a];
+  int B = sol.order[(a + 1) == n ? 0 : (a + 1)];
+  int C = sol.order[b];
+  int D = sol.order[(b + 1) == n ? 0 : (b + 1)];
+  int E = sol.order[c];
+  int F = sol.order[(c + 1) == n ? 0 : (c + 1)];
   auto perturbs = costs(A, B, C, D, E, F, g);
   int best = max_element(perturbs.begin(), perturbs.end()) - perturbs.begin();
-  int improvement = perturbs[best].first;
-  if(!improvement) return false;
+  double improvement = perturbs[best].first;
+  if(abs(improvement) < 1e-6) return false;
   sol.value -= improvement;
-  adapt(n, sol.path, A, B, C, D, E, F, perturbs[best].second);
-  assert(sol.sane());
+  adapt(n, sol.order, a, b, c, perturbs[best].second);
+  sol.print(true);
+  assert(sol.sane(g));
   return true;
 }
 
 solution threeopt(graph_dist g) {
   solution sol = greedy(g);
+  puts("printing greedy");
+  sol.print(true);
   const int ITERATIONS = 100000;
   for(int _iteration = 0; _iteration < ITERATIONS; _iteration++) {
-    opt2_improve(sol, g);
+    opt3_improve(sol, g);
   }
   return sol;
 }
@@ -154,7 +150,7 @@ solution threeopt(graph_dist g) {
 int main() {
 	graph_dist g = read_graph_dist();
 	g.print();
-	solution s = twoopt(g);
+	solution s = threeopt(g);
 	s.print(true);
 	return 0;
 }
