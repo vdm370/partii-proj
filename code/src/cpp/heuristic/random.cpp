@@ -1,5 +1,8 @@
 #include "random.h"
 
+using namespace std;
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
 solution random(graph_dist g) {
   srand(time(NULL));
 	const int ITERATIONS = 10000;
@@ -7,10 +10,13 @@ solution random(graph_dist g) {
   for(int i = 0; i < g.nodes; i++) {
     path.push_back(i);
   }
+  shuffle(path.begin(), path.end(), rng);
   solution ans(g.get_value(path), path);
+  //printf("Current sol: %.2f\n", g.get_value(path));
   for(int _ = 0; _ < ITERATIONS; _++) {
-    random_shuffle(path.begin(), path.end());
+    shuffle(path.begin(), path.end(), rng);
     solution tmp(g.get_value(path), path);
+    //printf("Trying sol: %.2f\n", g.get_value(path));
     if(tmp < ans) ans = tmp;
   }
   return ans;
