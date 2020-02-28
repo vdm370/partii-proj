@@ -3,6 +3,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const bool DEBUG = false;
+
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 /*
@@ -32,15 +34,28 @@ void concat(vector<int> &a, vector<int> &b) {
   a.insert(a.end(), b.begin(), b.end());
 }
 
+void print_vec(vector<int> &x) {
+  for(auto &y : x) printf("%d ", y); printf("\n");
+}
+
 void adapt(int n, vector<int> &path, int a, int b, int c, int type) {
   vector<int> first_seg, second_seg, third_seg;
-  if(c + 1 >= n - 1) {
-    first_seg = vector<int>(path.begin() + (c + 2) % n, path.begin() + a + 1);
+  if(c < n - 1) {
+    first_seg = vector<int>(path.begin() + (c + 1), path.end());
   } else {
-    first_seg = vector<int>(path.begin() + c + 1, path.end());
+    first_seg.clear();
   }
+  first_seg.insert(first_seg.end(), path.begin(), path.begin() + a + 1);
   second_seg = vector<int>(path.begin() + a + 1, path.begin() + b + 1);
   third_seg = vector<int>(path.begin() + b + 1, path.begin() + c + 1);
+  if(DEBUG) {
+    puts("first: ");
+    print_vec(first_seg);
+    puts("second: ");
+    print_vec(second_seg);
+    puts("third: ");
+    print_vec(third_seg);
+  }
   switch(type) {
     case 1:
       break;
@@ -111,6 +126,7 @@ void sort3(int &a, int &b, int &c) {
 }
 
 bool opt3_improve(solution &sol, graph_dist &g) {
+  if(n <= 6) return false;
   int n = g.nodes;
   int a, b, c;
   do {
@@ -118,17 +134,24 @@ bool opt3_improve(solution &sol, graph_dist &g) {
     b = uniform_int_distribution<int>(0, n - 1)(rng);
     c = uniform_int_distribution<int>(0, n - 1)(rng);
     sort3(a, b, c);
-  } while(abs((a - b) % (n - 1)) <= 1 || abs((a - c) % (n - 1)) <= 1 || abs((b - c) % (n - 1)) <= 1);
+  } while(((b - a) % (n - 1)) <= 1 || ((c - a) % (n - 1)) <= 1 || ((c - b) % (n - 1)) <= 1);
+  if(DEBUG) printf("I've got %d %d %d\n", a, b, c);
   int A = sol.order[a];
   int B = sol.order[(a + 1) == n ? 0 : (a + 1)];
   int C = sol.order[b];
   int D = sol.order[(b + 1) == n ? 0 : (b + 1)];
   int E = sol.order[c];
   int F = sol.order[(c + 1) == n ? 0 : (c + 1)];
+  if(DEBUG) printf("Cuts are (%d - %d), (%d - %d), (%d - %d)\n", A, B, C, D, E, F);
   auto perturbs = costs(A, B, C, D, E, F, g);
+  if(DEBUG) for(auto &x : perturbs) printf("%.1f %d\n", x.first, x.second);
   int best = max_element(perturbs.begin(), perturbs.end()) - perturbs.begin();
   double improvement = perturbs[best].first;
   if(abs(improvement) < 1e-6) return false;
+  if(DEBUG) {
+    printf("HERE, IMPROVING BY %.1f\n", improvement);
+    printf("WAY: %d\n", perturbs[best].second);
+  }
   sol.value -= improvement;
   adapt(n, sol.order, a, b, c, perturbs[best].second);
   sol.print(true);
@@ -140,7 +163,7 @@ solution threeopt(graph_dist g) {
   solution sol = greedy(g);
   puts("printing greedy");
   sol.print(true);
-  const int ITERATIONS = 100000;
+  const int ITERATIONS = 1000000;
   for(int _iteration = 0; _iteration < ITERATIONS; _iteration++) {
     opt3_improve(sol, g);
   }

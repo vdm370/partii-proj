@@ -1,4 +1,4 @@
-#include "approx2.h"
+#include "2approx.h"
 using namespace std;
 
 struct edge {
@@ -37,6 +37,7 @@ struct dsu {
 		if(rank[x] < rank[y]) swap(x, y);
 		par[y] = x;
 		rank[x] += rank[y];
+		return true;
 	}
 };
 
@@ -55,7 +56,7 @@ void dfs(unweighted_graph &g, int src) {
 vector<int> dfs_order(unweighted_graph g, int start = 0) {
   ret.clear();
   visited.clear();
-  dfs(start);
+  dfs(g, start);
   return ret;
 }
 
@@ -76,8 +77,8 @@ solution approx2(graph_dist g) {
 		}
 	}
   int root = 0; //just for the example, this is a parameter
-	vector<int> dfs_order = get_dfs_order(minimum_spanning_tree, root);
-  vector<int> cycle = remove_duplicates(dfs_order);
+	vector<int> cycle = dfs_order(minimum_spanning_tree, root);
+  //vector<int> cycle = remove_duplicates(dfs_order);
   return solution(g.get_value(cycle), cycle);
 }
 
@@ -90,7 +91,7 @@ int main() {
 		}
 		printf("\n");
 	}
-	solution s = dyn_prog(g);
+	solution s = approx2(g);
 	s.print(true);
 	return 0;
 }

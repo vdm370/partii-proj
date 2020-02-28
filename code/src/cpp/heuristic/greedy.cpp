@@ -27,8 +27,8 @@ solution greedy(graph_dist g, int start) {
 }
 
 solution greedy(graph_dist g) {
-	solution ans;
-	for(int start = 0; start < g.nodes; start++) {
+	solution ans = greedy(g, 0);
+	for(int start = 1; start < g.nodes; start++) {
 		solution tmp = greedy(g, start);
 		if(tmp < ans) {
 			ans = tmp;
@@ -37,6 +37,7 @@ solution greedy(graph_dist g) {
 	return ans;
 }
 
+/*
 int main() {
 	graph_dist g = read_graph_dist();
 	printf("%d\n", g.nodes);
@@ -50,3 +51,4 @@ int main() {
 	s.print(true);
 	return 0;
 }
+*/

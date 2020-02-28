@@ -4,6 +4,7 @@
 #include "solution.h"
 #include "graph_dist.h"
 #include "unweighted_graph.h"
+#include <bits/stdc++.h>
 
 solution approx2(graph_dist);
 
