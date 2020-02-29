@@ -15,7 +15,7 @@ bool solution::operator<(const solution &other) const {
 	return value < other.value;
 }
 bool solution::sane(graph_dist &g) {
-	puts("checking sanity right now");
+	puts("------ Checking sanity --------");
 	print(true);
 	int n = g.nodes;
 	unordered_set<int> act;
