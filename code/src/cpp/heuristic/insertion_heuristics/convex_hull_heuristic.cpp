@@ -1,6 +1,8 @@
 #include "convex_hull_heuristic.h"
 using namespace std;
 
+const bool DEBUG = true;
+
 struct point {
   int id;
   double x, y;
@@ -79,7 +81,8 @@ double calculate_value(vector<point> &g, vector<int> &path) {
 solution convex_hull_heuristic(vector<point> g) {
   int n = (int)g.size();
   vector<int> path = convex_hull(g);
-  path.push_back(path[0]);
+  if(DEBUG) printf("convex hull size is %d\n", (int)path.size());
+  if(DEBUG) for(auto &x : path) printf("%d ", x); printf("\n");
   unordered_set<int> untaken;
   for(int i = 0; i < n; i++) {
     untaken.insert(i);
@@ -87,7 +90,9 @@ solution convex_hull_heuristic(vector<point> g) {
   for(auto &p : path) {
     untaken.erase(untaken.find(p));
   }
+  path.push_back(path[0]);
   while(!untaken.empty()) {
+    if(DEBUG) printf("%d left to insert\n", (int)untaken.size());
     double best_ratio = DBL_MAX;
     int best_node = -1, best_place = -1;
     for(auto &x : untaken) {
