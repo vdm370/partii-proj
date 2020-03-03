@@ -17,6 +17,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 7. AB'C'
 8. A'B'C'
 */
+
 vector<pair<double, int>> costs(int A, int B, int C, int D, int E, int F, graph_dist &g) {
   vector<pair<double, int>> ret;
   ret.push_back({0, 1});
