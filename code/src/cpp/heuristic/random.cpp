@@ -22,6 +22,7 @@ solution random(graph_dist g) {
   return ans;
 }
 
+/*
 int main() {
 	graph_dist g = read_graph_dist();
 	printf("%d\n", g.nodes);
@@ -35,3 +36,4 @@ int main() {
 	s.print(true);
 	return 0;
 }
+*/
