@@ -7,7 +7,7 @@ using namespace std;
 typedef pair<int, int> edge;
 typedef set<edge> edge_set;
 
-const bool DEBUG = true;
+const bool DEBUG = false;
 const double EPS = 1e-8;
 
 const int NBTRY = 5;
@@ -103,7 +103,7 @@ bool alter(vector<int> &path, vector<int> &new_path, edge_set broken, edge_set j
   if(DEBUG) {
     printf("Called alter with\n");
     for(auto &x : path) printf("%d ", x); printf("\n");
-    printf("%d %d\n", (int)broken.size(), (int)broken.size());
+    printf("%d %d\n", (int)broken.size(), (int)joined.size());
     for(auto &e : broken) printf("break %d %d\n", e.first, e.second);
     for(auto &e : joined) printf("join %d %d\n", e.first, e.second);
   }
@@ -114,7 +114,7 @@ bool alter(vector<int> &path, vector<int> &new_path, edge_set broken, edge_set j
   if(DEBUG) printf("edges.size = %d\n", (int)edges.size());
   for(auto &jo : joined) edges.insert(jo);
   if(DEBUG) printf("edges.size = %d\n", (int)edges.size());
-  assert((int)edges.size() == n);
+  if((int)edges.size() < n) return false;
   adj.resize(n);
   for(int i = 0; i < n; i++) adj[i].clear();
   for(auto &e : edges) {
@@ -167,6 +167,7 @@ bool lk_choosex(graph_dist &g, vector<int> &path, int node1, int node2, double g
     if(okay && d > EPS) {
       best_sol.order = new_path;
       best_sol.value -= d;
+      if(DEBUG) printf("I've improved my solution by %.2f\n", d);
       assert(best_sol.sane(g));
       return true;
     } else {
@@ -211,6 +212,14 @@ bool lk_improve(graph_dist &g) {
       sort_nodes(closest);
       for(int i = 0; i < min(NBTRY, (int)closest.size()); i++) {
         int node3 = closest[i].first;
+        bool wrong = false;
+        for(auto &nb : neighbs) {
+          if(nb == node3) {
+            wrong = true;
+            break;
+          }
+        }
+        if(wrong) continue;
         double gain_here = closest[i].second.second;
         edge_set joined;
         joined.insert(edge_pair(node2, node3));
@@ -224,6 +233,7 @@ bool lk_improve(graph_dist &g) {
 
 solution lin_kernighen(graph_dist g) {
   best_sol = random(g);
+  assert(best_sol.sane(g));
   bool improvement = true;
   while(improvement) {
     improvement = lk_improve(g);

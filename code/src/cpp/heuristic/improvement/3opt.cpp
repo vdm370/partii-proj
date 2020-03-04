@@ -127,8 +127,8 @@ void sort3(int &a, int &b, int &c) {
 }
 
 bool opt3_improve(solution &sol, graph_dist &g) {
-  if(n <= 6) return false;
   int n = g.nodes;
+  if(n <= 6) return false;
   int a, b, c;
   do {
     a = uniform_int_distribution<int>(0, n - 1)(rng);
