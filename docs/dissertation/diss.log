@@ -1,0 +1,202 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2020.3.18)  18 MAR 2020 21:11
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**diss
+(./diss.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ntgclass/a4.sty
+Package: a4 2004/04/15 v1.2g A4 based page layout
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks14
+\verbatim@line=\toks15
+\verbatim@in@stream=\read1
+)
+(/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.tex
+This is `epsf.tex' v2.7.4 <14 February 2011>
+\epsffilein=\read2
+\epsfframemargin=\dimen103
+\epsfframethickness=\dimen104
+\epsfrsize=\dimen105
+\epsftmp=\dimen106
+\epsftsize=\dimen107
+\epsfxsize=\dimen108
+\epsfysize=\dimen109
+\pspoints=\dimen110
+) (./diss.aux)
+\openout1 = `diss.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+ [1
+
+] [2
+
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 62.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 62.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 75.
+
+Overfull \hbox (22.06937pt too wide) in paragraph at lines 62--77
+[]
+ []
+
+[1
+
+] [2] (./diss.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 2.
+ [3
+
+
+])
+\tf@toc=\write3
+\openout3 = `diss.toc'.
+
+ [4] (./diss.lof)
+\tf@lof=\write4
+\openout4 = `diss.lof'.
+
+ [5
+
+] [6]
+Chapter 1.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 138.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 138.
+ [1
+
+
+] [2] [3] [4
+
+]
+Chapter 2.
+[5
+
+] [6
+
+]
+Chapter 3.
+[7
+
+]
+(figs/cuarms.eps
+)
+(figs/diagram.eps
+)
+[8] [9] [10] [11] [12
+
+]
+Chapter 4.
+[13
+
+] [14]
+Chapter 5.
+[15
+
+
+] [16
+
+] (./diss.bbl) [17
+
+] [18
+
+]
+Appendix A.
+File: diss.tex  (verbatim)
+[19
+
+]
+Overfull \hbox (1079.83266pt too wide) in paragraph at lines 453--453
+[]\OT1/cmtt/m/n/8 To code, compare and contrast different algorithms and approa
+ches in solving one of the most famous problems ever to exist - the Travelling 
+Salesman Problem. All the code done for this project is easy to use for anybody
+ wishing to tackle this problem, and the overview of all the algorithms with th
+e suggested usecase for each one is included as well.[] 
+ []
+
+
+Overfull \hbox (85.31837pt too wide) in paragraph at lines 453--453
+[]\OT1/cmtt/m/n/8 All work that was done during this project will be mentioned 
+in the dissertation, the code will be submitted as well.[] 
+ []
+
+
+Overfull \hbox (221.32033pt too wide) in paragraph at lines 453--453
+[]\OT1/cmtt/m/n/8 Getting Lin-Kernighan algorithm to work significantly better 
+than the other algorithms, reproducing the results mentioned on the original pa
+per. TODO[] 
+ []
+
+[20] [21] [22] [23] [24] [25] [26]
+File: proposal.tex  (verbatim)
+File: propbody.tex  (verbatim)
+ [27] [28] [29] [30]
+Appendix B.
+File: makefile.txt  (verbatim)
+[31
+
+
+]
+File: refs.bib  (verbatim)
+ [32]
+Appendix C.
+(./propbody.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 8.
+ [33
+
+
+] [34]) [35] (./diss.aux) ) 
+Here is how much of TeX's memory you used:
+ 441 strings out of 492983
+ 5346 string characters out of 6134922
+ 61691 words of memory out of 5000000
+ 4043 multiletter control sequences out of 15000+600000
+ 12681 words of font info for 47 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 23i,11n,19p,396b,306s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on diss.dvi (43 pages, 50980 bytes).
