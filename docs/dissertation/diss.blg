@@ -4,46 +4,46 @@ The top-level auxiliary file: diss.aux
 The style file: plain.bst
 Database file #1: refs.bib
 Warning--entry type for "Moore95" isn't style-file defined
---line 8 of file refs.bib
-You've used 2 entries,
+--line 1 of file refs.bib
+You've used 1 entry,
             2118 wiz_defined-function locations,
-            507 strings with 4171 characters,
-and the built_in function-call counts, 432 in all, are:
-= -- 36
-> -- 14
+            502 strings with 4052 characters,
+and the built_in function-call counts, 217 in all, are:
+= -- 17
+> -- 7
 < -- 0
-+ -- 6
-- -- 4
-* -- 16
-:= -- 79
-add.period$ -- 5
-call.type$ -- 2
-change.case$ -- 7
++ -- 3
+- -- 2
+* -- 8
+:= -- 41
+add.period$ -- 2
+call.type$ -- 1
+change.case$ -- 4
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 19
-empty$ -- 45
-format.name$ -- 4
-if$ -- 90
+cite$ -- 1
+duplicate$ -- 7
+empty$ -- 23
+format.name$ -- 2
+if$ -- 44
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 12
-num.names$ -- 4
-pop$ -- 17
+int.to.str$ -- 1
+missing$ -- 0
+newline$ -- 7
+num.names$ -- 2
+pop$ -- 9
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 3
 quote$ -- 0
-skip$ -- 14
+skip$ -- 8
 stack$ -- 0
-substring$ -- 10
-swap$ -- 2
+substring$ -- 5
+swap$ -- 1
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 6
+type$ -- 4
 warning$ -- 0
-while$ -- 4
-width$ -- 3
-write$ -- 20
+while$ -- 2
+width$ -- 2
+write$ -- 10
 (There was 1 warning)

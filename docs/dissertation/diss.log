@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2020.3.18)  18 MAR 2020 21:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2020.3.18)  19 MAR 2020 20:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -33,6 +33,14 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \verbatim@line=\toks15
 \verbatim@in@stream=\read1
 )
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
 (/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.tex
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read2
@@ -47,44 +55,40 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 ) (./diss.aux)
 \openout1 = `diss.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
  [1
 
 ] [2
 
 ]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 62.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 62.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 75.
+LaTeX Font Info:    Try loading font information for U+msa on input line 63.
 
-Overfull \hbox (22.06937pt too wide) in paragraph at lines 62--77
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 63.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (22.06937pt too wide) in paragraph at lines 63--78
 []
  []
 
 [1
 
-] [2] (./diss.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 2.
- [3
+] [2] (./diss.toc [3
 
 
 ])
@@ -99,57 +103,57 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ] [6]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 138.
+[1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 142.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 138.
- [1
-
-
-] [2] [3] [4
-
-]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 142.
+ [2]
 Chapter 2.
-[5
+[3
 
-] [6
+
+] [4
 
 ]
 Chapter 3.
-[7
+[5
 
 ]
 (figs/cuarms.eps
 )
 (figs/diagram.eps
 )
-[8] [9] [10] [11] [12
+[6] [7] [8] [9] [10
 
 ]
 Chapter 4.
+[11
+
+] [12]
+Chapter 5.
 [13
 
-] [14]
-Chapter 5.
-[15
 
+] [14
+
+] (./diss.bbl) [15
 
 ] [16
-
-] (./diss.bbl) [17
-
-] [18
 
 ]
 Appendix A.
 File: diss.tex  (verbatim)
-[19
+[17
 
 ]
-Overfull \hbox (1079.83266pt too wide) in paragraph at lines 453--453
+Overfull \hbox (1079.83266pt too wide) in paragraph at lines 410--410
 []\OT1/cmtt/m/n/8 To code, compare and contrast different algorithms and approa
 ches in solving one of the most famous problems ever to exist - the Travelling 
 Salesman Problem. All the code done for this project is easy to use for anybody
@@ -158,45 +162,93 @@ e suggested usecase for each one is included as well.[]
  []
 
 
-Overfull \hbox (85.31837pt too wide) in paragraph at lines 453--453
+Overfull \hbox (85.31837pt too wide) in paragraph at lines 410--410
 []\OT1/cmtt/m/n/8 All work that was done during this project will be mentioned 
 in the dissertation, the code will be submitted as well.[] 
  []
 
 
-Overfull \hbox (221.32033pt too wide) in paragraph at lines 453--453
+Overfull \hbox (221.32033pt too wide) in paragraph at lines 410--410
 []\OT1/cmtt/m/n/8 Getting Lin-Kernighan algorithm to work significantly better 
 than the other algorithms, reproducing the results mentioned on the original pa
 per. TODO[] 
  []
 
-[20] [21] [22] [23] [24] [25] [26]
+[18]
+Overfull \hbox (4870.8871pt too wide) in paragraph at lines 410--410
+[]\OT1/cmtt/m/n/8 My project tries to tackle one of the most famous problems in
+ the history of Computer science - the Travelling Salesman problem. In that pro
+blem, we are given a weighted graph $G = (V, E, w)$, where $V$ denotes the set 
+of vertices, $E$ denotes a set of edges, and $w : E \rightarrow \mathbb{R^{+}}$
+ is a weight function, mapping edges to weight that's assigned to them. We are 
+interesting in finding a minimum-weight cycle in this graph. As we can see, a p
+roblem similar to this can arise in many real-world situations (a mailman havin
+g to visit a list of houses to deliver the mail, for example), so it is expecte
+d that a lot of effort has been put into solving this problem as efficiently as
+ possible. This problem is known to be $\mathcal{NP}$-hard, basically meaning t
+hat there is no polynomail time algorithm solving this problem. With that in mi
+nd, we are forced to release some requirements of our algorithm: not demanding 
+that we get a fully correct solution, only sufficiently close to the solution, 
+and/or not demanding to finish in polynomial time, but sufficient fast. This pr
+oject will try to give a summary of some more or less successful attemps, and a
+nalyze what are the advangates and disadvantages of the algorithms involved.[] 
+
+ []
+
+
+Overfull \hbox (1487.83852pt too wide) in paragraph at lines 410--410
+[]\OT1/cmtt/m/n/8 In this section, I will list all the algorithms that I have t
+aken into consideration for this project. I have made this choice after analyzi
+ng already existings benchhmarks about Travelling Salesman problem, trying to f
+ind the best tradeoff between complexity, running time, difficulty to reproduce
+ and the result that the algorithm is producing. After having that finished, I 
+have decided to split the algorithms in several classes, listed below:[] 
+ []
+
+
+Overfull \hbox (710.07735pt too wide) in paragraph at lines 410--410
+[]\OT1/cmtt/m/n/8 {\bf Exact algorithms} are those algorithms which produce the
+ correct solution every time they are run. Knowing the $\mathcal{NP}$-hardness 
+of the TSP, we know that there is no algorithm of this kind running in polynomi
+al time. I have considered 3 algorithms here:[] 
+ []
+
+[19]
+Overfull \hbox (1241.33498pt too wide) in paragraph at lines 410--410
+[]\OT1/cmtt/m/n/8 {\bf Approximation algorithms} are ones that can guarantee so
+me bound concerning the output of the algorithm. For example, the {\it 2-approx
+imation algorithm} guarantees that the cost of the cycle it returned is at most
+ two times larger than the cost of the optimal cycle. They usually run in polyn
+omial time, and all the algorithms I've included in the project do belong in th
+at category.[] 
+ []
+
+[20] [21] [22] [23]
 File: proposal.tex  (verbatim)
+ [24]
 File: propbody.tex  (verbatim)
- [27] [28] [29] [30]
+ [25] [26] [27] [28
+
+]
 Appendix B.
 File: makefile.txt  (verbatim)
-[31
-
+[29
 
 ]
 File: refs.bib  (verbatim)
- [32]
+ [30]
 Appendix C.
-(./propbody.tex
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 8.
- [33
+(./propbody.tex [31
 
 
-] [34]) [35] (./diss.aux) ) 
+] [32]) [33] (./diss.aux) ) 
 Here is how much of TeX's memory you used:
- 441 strings out of 492983
- 5346 string characters out of 6134922
- 61691 words of memory out of 5000000
- 4043 multiletter control sequences out of 15000+600000
- 12681 words of font info for 47 fonts, out of 8000000 for 9000
+ 536 strings out of 492983
+ 6663 string characters out of 6134922
+ 63164 words of memory out of 5000000
+ 4120 multiletter control sequences out of 15000+600000
+ 17553 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 23i,11n,19p,396b,306s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 23i,11n,24p,1288b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on diss.dvi (43 pages, 50980 bytes).
+Output written on diss.dvi (41 pages, 52072 bytes).

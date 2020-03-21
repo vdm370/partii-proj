@@ -2,6 +2,7 @@
 
 \usepackage{a4}
 \usepackage{verbatim}
+\usepackage{amsfonts}
 
 \input{epsf}                            % to allow postscript inclusions
 % On thor and CUS read top of file:
@@ -87,7 +88,7 @@ All work that was done during this project will be mentioned in the dissertation
 
 \section*{Special Difficulties}
 
-Getting Lin-Kernighan algorithm to work significantly better than the other algorithms, reproducing the results mentioned on the original paper. TODO
+Getting Lin-Kernighan algorithm to work significantly better than the other algorithms, reproducing the results mentioned on the original paper. Also, the Blossom algorithm for minimum weight perfect matching is hard to get working. % TODO
  
 \newpage
 \section*{Declaration}
@@ -103,7 +104,7 @@ extent for a comparable purpose.
 \leftline{Signed Vladimir Milenkovic}
 
 \medskip
-\leftline{Date TODO}
+\leftline{Date} % TODO
 
 \cleardoublepage
 
@@ -114,9 +115,7 @@ extent for a comparable purpose.
 \newpage
 \section*{Acknowledgements}
 
-This document owes much to an earlier version written by Simon Moore
-\cite{moore95}.  His help, encouragement and advice was greatly 
-appreciated.
+Add some acknowledgements here. Please, do add some acknowledgements here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % now for the chapters
@@ -130,96 +129,83 @@ appreciated.
 
 \chapter{Introduction}
 
-\section{Overview of the files}
+\section{Motivation}
 
-This document consists of the following files:
+My project tries to tackle one of the most famous problems in the history of Computer science - the Travelling Salesman problem. In that problem, we are given a weighted graph $G = (V, E, w)$, where $V$ denotes the set of vertices, $E$ denotes a set of edges, and $w : E \rightarrow \mathbb{R^{+}}$ is a weight function, mapping edges to weight that's assigned to them. We are interesting in finding a minimum-weight cycle in this graph. As we can see, a problem similar to this can arise in many real-world situations (a mailman having to visit a list of houses to deliver the mail, for example), so it is expected that a lot of effort has been put into solving this problem as efficiently as possible. This problem is known to be $\mathcal{NP}$-hard, basically meaning that there is no polynomial time algorithm solving this problem. With that in mind, we are forced to release some requirements of our algorithm: not demanding that we get a fully correct solution, only sufficiently close to the solution, and/or not demanding to finish in polynomial time, but sufficient fast. This project will try to give a summary of some more or less successful attemps, and analyze what are the advangates and disadvantages of the algorithms involved.
 
-\begin{itemize}
-\item {\tt Makefile} --- The Makefile for the dissertation and Project Proposal
-\item {\tt diss.tex} --- The dissertation
-\item {\tt propbody.tex} --- Appendix~C  -- the project proposal 
-\item {\tt proposal.tex}  --- A \LaTeX\ main file for the proposal 
-\item{\tt figs} -- A directory containing diagrams and pictures
-\item{\tt refs.bib} --- The bibliography database
-\end{itemize}
+\section{Algorithms}
 
-\section{Building the document}
-
-This document was produced using \LaTeXe which is based upon
-\LaTeX\cite{Lamport86}.  To build the document you first need to
-generate {\tt diss.aux} which, amongst other things, contains the
-references used.  This if done by executing the command:
-
-{\tt latex diss}
-
-\noindent
-Then the bibliography can be generated from {\tt refs.bib} using:
-
-{\tt bibtex diss}
-
-\noindent
-Finally, to ensure all the page numbering is correct run {\tt latex}
-on {\tt diss.tex} until the {\tt .aux} files do not change.  This
-usually takes 2 more runs.
-
-\subsection{The makefile}
-
-To simplify the calls to {\tt latex} and {\tt bibtex}, 
-a makefile has been provided, see Appendix~\ref{makefile}. 
-It provides the following facilities:
+In this section, I will list all the algorithms that I have taken into consideration for this project. I have made this choice after analyzing already existings benchhmarks about Travelling Salesman problem, trying to find the best tradeoff between complexity, running time, difficulty to reproduce and the result that the algorithm is producing. After having that finished, I have decided to split the algorithms in several classes, listed below:
 
 \begin{itemize}
 
-\item{\tt make} \\
- Display help information.
+\item {\bf Exact algorithms}
+\item {\bf Approximation algorithms}
+\item {\bf Improvement algorithms}
+\item {\bf Heuristic algorithms}
+\item {\tt Optimization algorithms} 
+\end{itemize}
 
-\item{\tt make prop} \\
- Run {\tt latex proposal; xdvi proposal.dvi}.
+\subsection{Exact algorithms}
 
-\item{\tt make diss.ps} \\
- Make the file {\tt diss.ps}.
+{\bf Exact algorithms} are those algorithms which produce the correct solution every time they are run. Knowing the $\mathcal{NP}$-hardness of the TSP, we know that there is no algorithm of this kind running in polynomial time. I have considered 3 algorithms here:
 
-\item{\tt make gv} \\
- View the dissertation using ghostview after performing 
-{\tt make diss.ps}, if necessary.
+\begin{itemize}
 
-\item{\tt make gs} \\
- View the dissertation using ghostscript after performing 
-{\tt make diss.ps}, if necessary.
-
-\item{\tt make count} \\
-Display an estimate of the word count.
-
-\item{\tt make all} \\
-Construct {\tt proposal.dvi} and {\tt diss.ps}.
-
-\item{\tt make pub} \\ Make a {\tt .tar} version of the {\tt demodiss}
-directory and place it in my {\tt public\_html} directory.
-
-\item{\tt make clean} \\ Delete all files except the source files of
-the dissertation. All these deleted files can be reconstructed by
-typing {\tt make all}.
-
-\item{\tt make pr} \\
-Print the dissertation on your default printer.
+\item {\it Brute-force algorithm}
+\item {\it Held-Karp (dynamic programming) algorithm}
+\item {\it Branch-and-Bound algorithm}
 
 \end{itemize}
 
+\subsection{Approximation algorithms}
 
-\section{Counting words}
+{\bf Approximation algorithms} are ones that can guarantee some bound concerning the output of the algorithm. For example, the {\it 2-approximation algorithm} guarantees that the cost of the cycle it returned is at most two times larger than the cost of the optimal cycle. They usually run in polynomial time, and all the algorithms I've included in the project do belong in that category.
 
-An approximate word count of the body of the dissertation may be
-obtained using:
+\begin{itemize}
 
-{\tt wc diss.tex}
+\item {\it 2-approximation algorithm}
+\item {\it Christofides-greedy algorithm}
+\item {\it Christofides algorithm}
 
-\noindent
-Alternatively, try something like:
+\end{itemize}
 
-\verb/detex diss.tex | tr -cd '0-9A-Z a-z\n' | wc -w/
+\subsection{Improvement algorithms}
 
+{\bf Improvement algorithms} are those algorithm which consecutively try to improve an existing solution. Starting with some solution (greedy, for example), they try to alter it in a way that a better solution is produced. Running this algorithm for some time will eventually make the algorithm converge, getting a solution which we take as a final one. In practice, combining improvement techniques with some good strategies for the initial solution produce the best results, and a lot of best solutions on well-known TSP instances are obtained using improvement methods.
 
+\begin{itemize}
 
+\item {\it 2-opt algorithm}
+\item {\it 3-opt algorithm}
+% TODO \item {\it 4-opt algorithm}
+\item {\it Lin-Kernighan algorithm}
+
+\end{itemize}
+
+\subsection{Heuristic algorithms}
+
+{\bf Heuristic algorithms} are algorithms which usually have polynomial running time, usually do not have a guaranteed bound of error, but in general they produce results that are close to the optimal solution. There are a lot of different heuristic for tackling this problem, so I have selected a few that did produce some solid results. Also, these algorithms should not be too hard to code or to understand, in general, and it is surprising how good results can they achieve:
+
+\begin{itemize}
+
+\item {\it Random algorithm}
+\item {\it Nearest neighbour algorithm (greedy)}
+\item {\it Insertion heuristic - cheapest, farthest, nearest, random}
+\item {\it Convex-hull heuristic algorithm}
+
+\end{itemize}
+
+\subsection{Optimization algorithms}
+
+In {\bf optimization algorithms}, we are starting with random solutions, computing the results those solutions are producing and then adapting towards solutions which are more preferable (have less cost in this example). Running this iteratively, we converge to a solution which can be pretty close to the correct one, no guarantees shown. There are also quite some algorithms which perform the process outlined above, here are some:
+
+\begin{itemize}
+
+\item {\it Ant-colony optimization algorithm}
+\item {\it Simulated annealing algorithm}
+
+\end{itemize}
 
 \cleardoublepage
 
@@ -227,7 +213,7 @@ Alternatively, try something like:
 
 \chapter{Preparation}
 
-This chapter is empty!
+This chapter is filled by some bullshit of mine.
 
 
 \cleardoublepage
@@ -440,7 +426,7 @@ been helpful and saved you time.
 % the bibliography
 
 \addcontentsline{toc}{chapter}{Bibliography}
-\bibliography{refs}
+\nocite*{\bibliography{refs}}
 \cleardoublepage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
