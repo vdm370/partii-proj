@@ -3,25 +3,26 @@
 \contentsline {section}{\numberline {1.2}Algorithms}{1}
 \contentsline {subsection}{\numberline {1.2.1}Exact algorithms}{2}
 \contentsline {subsection}{\numberline {1.2.2}Approximation algorithms}{2}
-\contentsline {subsection}{\numberline {1.2.3}Improvement algorithms}{2}
-\contentsline {subsection}{\numberline {1.2.4}Heuristic algorithms}{2}
-\contentsline {chapter}{\numberline {2}Preparation}{3}
-\contentsline {chapter}{\numberline {3}Implementation}{5}
-\contentsline {section}{\numberline {3.1}Verbatim text}{5}
-\contentsline {section}{\numberline {3.2}Tables}{6}
-\contentsline {section}{\numberline {3.3}Simple diagrams}{6}
-\contentsline {section}{\numberline {3.4}Adding more complicated graphics}{6}
-\contentsline {chapter}{\numberline {4}Evaluation}{11}
-\contentsline {section}{\numberline {4.1}Printing and binding}{11}
-\contentsline {subsection}{\numberline {4.1.1}Things to note}{11}
-\contentsline {section}{\numberline {4.2}Further information}{12}
-\contentsline {chapter}{\numberline {5}Conclusion}{13}
-\contentsline {chapter}{Bibliography}{15}
-\contentsline {chapter}{\numberline {A}Latex source}{17}
-\contentsline {section}{\numberline {A.1}diss.tex}{17}
-\contentsline {section}{\numberline {A.2}proposal.tex}{24}
-\contentsline {section}{\numberline {A.3}propbody.tex}{25}
-\contentsline {chapter}{\numberline {B}Makefile}{29}
-\contentsline {section}{\numberline {B.1}Makefile}{29}
-\contentsline {section}{\numberline {B.2}refs.bib}{30}
-\contentsline {chapter}{\numberline {C}Project Proposal}{31}
+\contentsline {subsection}{\numberline {1.2.3}Improvement algorithms}{3}
+\contentsline {subsection}{\numberline {1.2.4}Heuristic algorithms}{3}
+\contentsline {subsection}{\numberline {1.2.5}Optimization algorithms}{3}
+\contentsline {chapter}{\numberline {2}Preparation}{5}
+\contentsline {chapter}{\numberline {3}Implementation}{7}
+\contentsline {section}{\numberline {3.1}Verbatim text}{7}
+\contentsline {section}{\numberline {3.2}Tables}{8}
+\contentsline {section}{\numberline {3.3}Simple diagrams}{8}
+\contentsline {section}{\numberline {3.4}Adding more complicated graphics}{8}
+\contentsline {chapter}{\numberline {4}Evaluation}{13}
+\contentsline {section}{\numberline {4.1}Printing and binding}{13}
+\contentsline {subsection}{\numberline {4.1.1}Things to note}{13}
+\contentsline {section}{\numberline {4.2}Further information}{14}
+\contentsline {chapter}{\numberline {5}Conclusion}{15}
+\contentsline {chapter}{Bibliography}{17}
+\contentsline {chapter}{\numberline {A}Latex source}{19}
+\contentsline {section}{\numberline {A.1}diss.tex}{19}
+\contentsline {section}{\numberline {A.2}proposal.tex}{27}
+\contentsline {section}{\numberline {A.3}propbody.tex}{27}
+\contentsline {chapter}{\numberline {B}Makefile}{31}
+\contentsline {section}{\numberline {B.1}Makefile}{31}
+\contentsline {section}{\numberline {B.2}refs.bib}{32}
+\contentsline {chapter}{\numberline {C}Project Proposal}{33}
