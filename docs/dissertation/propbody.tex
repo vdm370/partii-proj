@@ -1,131 +1,193 @@
-
-% Draft #1 (final?)
-
-\vfil
-
-\centerline{\Large Diploma in Computer Science Project Proposal}
-\vspace{0.4in}
-\centerline{\Large How to write a dissertation in \LaTeX\ }
-\vspace{0.4in}
-\centerline{\large M. Richards, St John's College}
-\vspace{0.3in}
-\centerline{\large Originator: Dr M. Richards}
-\vspace{0.3in}
-\centerline{\large 21 November 2000}
+\newcommand{\HRulee}{\rule{\linewidth}{0.5mm}}
 
 \vfil
 
-\subsection*{Special Resources Required}
-File space on Thor -- 25Mbytes\\
-Account on the DEC Workstations -- 15Mbytes\\
-An account on Ouse\\
-The use of my own IBM PC (1000GHz Pentium, 200Mb RAM and 40Gb Disk).
-\vspace{0.2in}
-
-\noindent
-{\bf Project Supervisor:} Dr M. Richards
-\vspace{0.2in}
-
-\noindent
-{\bf Director of Studies:} Dr M. Richards
-\vspace{0.2in}
-\noindent
- 
-\noindent
-{\bf Project Overseers:} Dr~F.~H.~King  \& Dr~S.~W.~Moore
+{\raggedleft \large Vladimir Milenkovi\'{c} \\}
+{\raggedleft \large Trinity College \\}
+{\raggedleft \large \tt vm370@cam.ac.uk \\}
 
 \vfil
-\pagebreak
 
-% Main document
+\begin{center}
 
-\section*{Introduction}
+	{\Large \sc Individual project \\}
+	\vspace{10pt}
+	{\Large \sc Computer Science Tripos, Part II \\}
+	\vspace{20pt}
+	\HRulee \\[0.1cm]
+	{\LARGE \bf The Travelling Salesman problem - Comparison of different approaches \\}
+	\HRulee \\[20pt]
+	{\Large 18 October 2019 \\}
+	\vspace{20pt}
+\end{center}
 
-Many students write their CST and Diploma dissertations in \LaTeX\ and
-spend a fair amount of time learning just how to do that. The purpos of 
-this project is to write a demonsatration dissertation that explains in
-detail how it done and how the result can be given to the Bookshop
-on an MSDOS floppy disk for printing and binding.
+\vfil
 
-\section*{Work that has to be done}
+\noindent\emph{\textbf{Project Originators:}}\\
+	Dr Thomas Sauerwald\\
+	Vladimir Milenkovi\'{c}\\
 
-The project breaks down into the following main sections:-
+\vspace{10pt}
 
-\begin{enumerate}
+\noindent\emph{\textbf{Project Supervisor:}}\\
+	Dr Thomas Sauerwald\\
 
-\item The construction of a skeleton dissertation with the required 
-structure. This involves writing the Makefile and makeing dummy files
-for the title page, the proforma, chapters 1 to 5, the appendices and
-the proposal.
+\vspace{10pt}
 
-\item Filling in the details required in the cover page and proforma.
+\noindent\emph{\textbf{Director of Studies:}}\\
+	Prof Frank Stajano\\
+	Dr Sean Holden\\
 
-\item Writing the contents of chapters 1 to 5, including examples
-of common \LaTeX\ constructs.
+\vspace{10pt}
 
-\item Adding a example of how to use floating figures and encapsulated
-postscript diagrams.
+\noindent\emph{\textbf{Project Overseers:}}\\
+	Dr Rafal Mantiuk\\
+	Prof Andrew Pitts\\
 
-\end{enumerate}
+\newpage
 
-\section*{Difficulties to Overcome}
+\section*{Introduction and Description of the Work}
 
-The following main learning tasks will have to be undertaken before 
-the project can be started:
+The Travelling Salesman problem is one of the most famous NP-hard problems. It has been the topic of many researches, and many famous mathematicians and computer scientists tried to approach it. This problem is occurring frequently even in real life - for example, we are willing to visit multiple cities and we know what the flight cost between each pair of cities is, can we make an cost-optimal route visiting all of them? Also, a good solution to this problem would have several applications: in planning, logistics, microchip manufacturing, etc.. \\ \\
 
+The mathematical formulation of the problem follows: given an undirected weighted graph, find the Hamiltonian cycle with minimum weight, where we define the weight of a cycle as a sum of weights of all the edges involved. \\ \\
+
+As this problem has been and still is one of the most major 'unsolved` problems in Computer Science, there has been many different tries to find a solution which is good by some metric. Some of the approaches that were taken with more or less success are:
 \begin{itemize}
+	\item Exact algorithms: the most straight forward brute-force approach can be done in $\mathcal{O}(n!)$ by simply trying all the possible permutations. There is a dynamic programming approach in $\mathcal{O}(2^n n^2)$, done by Held--Karp. There is no known algorithm which solves the TSP in $\mathcal{O}\big((2-\varepsilon)^n\big)$.
+	\item Approximation algorithms: these are the algorithms that don't search for the optimal solution, but they find the solution that is guaranteed to be, for example, at most 2 times worse that the optimal one. Approximation algorithms nowadays can usually find the solution in 2-3\% to the optimal solution within reasonable time. FPTAS (Fully Polynomial-Time Approximation Scheme) is one of the algorithms that I will implement.
+	\item Heuristic algorithms: In this type of algorithms, there are no guarantees about the solution we're going to find whatsoever, we are trying to follow some 'sensible` heuristics in order to make our solution as good as possible.
+    \item Genetic algorithms: which are the randomized algorithms in which we are simulating some processes observed in natural evolution.
+	\item Neural networks: There are many papers about trying to approach the TSP using neural networks. There has been some success, mostly using recurrent neural networks, but right now they are not outperforming other algorithms.
+\end{itemize} ~\\ ~\\~
+In this project, I will be implementing atleast 2 algorihms per each category stated above and comparing them to each other on different types of graphs. I will mainly focus on comparing their solution correctness, and comparing their running time. My language of choice of implementing the algorithm is C++, due to my already substantial experience with it. Also, one of the reasons is that C++ is performance efficient, thus my programs will be running a bit faster compared to some other options I could've taken. Also, in the neural network part of the project, I will probably be using Python, because of the existence of various machine learning libraries, such as TensorFlow/Keras.
 
-\item To learn \LaTeX\ and its use on Thor.
+\section*{Relevant courses}
 
-\item To discover how to incorporate encapsulated postscript into
-a \LaTeX\ document, and to find a suitable drawing package on Thor
-to recommend.
+Concerning the courses I have already and will be taking at my Computer Science Tripos, here are the ones that my project will interfere with:
+\paragraph{Algorithms}
+Main part of this project is going to be actually coding the algorithms solving the problem. Both my previous algorithm experience and knowledges I've gotten during my Part IA Algorithms course will come in handy.
+\paragraph{Artificial Intelligence I/II}
+Since I'll be coding some heuristic algorithms, as well as doing some machine learning, things I've learned are going to be influential for the project.
+\paragraph{Programming in C/C++}
+My main choice of language for this project is going to be C++.
+\paragraph{Complexity Theory}
+The problem this whole project is about is NP-hard, so a proof of that is going to be in the project.
 
-\item To discover what format the Bookshop would like for the finished
-dissertation, and how to deal with postscript files that are too
-large to fit on a single floppy disk.
+\section*{Project Structure}
+This project intends to produce benchmarks and results about various algorithms and their behaviour on substantially different inputs.
 
+The execution of the project can be split into 5 main objectives. In the project timetable given below, I will write down the times at which I'm planning to finish each of them. Objectives, in chronological order, can be found below:
+\begin{itemize}
+    \item \textbf{\textsc{Preparation}} -- this part of the project mainly consists of getting more familiar with the topic. My plan, in order to successfully finish this objective, is to read books and papers about algorithms solving the TSP and thinking about ways to implement them, trying to pick the most concise and the most effective implementation. To confirm that I've successfully finished this chapter, I'm planning to be able to prove the correctness, the complexity and to be completely familiar with every algorithm I'm going to implement in the project.
+    \item \textbf{\textsc{Implementation}} -- this part of the project consists of actually implementing the algorithms, as well as the generators of the data I'm going to test on and all the other necessary code in order to be able to efficiently evaluate the algorithms I've coded. By generators of the data, I mean both collecting the already existing data from the web (e.g. flight durations, road lengths, etc..), as well as generating my own random data with some tunable parameters (e.g. graph density).
+    \item \textbf{\textsc{Evaluation}} -- this objective consists of evaluating the algorithms on different examples, plotting the graphs of different characteristics I'm going to measure. For example: running time, space complexity, deviation from the optimal solution (if known), impact of varying algorithm parameters (if suitable). Here, I'm planning to use some of the well-known TSP datasets available online, in order to test my implementation versus already existing ones. One of the datasets I'm planning to use is the one available at \href{http://www.math.uwaterloo.ca/tsp/index.html}{University of Waterloo TSP page}.
+    \item \textbf{\textsc{Extensions}} -- this objective consists of me trying to give my own optimizations of certain algorithms on different types of graphs, in order to get a better performance. One more thing I could add to this project is to try to solve it using linear programming, and to benchmark that approach versus already existing ones. I have several ideas about observing how do heuristic approaches behave when altering some parameters in the actual heuristic being used and plotting the outcomes. I'm planning to start doing Extensions and trying to achieve something new after completely finishing the core project.
+    \item \textbf{\textsc{Dissertation}} -- this part of the project consists of collecting all the code involved in the project, as well as writing the dissertation. In the dissertation, I would like to cleanly show how all of the above objectives have been accomplished in a chronological order.
 \end{itemize}
 
+\section*{Success Criteria}
 
-
-\section*{Starting Point}
-
-I have a reasonable working knowledge of \LaTeX\ and have convenient
-access to Thor using an IBM PC in my office. Writing MSDOS disks is no 
-problem.
+I will consider my project as a successfully completed one after achieving all of the above objectives apart from \textbf{\textsc{Extensions}} one. Several checkpoints I should accomplish at that point are:
+\begin{itemize}
+    \item Well written and easily readable source code for all the algorithms should be provided at the end of the project, as well as the empirical validation that all the algorithms performed close to as one could predict based on the already existing knowledge.
+    \item Scripts needed to compile and benchmark the project.
+    \item Plots about algorithms performance, after being evaluated multiple times on various test samples, both generated and downloaded.
+    \item The dissertation, in which my process of accomplishing all the objectives should be clearly explained, as well as the conclusions I've achieved after being able to evaluate different approaches and some directions for future work on this topic.
+\end{itemize}
+I hope that \textbf{\textsc{Extensions}} objective will also be achieved before the project submission deadline, however it is not the core part of the project and shouldn't be essential for its success.
 
 \section*{Resources}
 
-This project requires little file space so 25Mbytes of disk space on Thor
-should be sufficient. I plan to use my own IBM PC to write floppy disks, 
-but could use the PWF PCs if my own machine breaks down. 
+I'm planning to use my own laptop (Dell XPS 9570, 16 GB RAM, Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz, running GNU/Linux).
+I accept full responsibility for this machine and I have made contingency plans to protect myself against hardware and/or software failure.
+My contingency plans are listed below:
+\begin{itemize}
+    \item I will be using GitHub as the projects main backup tool, creating a private repository and storing all the data necessary for the project, including the dissertation, in that repository.
+    \item I will also backup all the data at my PC on daily basis, on my own external HDD.
+\end{itemize}
 
-Backup will be on floppy disks.
+I'm pretty sure that no other resources are required in order to complete my project.
 
-\section*{Work Plan}
+\section*{Project timetable}
 
-Planned starting date is 01/12/2000.
+My high level milestones to be achieved are: getting prepared and studying for the project until the end of November, actually implementing the project until the end of January, finishing the evaluation part by the end of February, and writing the main part of the dissertation by the end of March. If everything works as expected, I'm planning to to my Extensions objective in April, trying further to improve the project. I expect the submission by the end of the April, so I don't get too close to the deadline, which is a situation in which nobody would like to be. \\
 
-\subsection*{Michaelmas Term} 
-
-By the end of this term I intend to have completed the learning tasks 
-outlined in the relevant section.
-
-
-\subsection*{Lent Term}
-
-By the division of term the overall structure of the dissertation
-will have been written and tested.
-
-By the end of term, example figures using encapsulated postscript
-will have been included.
- 
-
-\subsection*{Easter Term}
-
-On completion of the exams I will incorporate final details into 
-the dissertation including a bibliography using bibtex and a table of contents.
-The estimated completion date being 25/07/2001 to allow 
-plenty of time should any unforeseen problems arise.
-
+Concerning a bit more detailed timetable, I will divide the time from today until the end of the project in 15 two-weeks periods, and I will list the small objectives I will aim to achieve in each of them.
+\begin{enumerate}[label=\bf Part \arabic*:]
+    \item \emph{18 October -- 31 November}
+        \begin{itemize}
+            \item[$\rightarrow$] Writing and refining the project proposal.
+            \item \underline{\textbf{\textsc{Deadline:}}} Project proposal (25 October)
+            \item[$\rightarrow$] Creating the GitHub repository and setuping the software and hardware needed to achieve my contingency plans.
+        \end{itemize}
+    \item \emph{1 November -- 14 November}
+        \begin{itemize}
+        	\item[$\rightarrow$] Getting more familiar with heuristic algorithms in general.
+            \item[$\rightarrow$] Reading the books and the papers about existing TSP algorithms and deeply studying the subject.
+        \end{itemize}
+    \item \emph{15 November -- 28 November}
+        \begin{itemize}
+            \item[$\rightarrow$] Efficient implementation and testing of  exact TSP algorithm.
+            \item[$\rightarrow$] Coding approximation algorithms (Christofides' algorithm being one of them).
+        \end{itemize}
+    \item \emph{29 November -- 12 December}
+        \begin{itemize}
+            \item[$\rightarrow$] Testing the approximation algorithms
+            \item[$\rightarrow$] Starting to work on different heuristic approaches.
+        \end{itemize}
+    \item \emph{13 December -- 26 December}
+        \begin{itemize}
+            \item[$\rightarrow$] Further working on heuristic algorithm. I want to make sure that all the parameters of the heuristic are going to be easily tunable, in order for Extensions to be done without much problem.
+        \end{itemize}
+    \item \emph{27 December -- 8 January}
+        \begin{itemize}
+            \item[$\rightarrow$] Testing heuristic algorithms.
+            \item[$\rightarrow$] Reading more papers about machine learning approach to TSP, here focusing mainly on the implementation aspects.
+        \end{itemize}
+    \item \emph{9 January -- 22 January}
+        \begin{itemize}
+            \item[$\rightarrow$] Implementing some of the papers with the idea from above.
+            \item[$\rightarrow$] Testing and being able to produce the same results as in the paper.
+        \end{itemize}
+    \item \emph{23 January -- 4 February}
+        \begin{itemize}
+            \item \underline{\textbf{\textsc{Deadline:}}} Progress report submission (31 January)
+            \item[$\rightarrow$] Buffer slot to finish any unfinished work from before.
+            \item[$\rightarrow$] Writing the project progress report and getting ready for the progress report presentation.
+        \end{itemize}
+    \item \emph{5 February -- 18 February}
+        \begin{itemize}
+        	\item[$\rightarrow$] Writing the generators for the data I'm going to test my various algorithms on.
+            \item[$\rightarrow$] Writing the code that's going to link my algorithms with the generators, allowing easy testing and evaluation part.
+        \end{itemize}
+    \item \emph{19 February -- 4 March}
+        \begin{itemize}
+            \item[$\rightarrow$] At this point, if everything above is done correctly, the process of evaluating and producing the plots shouldn't be too big of a deal. Generating suitable plots for the dissertation.
+            \item[$\rightarrow$] Finishing if any of previous objectives isn't already achieved.
+        \end{itemize}
+    \item \emph{5 March -- 18 March}
+        \begin{itemize}
+            \item[$\rightarrow$] Starting to work on the project dissertation, writing the introduction chapter.
+        \end{itemize}
+    \item \emph{19 March -- 1 April}
+        \begin{itemize}
+            \item[$\rightarrow$] First draft of the dissertation.
+        \end{itemize}
+        \item \emph{2 April -- 15 April}
+        \begin{itemize}
+            \item[$\rightarrow$] Further refining the dissertation, listening to the comments from both my supervisor and DOSes.
+            \item[$\rightarrow$] Start working on Extensions topics.
+        \end{itemize}
+    \item \emph{16 April -- 29 April}
+        \begin{itemize}
+            \item[$\rightarrow$] Finishing my dissertation and making it ready for submission.
+            \item[$\rightarrow$] Further working on Extensions, and incorporating it in the dissertation if successful.
+        \end{itemize}
+        \textbf{Milestone:} Final version of the dissertation ready for submission.
+    \item \emph{30 April -- 8 May}
+        \begin{itemize}
+            \item[$\rightarrow$] Dissertation submission.
+            \item\underline{\textbf{\textsc{Deadline:}}} Dissertation (8 May)
+        \end{itemize}
+\end{enumerate}
