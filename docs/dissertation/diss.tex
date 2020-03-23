@@ -4,6 +4,7 @@
 \usepackage{verbatim}
 \usepackage[ampersand]{easylist}
 \usepackage{algorithm}
+\usepackage{hyperref}
 \usepackage{algpseudocode}
 \usepackage{amsbsy}
 \usepackage{amsfonts}
@@ -244,8 +245,42 @@ In {\bf optimization algorithms}, we are starting with random solutions, computi
 
 \chapter{Preparation}
 
-This chapter is filled by some bullshit of mine.
+In this chapter, I will describe, in full detail, all the algorithms and all the theoretical background needed to start the implementation part of the project, as well as some lemmas and proofs about working performance of the procedures described.
 
+\section{Complexity analysis}
+
+I have already mentioned the fact that the Travelling Salesman Problem can not be solved in polynomial time. Now, we would like to see in which class does this problem belong to. In order to do that, we do not need the fully detailed definitions of them because they are not the main point of this dissertation - so I will give a brief and informal definition of complexity classes we take interest in here:
+
+\begin{itemize}
+
+\item {\bf $\mathcal{P}$} - the set of all problems which can be correctly solved in polynomial time.
+\item {\bf $\mathcal{NP}$} - the set of all problems whose {\it solutions} can be {\it verified} in polynomial time.
+\item {\bf $\mathcal{NP}$-hard} - all the problems which can't be solved in polynomial time. This definition is very informal, but it suffices here. % TODO
+\item {\bf $\mathcal{NP}$-complete} - problems which are both in $\mathcal{NP}$ and $\mathcal{NP}$-hard.
+
+\end{itemize}
+
+Now, the Travelling Salesman Problem, defined in the introduction is not $\mathcal{NP}$-complete. This might look a bit strange at first glance, but then, we remember that all $\mathcal{NP}$-complete problems are so-called decision problems - problems deciding whether something is true or not.
+
+\smallskip 
+
+It is not hard to see that the TSP does belong in $\mathcal{NP}$-hard, using my previous $\mathcal{NP}$ complexity class definition. Also, for the formal proof, Karp TODO showed in 1972. that the Hamiltonian cycle problem is $\mathcal{NP}$-complete, which implies the $\mathcal{NP}$-hardness of the TSP. But, surprisingly?, it does not belong to $\mathcal{NP}$. In the verification problem, we would be given a graph and one of cycles from that graph, and we are to judge whether that exact cycle is the shortest one. Note that we can not decide that without actually solving the TSP and knowing what the optimal cycle's cost is, so this can not be done in polynomial time knowing the fact we can not solve TSP in that time. So, this definition of the TSP is not in $\mathcal{NP}$, making it not in $\mathcal{NP}$-complete as well.
+
+\smallskip 
+
+The thing that is a bit strange in the above conclusion is the fact that most of the famous `hard' problems are $\mathcal{NP}$-complete as well. But, all those problems are decision problems, unlike our first TSP definition (and pretty much the only sensible definition of this problem). We can artificially make TSP a decision problem, by formulating it as: given a graph and a number, decide whether the cost of the shortest cycle is less than the number. This, rephrased TSP, is indeed in $\mathcal{NP}$-complete - the verification is straightforwardly done in polynomial time.
+
+\medskip
+
+Conclusion to all this is that we definitely need and that it is actaully sensible to use some alternate problem solving algorithms than just the exact one - we need to apply some heuristics. 
+
+\section{Exact algorithms}
+
+\subsection{Bruteforce algorithm}
+
+\subsection{Held-Karp algorithm}
+
+\subsection{Branch and bound algorithm}
 
 \cleardoublepage
 \chapter{Implementation}
@@ -492,6 +527,6 @@ been helpful and saved you time.
 
 \chapter{Project Proposal}
 
-\input{propbody}
+\input{temp_propbody}
 
 \end{document}
