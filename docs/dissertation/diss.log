@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2020.3.18)  23 MAR 2020 18:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2020.3.18)  26 MAR 2020 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1019,7 +1019,10 @@ Package tocbibind Info: The document has chapter divisions on input line 50.
 
 Package tocbibind Note: Using chapter style headings, unless overridden.
 
-) (/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.tex
+)
+\c@theorem=\count287
+\c@lemma=\count288
+ (/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.tex
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read3
 \epsfframemargin=\dimen298
@@ -1033,33 +1036,33 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 ) (./diss.aux)
 \openout1 = `diss.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
 \AtBeginShipoutBox=\box77
-Package hyperref Info: Link coloring OFF on input line 58.
+Package hyperref Info: Link coloring OFF on input line 61.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count287
+\c@section@level=\count289
 )
-LaTeX Info: Redefining \ref on input line 58.
-LaTeX Info: Redefining \pageref on input line 58.
-LaTeX Info: Redefining \nameref on input line 58.
+LaTeX Info: Redefining \ref on input line 61.
+LaTeX Info: Redefining \pageref on input line 61.
+LaTeX Info: Redefining \nameref on input line 61.
 
 (./diss.out) (./diss.out)
 \@outlinefile=\write4
@@ -1071,45 +1074,45 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 isodate: babel.sty, (n)german.sty have not been loaded
-\c@lstlisting=\count288
+\c@lstlisting=\count290
 ABD: EveryShipout initializing macros
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.15} into 
 your preamble.
- on input line 58.
+ on input line 61.
 
 [1
 
 ] [2
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 95.
+LaTeX Font Info:    Try loading font information for U+msa on input line 98.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 95.
+LaTeX Font Info:    Try loading font information for U+msb on input line 98.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 95.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 98.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 95.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 98.
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 108.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 111.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (12.53038pt too wide) in paragraph at lines 95--110
+Overfull \hbox (12.53038pt too wide) in paragraph at lines 98--113
 []
  []
 
@@ -1135,252 +1138,49 @@ Chapter 1.
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 174.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 177.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 174.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 177.
  [2] [3] [4]
 Chapter 2.
 [5
 
 
-] [6]
+] [6] [7] [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 375--376
+
+ []
+
+[10] [11] [12] [13] [14
+
+]
 Chapter 3.
-[7
-
-
-]
-(figs/cuarms.eps
-)
-(figs/diagram.eps
-)
-[8] [9] [10] [11] [12
-
-]
-Chapter 4.
-[13
-
-] [14]
-Chapter 5.
 [15
-
 
 ] [16
 
-] (./diss.bbl) [17
+]
+Chapter 4.
+[17
 
 ] [18
 
 ]
-Appendix A.
-File: diss.tex  (verbatim)
+Chapter 5.
 [19
 
-] [20]
-Overfull \hbox (1079.44704pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 To code, compare and contrast different algorithms and approac
-hes in solving one of the most famous problems ever to exist - the Travelling S
-alesman Problem. All the code done for this project is easy to use for anybody 
-wishing to tackle this problem, and the overview of all the algorithms with the
- suggested usecase for each one is included as well.[] 
- []
+] [20
 
+] (./diss.bbl) [21
 
-Overfull \hbox (85.18983pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 All work that was done during this project will be mentioned i
-n the dissertation, the code will be submitted as well.[] 
- []
-
-
-Overfull \hbox (603.56325pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 Getting Lin-Kernighan algorithm to work significantly better t
-han the other algorithms, reproducing the results mentioned on the original pap
-er. Also, the Blossom algorithm for minimum weight perfect matching is hard to 
-get working. % TODO[] 
- []
-
-[21]
-Overfull \hbox (4869.5215pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 My project tries to tackle one of the most famous problems in 
-the history of Computer science - the Travelling Salesman problem. In that prob
-lem, we are given a weighted graph $G = (V, E, w)$, where $V$ denotes the set o
-f vertices, $E$ denotes a set of edges, and $w : E \rightarrow \mathbb{R^{+}}$ 
-is a weight function, mapping edges to weight that's assigned to them. We are i
-nteresting in finding a minimum-weight cycle in this graph. As we can see, a pr
-oblem similar to this can arise in many real-world situations (a mailman having
- to visit a list of houses to deliver the mail, for example), so it is expected
- that a lot of effort has been put into solving this problem as efficiently as 
-possible. This problem is known to be $\mathcal{NP}$-hard, basically meaning th
-at there is no polynomial time algorithm solving this problem. With that in min
-d, we are forced to release some requirements of our algorithm: not demanding t
-hat we get a fully correct solution, only sufficiently close to the solution, a
-nd/or not demanding to finish in polynomial time, but sufficient fast. This pro
-ject will try to give a summary of some more or less successful attemps, and an
-alyze what are the advangates and disadvantages of the algorithms involved.[] 
- []
-
-
-Overfull \hbox (1487.34743pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 In this section, I will list all the algorithms that I have ta
-ken into consideration for this project. I have made this choice after analyzin
-g already existings benchhmarks about Travelling Salesman problem, trying to fi
-nd the best tradeoff between complexity, running time, difficulty to reproduce 
-and the result that the algorithm is producing. After having that finished, I h
-ave decided to split the algorithms in several classes, listed below:[] 
- []
-
-
-Overfull \hbox (709.78731pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 {\bf Exact algorithms} are those algorithms which produce the 
-correct solution every time they are run. Knowing the $\mathcal{NP}$-hardness o
-f the TSP, we know that there is no algorithm of this kind running in polynomia
-l time. I have considered 3 algorithms here:[] 
- []
-
-
-Overfull \hbox (1240.90761pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 {\bf Approximation algorithms} are ones that can guarantee som
-e bound concerning the output of the algorithm. For example, the {\it 2-approxi
-mation algorithm} guarantees that the cost of the cycle it returned is at most 
-two times larger than the cost of the optimal cycle. They usually run in polyno
-mial time, and all the algorithms I've included in the project do belong in tha
-t category.[] 
- []
-
-
-Overfull \hbox (2018.46773pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 {\bf Improvement algorithms} are those algorithm which consecu
-tively try to improve an existing solution. Starting with some solution (greedy
-, for example), they try to alter it in a way that a better solution is produce
-d. Running this algorithm for some time will eventually make the algorithm conv
-erge, getting a solution which we take as a final one. In practice, combining i
-mprovement techniques with some good strategies for the initial solution produc
-e the best results, and a lot of best solutions on well-known TSP instances are
- obtained using improvement methods.[] 
- []
-
-[22]
-Overfull \hbox (1619.06526pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 {\bf Heuristic algorithms} are algorithms which usually have p
-olynomial running time, usually do not have a guaranteed bound of error, but in
- general they produce results that are close to the optimal solution. There are
- a lot of different heuristic for tackling this problem, so I have selected a f
-ew that did produce some solid results. Also, these algorithms should not be to
-o hard to code or to understand, in general, and it is surprising how good resu
-lts can they achieve:[] 
- []
-
-
-Overfull \hbox (1427.86195pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 In {\bf optimization algorithms}, we are starting with random 
-solutions, computing the results those solutions are producing and then adaptin
-g towards solutions which are more preferable (have less cost in this example).
- Running this iteratively, we converge to a solution which can be pretty close 
-to the correct one, no guarantees shown. There are also quite some algorithms w
-hich perform the process outlined above, here are some:[] 
- []
-
-
-Overfull \hbox (641.80391pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 In this chapter, I will describe, in full detail, all the algo
-rithms and all the theoretical background needed to start the implementation pa
-rt of the project, as well as some lemmas and proofs about working performance 
-of the procedures described.[] 
- []
-
-
-Overfull \hbox (1317.38893pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 I have already mentioned the fact that the Travelling Salesman
- Problem can not be solved in polynomial time. Now, we would like to see in whi
-ch class does this problem belong to. In order to do that, we do not need the f
-ully detailed definitions of them because they are not the main point of this d
-issertation - so I will give a brief and informal definition of complexity clas
-ses we take interest in here:[] 
- []
-
-
-Overfull \hbox (17.20644pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 \item {\bf $\mathcal{P}$} - the set of all problems which can 
-be correctly solved in polynomial time.[] 
- []
-
-
-Overfull \hbox (80.94087pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 \item {\bf $\mathcal{NP}$} - the set of all problems whose {\i
-t solutions} can be {\it verified} in polynomial time.[] 
- []
-
-
-Overfull \hbox (246.6504pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 \item {\bf $\mathcal{NP}$-hard} - all the problems which can't
- be solved in polynomial time. This definition is very informal, but it suffice
-s here. % TODO[] 
- []
-
-
-Overfull \hbox (29.95332pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 \item {\bf $\mathcal{NP}$-complete} - problems which are both 
-in $\mathcal{NP}$ and $\mathcal{NP}$-hard.[] 
- []
-
-
-Overfull \hbox (837.25618pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 Now, the Travelling Salesman Problem, defined in the introduct
-ion is not $\mathcal{NP}$-complete. This might look a bit strange at first glan
-ce, but then, we remember that all $\mathcal{NP}$-complete problems are so-call
-ed decision problems - problems deciding whether something is true or not.[] 
- []
-
-
-Overfull \hbox (3118.94899pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 It is not hard to see that the TSP does belong in $\mathcal{NP
-}$-hard, using my previous $\mathcal{NP}$ complexity class definition. Also, fo
-r the formal proof, Karp TODO showed in 1972. that the Hamiltonian cycle proble
-m is $\mathcal{NP}$-complete, which implies the $\mathcal{NP}$-hardness of the 
-TSP. But, surprisingly?, it does not belong to $\mathcal{NP}$. In the verificat
-ion problem, we would be given a graph and one of cycles from that graph, and w
-e are to judge whether that exact cycle is the shortest one. Note that we can n
-ot decide that without actually solving the TSP and knowing what the optimal cy
-cle's cost is, so this can not be done in polynomial time knowing the fact we c
-an not solve TSP in that time. So, this definition of the TSP is not in $\mathc
-al{NP}$, making it not in $\mathcal{NP}$-complete as well.[] 
- []
-
-
-Overfull \hbox (2052.45943pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 The thing that is a bit strange in the above conclusion is the
- fact that most of the famous `hard' problems are $\mathcal{NP}$-complete as we
-ll. But, all those problems are decision problems, unlike our first TSP definit
-ion (and pretty much the only sensible definition of this problem). We can arti
-ficially make TSP a decision problem, by formulating it as: given a graph and a
- number, decide whether the cost of the shortest cycle is less than the number.
- This, rephrased TSP, is indeed in $\mathcal{NP}$-complete - the verification i
-s straightforwardly done in polynomial time.[] 
- []
-
-[23]
-Overfull \hbox (399.61305pt too wide) in paragraph at lines 497--497
-[]\T1/cmtt/m/n/8 Conclusion to all this is that we definitely need and that it 
-is actaully sensible to use some alternate problem solving algorithms than just
- the exact one - we need to apply some heuristics.[] 
- []
-
-[24] [25] [26] [27]
-File: proposal.tex  (verbatim)
-File: propbody.tex  (verbatim)
- [28] [29] [30]
-Appendix B.
-File: makefile.txt  (verbatim)
-[31
-
+] [22
 
 ]
-File: refs.bib  (verbatim)
- [32]
-Appendix C.
+Appendix A.
 (./temp_propbody.tex
 Underfull \hbox (badness 10000) in paragraph at lines 26--29
 
@@ -1396,7 +1196,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--40
 
  []
 
-[33
+[23
+
 
 
 ]
@@ -1404,7 +1205,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--46
 
  []
 
-[34]
+[24]
 Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
@@ -1424,33 +1225,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-[35]
+[25]
 Underfull \hbox (badness 10000) in paragraph at lines 62--64
 
  []
 
-[36] [37] [38]
+[26] [27] [28]
 Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
-[39] [40]) [41]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 524.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 524.
+[29] [30]) [31]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 517.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 517.
  (./diss.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 524.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 524.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 517.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 517.
 Package rerunfilecheck Info: File `diss.out' has not changed.
-(rerunfilecheck)             Checksum: DBB0FAEB009FB7A9A4251F57E5FE957D;1823.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 524.
+(rerunfilecheck)             Checksum: 06B02AFCF41507747AF0D70D1A9ABC2C;2230.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 517.
  ) 
 Here is how much of TeX's memory you used:
- 32695 strings out of 492983
- 747550 string characters out of 6134922
- 978799 words of memory out of 5000000
- 35672 multiletter control sequences out of 15000+600000
- 30716 words of font info for 91 fonts, out of 8000000 for 9000
+ 32678 strings out of 492983
+ 747390 string characters out of 6134922
+ 975799 words of memory out of 5000000
+ 35668 multiletter control sequences out of 15000+600000
+ 29773 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,11n,96p,1288b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,96p,1255b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on diss.dvi (51 pages, 136456 bytes).
+Output written on diss.dvi (41 pages, 118672 bytes).

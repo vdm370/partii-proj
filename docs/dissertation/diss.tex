@@ -36,6 +36,9 @@
 \usepackage{tikz}
 \usepackage[nottoc]{tocbibind}
 
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
 \input{epsf}                            % to allow postscript inclusions
 % On thor and CUS read top of file:
 %     /opt/TeX/lib/texmf/tex/dvips/epsf.sty
@@ -126,7 +129,7 @@ Getting Lin-Kernighan algorithm to work significantly better than the other algo
 \section*{Declaration}
 
 I, Vladimir Milenkovic of Trinity College, being a candidate for Part II of the Computer
-Science Tripos , hereby declare
+Science Tripos, hereby declare
 that this dissertation and the work described in it are my own work,
 unaided except as may be specified below, and that the dissertation
 does not contain material that has already been used to any substantial
@@ -175,7 +178,7 @@ In this section, I will list all the algorithms that I have taken into considera
 \item {\bf Approximation algorithms}
 \item {\bf Improvement algorithms}
 \item {\bf Heuristic algorithms}
-\item {\tt Optimization algorithms} 
+\item {\bf Optimization algorithms} 
 \end{itemize}
 
 \subsection{Exact algorithms}
@@ -268,223 +271,226 @@ It is not hard to see that the TSP does belong in $\mathcal{NP}$-hard, using my 
 
 \smallskip 
 
-The thing that is a bit strange in the above conclusion is the fact that most of the famous `hard' problems are $\mathcal{NP}$-complete as well. But, all those problems are decision problems, unlike our first TSP definition (and pretty much the only sensible definition of this problem). We can artificially make TSP a decision problem, by formulating it as: given a graph and a number, decide whether the cost of the shortest cycle is less than the number. This, rephrased TSP, is indeed in $\mathcal{NP}$-complete - the verification is straightforwardly done in polynomial time.
+The thing that is a bit strange in the above conclusion is the fact that most of the famous `hard' problems are $\mathcal{NP}$-complete as well. But, all those problems are decision problems, unlike our first TSP definition (and pretty much the only sensible definition of this problem). We can artificially make TSP a decision problem, by formulating it as: given a graph $G$ and a number $p$, decide whether the cost of the shortest cycle in $G$ is less than or equal to the number $p$. This, rephrased TSP, is indeed in $\mathcal{NP}$-complete - the verification is straightforwardly done in polynomial time.
 
 \medskip
 
 Conclusion to all this is that we definitely need and that it is actaully sensible to use some alternate problem solving algorithms than just the exact one - we need to apply some heuristics. 
 
+\section{TSP types}
+
+The TSP, as defined in the beginning of the dissertation, can be solved on any kind of graph. However, a lot of real TSP instances do obey some further criteria on the edge weights. Some of these properties of TSP instances can help us in developing some algorithms which can profit from the fact that the weights are behaving somehow. In this section, I will introduce a couple of terms that will come in handy later.
+
+\smallskip
+
+A TSP instance is called a {\bf Symmetric TSP} instance if and only if the distance matrix is symmetric. So, in the case of a symmetric TSP, for each $u$ and $v$, $w(u \rightarrow v) = w(v \rightarrow u)$. Note that most of the non-artificially generated graphs are symmetric, making this a very natural restriction on edge weights, so in most of the cases we will focus on this type of TSP. 
+
+{\bf Metric TSP} is a subset of symmetric TSP where distance matrix obeys the {\it triangle inequality}. That means, for each triplet of vertices $a$, $b$, $c$ (we can assume they are pairwise connected so we don't have to deal with infinities), $w(a \rightarrow b) <= w(a \rightarrow c) + w(c \rightarrow b)$. It doesn't make sense that the triangle inequality doesn't hold for something which is a road network or similar. Specially, if we can represent our nodes as a points in a Euclidean space and the distances are Euclidean distances between the corresponding points, that graph belongs to a special subset of Metric TSP called the {\bf Euclidean TSP}\footnote{For Euclidean TSP, a PTAS (polynomial-time approximation scheme) algorithm can be applied, which finds the solution that is within a factor of $1 + \frac{1}{c}$ in $\mathcal{O}(n(\log n)^{(\mathcal{O}(c \sqrt{d}))^{d - 1}})$, where d is the dimension of the Euclidean space.}. % TODO ADD CITE
+
 \section{Exact algorithms}
+
+In this section, we will see a few algorithms that solve the Travelling Salesman problem optimally - their output is guaranteed to be correct. As we have shown in the previous section, there can be no polynomial time algorithm belonging to this category. Furthermore, there is no algorithm with running time $\mathcal{O}(1.99999^{n})$, where $n$ is the number of vertices of the graph. That doesn't stop us in comparing different algorithms here, because we can clearly infer that one algorithm is better than the other in certain circumstances.
 
 \subsection{Bruteforce algorithm}
 
-\subsection{Held-Karp algorithm}
+The very first idea that would come up on our minds when taking a look at this problem is that we can try all the possible cycles. Number of cycles in a graph is equal to the number of permutations of the set of vertices. If there are $n$ vertices in the graph, we have $n!$ permutations (and $n!$ candidate solutions). Implementing this naively, we need $\mathcal{O}(n)$ time to calculate the cost for a given cycle, so the naive implementation of this algorithm results in $O(n * n!)$ complexity.
+
+\subsection{Held-Karp algorithm} % nekako nesto citiraj ovde TODO
+
+However, we can do a lot better than the {\it bruteforce algorithm}. We will try to use the dynamic programming approach - use the solution of already solved smaller subproblems in order to solve the bigger subproblem, and repeat this until we come to the whole problem - find the optimal cycle on the whole graph. 
+
+\smallskip
+
+Let us have currently visited $k < n$ vertices, and let those vertices be $v_{1}$, $v_{2}$, $\dots$, $v_{m}$. Note that for the continuation of the algorithm we don't actually need to keep track of the order in which we have traversed all the nodes but $v_{m}$ - the last node currently visited. So, instead of keeping track of $(v_{1}$, $v_{2}$, $\dots$, $v_{m})$, we can keep track of $(\{v_{1}$, $v_{2}$, $\dots$, $v_{m}\}$, $v_{m})$, meaning we can describe the state we are currently in as a pair of two things - a set of all the nodes we have visited and the last node we have visited. Note that this way of bookkeeping saves us a lot of space and time - the different states we can be in like this is $O(2^{n} * n)$, where the first part comes from all the possible subsets of nodes and the second part comes from all the possible ways to choose the second node. This is a large improvement compared to number of states if state were a list of nodes visited so far - that would add up to $O(n!)$.
+
+\smallskip
+
+Speaking about the algorithm, from one state we can transition to $O(n)$ new states, making the complexity of this algorithm $O(n^2 * 2^n)$. This complexity is still exponential, but it is much faster than previous algorithm. Just for the sake of clarity, if we want our algorithm to finish in couple of seconds on an average PC, we can run {\it bruteforce algorithm} for $n$ up to 12, where we can run our dynamic programming algorithm for $n$ up to 28 \footnote{These numbers are based on my implementation of algorithms ran on my PC}.
 
 \subsection{Branch and bound algorithm}
 
+Here, we come to the first algorithm which running time actually depends on the input data. From now on, TODO almost all the algorithms involved will have their correctness and running time impacted by the actual input. Branch and bound algorithms are, in general, basically `smart' bruteforce algorithms in which we don't explore a certain path if we know that there is no chance that we can find an optimal solution continuing along that path. Because this is, after all, a bruteforce algorithm, it's worst case running time has $n!$ as one of the factors, but we hope and that will empirically be shown that this algorithm actually finishes much faster than the bruteforce algorithms in most cases. Also, which might be not completely intuitive, this algorithms is also better than the Held-Karp algorithm on average, being able to solve some TSP instances with $n = 40$ in couple of seconds.
+
+\smallskip
+
+First, what we want to do is to compute some lower bound of the cheapest cycle, and ideally we would like to compute that fast. For the sake of clarity, we can say that our graph is complete - if there is no edge between two vertices, we can assume that the edge exists, having value $\infty$. Now, we can take a look at $n \times n$ distance matrix $M$ of the graph, where $M_{i, j} = w(i \rightarrow j)$. Also, the assumption is that the graph doesn't have any self-loops, so $M_{i, i} = \infty$ for every $i$.
+
+\smallskip
+
+Let's consider one row of the matrix. If we have picked $v$-th row, that row is consisted of weights of all the outgoing edges from vertex $v$. In the optimal solution, at least one edge has to be a edge that is outgoing from $v$. So, if $m_{i} = \min(M_{i, 1}, M_{i, 2}, \dots, M_{i, n})$, we are sure that the edge going out from $v$ is going to contribute to the solution by some value which is greater or equal to $m_{i}$. Hence, we can conclude that the cost of the optimal solution must be at least $min\_cost = \sum_{i = 1}^{n} M_{i}$. After having that calculated, we can deduct $m_{i}$ from $M_{i, .}$ and get $M'$. It's easy to see that $min\_cost + tsp\_cost(M') = tsp\_cost(M)$. 
+
+\smallskip
+
+We can perform the same procedure on the colums of the new matrix (repeating the same argument for incoming edges of each vertex), and adding the cost we got here to the row-obtained cost. That value is definitely a lower bound for the solution, and hypothetically it can be equal to the optimal TSP cost, in case there is a cycle with value 0 in the newly formed distance matrix. 
+
+\smallskip
+
+Finally, the idea of the branch and bound algorithm here is that we will discard all the states where $current\_cost + tsp\_approximation(current\_state) >= best\_solution\_so\_far$. This termination condition is not the strongest one we can find in polynomial time, but it works quite good. In evaluation chapter, we will see some numbers about number of explored states using this algorithm.
+
+\section{Approximation algorithms}
+
+We will not produce the optimal solutions here, but we will have some guarantees about the value we obtain using these algorithms. If we don't require our solution to be fully optimal, but we just don't want to be too wrong, approximation algorithms can guarantee the solution we want really fast.
+
+\smallskip
+
+We should note here that it is not possible to polynomially approximate the TSP as good as we want. Determining how good can we approximate the problem is still a major open problem in the field of computer science. A real number $r$ is said the be an inapproximability bound for an optimization problem $\mathbb{P}$ if it is proved that a problem having to find a solution that is better than $r$ times the optimal solution for $\mathbb{P}$ is $\mathcal{NP}$-hard. A paper TODO CITAT released in 2013 improves the inapproximability bounds to $185/184$ for the symmetric TSP, and $117/116$ for the asymmetric TSP., though there is no proof that we can't improve the bounds further.
+
+\subsection{2-approximation algorithm}
+
+If we try to think of a something in the graph which is impacted by all the nodes, have it's cost minimal and is easy to calculate, we remember that there is something called a {\bf minimum spanning tree}. That is a subgraph of the graph which is a tree\footnote{A tree graph is a connected acyclic graph. A tree with $n$ nodes has $n - 1$ edges.}, with vertex set equal to the vertex set of the original graph, with minimal sum of the weights of all the edges.
+
+\smallskip
+
+Our 2-approximation algorithm runs as follows: 
+
+\begin{enumerate}
+
+\item Pick a start vertex {\it start} - it doesn't matter how we choose this one.
+\item Construct a MST with 1 as root, using, for example, Prim's algorithm
+\item List all the vertices according to preorder walk, and add {\it start} to the end
+
+\end{enumerate}
+
+This gaves us a cycle of all $n$ vertices.
+
+\smallskip
+
+We will first state and prove one lemma here.
+
+\begin{lemma}
+
+\label{mstlemma}
+The cost of a MST is less than or equal to the cost of a minimum cycle.
+
+\end{lemma}
+
+\begin{proof}
+
+This is pretty straightforward, because the cost of a TSP is less than or equal to a cost of the TSP without a single edge, which is a spanning tree as well, so it's cost cannot be less to a cost of a minimum spanning tree.
+
+\end{proof}
+
+\begin{theorem}[2-approx theorem]
+
+For metric TSP, the cost of the cycle obtained above is at most 2 times more expensive that the optimal cycle. \\
+
+\end{theorem}
+
+\begin{proof}
+
+Let's consider a full preorder walk  of the graph - basically a preorder walk, but we list the vertex again when we return to it. For example, in the tree on figure 1, the preorder walk with $start = 1$ would be $[1, 2, 3, 2, 4, 2, 1, 5, 1]$. In order to prove this, we will separately show three facts:
+
+\begin{itemize}
+
+\item The cost of a full preorder walk is at most two times larger than the cost of MST - every edge of the MST is visited at most twice.
+
+\item The cost of a cycle generated by this algorithm is not greater than the cost of a full preorder walk - this is easily shown using the triangle inequality property\footnote{This is the part that requires the TSP to be metric} of the TSP, because two adjacent edges are constantly being replaced by one connecting non-adjacent ends when transitioning from a full preorder walk to the cycle above.
+
+\end{itemize}
+
+Using these two facts, as well as \hyperref[mstlemma]{MST lemma} TODO we conclude that the theorem 1 holds.
+
+\end{proof}
+
+\subsection{Christofides algorithm} %TODO citat
+
+This algorithm gives us a 1.5 approximation to the metric TSP. It was developed by Nicos Christofides in 1976., and as of 2019 it is the best approximation ratio that has been proven for the TSP on general metric spaces, although there are some better approximation for some special cases (e.g. Euclidean TSP).
+
+The algorithm runs as follows:
+
+\begin{itemize}
+
+\item Let $G$ be the starting graph. Find a MST of $G$, call it $T$.
+\item Create a subraph of $G$, $O$, consisting of vertices with odd degree in $T$ and all the edges between them.
+\item Let $PM$ be the minimum-weight perfect matching in $O$. Let $T'$ be the graph with all the nodes and all the edges from both $T$ and $PM$.
+\item Construct any Eulerian cycle on $T'$, and reduce it to a Hamiltonian circuit by skipping repeated nodes. Return that Hamiltonian cycle.
+
+\end{itemize}
+
+\begin{theorem}[Christofides theorem]
+
+For metric TSP, the cost of the cycle obtained above is at most 1.5 times larger than the cost of the optimal cycle.
+
+\end{theorem}
+
+\begin{proof}
+
+Christofides proof here.
+
+\end{proof}
+
+\section{Improvement algorithms}
+
+The general idea here is that we start from any solution, and try to iteratively improve the solution until we converge or until we are satisfied with the cycle found. There are no guarantees of any kind for iterative improvement algorithms, but we will empirically validate later on that they do perform better than some algorithms with stronger mathematical background.
+
+\subsection{k-opt algorithm}
+
+The idea behind k-opt heuristic, for given $k$, is as follows: until convergence or until some other stopping point, cut the cycle in $k$ chains, and try to rearrange these chains to obtain the least expensive cycle. Note that there is a significant tradeoff between running time for one iteration (which is $\mathcal{O(nk!)}$) and the improvement we can get (more small parts we cut it into, we have greater probability of being able to improve it). In a degenerate case, picking $k = n$ would yield a optimal solution after one iteration, but that iteration would take the same amount of time bruteforce does. 
+
+\smallskip
+
+It is empirically validated that picking $k >= 4$ is worse than picking $k <= 3$. In my implementation, I have coded 2-opt and 3-opt separately TODO, and shown that 3-opt performs better than 2-opt.
+
+\subsection{Lin-Kernighan heuristic algorithm}
+
+The problem with k-opt is that we are setting the value of $k$ in advance. Lin-Kernighan algorithms is basically a generalization of k-opt, at each iteration trying to pick the best value of $k$ to do the interchange. It is one of the most successful TSP heuristic today, and it is a heuristic giving the best results in my implementation.
+
+The procedure runs as follows:
+
+LKH here
+
+\section{Heuristic algorithms}
+
+The TSP is a really famous problem. Having that in mind, it's sensible that a lot of heuristics, some better than the other, were tried in order to get close to the optimal solution. In this section, we will discuss some of the attempts tried, and later we will show how do they compare to each other.
+
+\subsection{Random algorithm}
+
+This algorithm isn't really something one would try in order to solve the TSP, but it is included in the project so we would get an idea of how good other algorithms really are. We will just take the best solution out of some predefined number of random cycles.
+
+\subsection{NN (greedy) - algorithm}
+
+The nearest neighbour greedy algorithm is probably the first one to come up to someone's mind when tackling this problem. Also, it doesn't require knowing anything about the whole graph when making the decision, only about the surroundings, so it is not strange that an actual salesman from the problem name would use it if necessary. 
+
+\smallskip
+
+When in a certain node, the algorithms chooses the edge with minimum cost leading to some, so far unvisited, node and traverses to there. After visiting all the nodes, it returns to the node where the path has started. It is not hard to see that the solution depends on the choice of the starting node, hence we can start from all the nodes and take the minimum solution which improves the solution with only a factor of $n$. 
+
+\smallskip
+
+This algorithm can go horribly wrong, and we can construct a case where the solution obtained this way is arbitrarily times longer than the optimal solution. Still, it performs surprisingly fine on average.
+
+\subsection{Insertion heuristics}
+
+With all the insertion heuristics, the recipe is the same: starting from a single node with a self-loop (an one node cycle), we are searching for an optimal node and an optimal spot. Having found that, we insert the node at a proposed place, and keep going until we insert all the nodes, resulting in a solution. Also, starting from different nodes might lead to a different solution, so we can try all the possible starts.
+
+\smallskip
+
+There are multiple variations here, and the ones I have implemented can be found below:
+
+\subsubsection{Cheapest insertion heuristic}
+
+\subsubsection{Farthest insertion heuristic}
+
+\subsubsection{Nearest insertion heuristic}
+
+\subsubsection{Random insertion heuristic}
+
+\subsubsection{Convex-hull insertion heuristic}
+
+\section{Optimisation algorithms}
+
+\subsection{Ant colony optimisation algorithm}
+
 \cleardoublepage
 \chapter{Implementation}
-
-\section{Verbatim text}
-
-Verbatim text can be included using \verb|\begin{verbatim}| and
-\verb|\end{verbatim}|. I normally use a slightly smaller font and
-often squeeze the lines a little closer together, as in:
-
-{\renewcommand{\baselinestretch}{0.8}\small\begin{verbatim}
-GET "libhdr"
- 
-GLOBAL { count:200; all  }
- 
-LET try(ld, row, rd) BE TEST row=all
-                        THEN count := count + 1
-                        ELSE { LET poss = all & ~(ld | row | rd)
-                               UNTIL poss=0 DO
-                               { LET p = poss & -poss
-                                 poss := poss - p
-                                 try(ld+p << 1, row+p, rd+p >> 1)
-                               }
-                             }
-LET start() = VALOF
-{ all := 1
-  FOR i = 1 TO 12 DO
-  { count := 0
-    try(0, 0, 0)
-    writef("Number of solutions to %i2-queens is %i5*n", i, count)
-    all := 2*all + 1
-  }
-  RESULTIS 0
-}
-\end{verbatim}
-}
-
-\section{Tables}
-
-\begin{samepage}
-Here is a simple example\footnote{A footnote} of a table.
-
-\begin{center}
-\begin{tabular}{l|c|r}
-Left      & Centred & Right \\
-Justified &         & Justified \\[3mm]
-%\hline\\%[-2mm]
-First     & A       & XXX \\
-Second    & AA      & XX  \\
-Last      & AAA     & X   \\
-\end{tabular}
-\end{center}
-
-\noindent
-There is another example table in the proforma.
-\end{samepage}
-
-\section{Simple diagrams}
-
-Simple diagrams can be written directly in \LaTeX.  For example, see
-figure~\ref{latexpic1} on page~\pageref{latexpic1} and see
-figure~\ref{latexpic2} on page~\pageref{latexpic2}.
-
-\begin{figure}
-\setlength{\unitlength}{1mm}
-\begin{center}
-\begin{picture}(125,100)
-\put(0,80){\framebox(50,10){AAA}}
-\put(0,60){\framebox(50,10){BBB}}
-\put(0,40){\framebox(50,10){CCC}}
-\put(0,20){\framebox(50,10){DDD}}
-\put(0,00){\framebox(50,10){EEE}}
-
-\put(75,80){\framebox(50,10){XXX}}
-\put(75,60){\framebox(50,10){YYY}}
-\put(75,40){\framebox(50,10){ZZZ}}
-
-\put(25,80){\vector(0,-1){10}}
-\put(25,60){\vector(0,-1){10}}
-\put(25,50){\vector(0,1){10}}
-\put(25,40){\vector(0,-1){10}}
-\put(25,20){\vector(0,-1){10}}
-
-\put(100,80){\vector(0,-1){10}}
-\put(100,70){\vector(0,1){10}}
-\put(100,60){\vector(0,-1){10}}
-\put(100,50){\vector(0,1){10}}
-
-\put(50,65){\vector(1,0){25}}
-\put(75,65){\vector(-1,0){25}}
-\end{picture}
-\end{center}
-\caption{\label{latexpic1}A picture composed of boxes and vectors.}
-\end{figure}
-
-\begin{figure}
-\setlength{\unitlength}{1mm}
-\begin{center}
-
-\begin{picture}(100,70)
-\put(47,65){\circle{10}}
-\put(45,64){abc}
-
-\put(37,45){\circle{10}}
-\put(37,51){\line(1,1){7}}
-\put(35,44){def}
-
-\put(57,25){\circle{10}}
-\put(57,31){\line(-1,3){9}}
-\put(57,31){\line(-3,2){15}}
-\put(55,24){ghi}
-
-\put(32,0){\framebox(10,10){A}}
-\put(52,0){\framebox(10,10){B}}
-\put(37,12){\line(0,1){26}}
-\put(37,12){\line(2,1){15}}
-\put(57,12){\line(0,2){6}}
-\end{picture}
-
-\end{center}
-\caption{\label{latexpic2}A diagram composed of circles, lines and boxes.}
-\end{figure}
-
-
-
-\section{Adding more complicated graphics}
-
-The use of \LaTeX\ format can be tedious and it is often better to use
-encapsulated postscript to represent complicated graphics.
-Figure~\ref{epsfig} and ~\ref{xfig} on page \pageref{xfig} are
-examples. The second figure was drawn using {\tt xfig} and exported in
-{\tt.eps} format. This is my recommended way of drawing all diagrams.
-
-
-\begin{figure}[tbh]
-\centerline{\epsfbox{figs/cuarms.eps}}
-\caption{\label{epsfig}Example figure using encapsulated postscript}
-\end{figure}
-
-\begin{figure}[tbh]
-\vspace{4in}
-\caption{\label{pastedfig}Example figure where a picture can be pasted in}
-\end{figure}
-
-
-\begin{figure}[tbh]
-\centerline{\epsfbox{figs/diagram.eps}}
-\caption{\label{xfig}Example diagram drawn using {\tt xfig}}
-\end{figure}
-
 
 
 
 \cleardoublepage
 \chapter{Evaluation}
 
-\section{Printing and binding}
-
-If you have access to a laser printer that can print on two sides, you
-can use it to print two copies of your dissertation and then get them
-bound by the Computer Laboratory Bookshop. Otherwise, print your
-dissertation single sided and get the Bookshop to copy and bind it double
-sided.
-
-
-Better printing quality can sometimes be obtained by giving the
-Bookshop an MSDOS 1.44~Mbyte 3.5" floppy disc containing the
-Postscript form of your dissertation. If the file is too large a
-compressed version with {\tt zip} but not {\tt gnuzip} nor {\tt
-compress} is acceptable. However they prefer the uncompressed form if
-possible. From my experience I do not recommend this method.
-
-\subsection{Things to note}
-
-\begin{itemize}
-\item Ensure that there are the correct number of blank pages inserted
-so that each double sided page has a front and a back.  So, for
-example, the title page must be followed by an absolutely blank page
-(not even a page number).
-
-\item Submitted postscript introduces more potential problems.
-Therefore you must either allow two iterations of the binding process
-(once in a digital form, falling back to a second, paper, submission if
-necessary) or submit both paper and electronic versions.
-
-\item There may be unexpected problems with fonts.
-
-\end{itemize}
-
-\section{Further information}
-
-See the Computer Lab's world wide web pages at URL:
-
-{\tt http://www.cl.cam.ac.uk/TeXdoc/TeXdocs.html}
-
-
 \cleardoublepage
 \chapter{Conclusion}
-
-I hope that this rough guide to writing a dissertation is \LaTeX\ has
-been helpful and saved you time.
-
-
-
 
 \cleardoublepage
 
@@ -499,28 +505,7 @@ been helpful and saved you time.
 % the appendices
 \appendix
 
-\chapter{Latex source}
-
-\section{diss.tex}
-{\scriptsize\verbatiminput{diss.tex}}
-
-\section{proposal.tex}
-{\scriptsize\verbatiminput{proposal.tex}}
-
-\section{propbody.tex}
-{\scriptsize\verbatiminput{propbody.tex}}
-
-
-
 \cleardoublepage
-
-\chapter{Makefile}
-
-\section{\label{makefile}Makefile}
-{\scriptsize\verbatiminput{makefile.txt}}
-
-\section{refs.bib}
-{\scriptsize\verbatiminput{refs.bib}}
 
 
 \cleardoublepage
