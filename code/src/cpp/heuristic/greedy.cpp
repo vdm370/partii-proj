@@ -58,8 +58,8 @@ int main() {
   auto start = high_resolution_clock::now(); 
 	solution s = greedy(g);
   auto end = high_resolution_clock::now(); 
-	s.print(true);
   cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
+  s.print(true);
 	return 0;
 }
 

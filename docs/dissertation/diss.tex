@@ -988,7 +988,6 @@ In this section, I am presenting a cross-comparison of the algorithms that were 
  \hline
  Algorithm & Time complexity & Algorithm type \\ [0.5ex] 
  \hline\hline
- Held-Karp algorithm & $\mathcal{O}(n^2 \cdot 2^n)$ & exact \\
  $3$-opt full & $\mathcal{O}(n^3)$ per it. & improvement \\
  Christofides algorithm & $\mathcal{O}(n^3 \log(n))$ & approximation \\
  Nearest neighbour heuristic & $\mathcal{O}(n^2) $ & heuristic \\
@@ -1001,24 +1000,20 @@ In this section, I am presenting a cross-comparison of the algorithms that were 
 \label{table:5}
 \end{table}
 
-These algorithm will be tested on a set of 10 TSPLIB instances, and their average on 10 runs, as well as the best tour obtained will be shown.
+These algorithm will be tested on a set of 10 TSPLIB instances, and their average on 10 runs, as well as the best tours obtained will be shown.
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{||c || c | c | c | c | c | c | c | c | c | c | c||} 
+\begin{tabular}{||c || c | c ||} 
  \hline
- Algorithm & tc1 & tc2 & tc3 & tc4 & tc5 & tc6 & tc7 & tc8 & tc9 & tc10 & avg. appr. ratio\\ [0.5ex] 
+ Algorithm & avg. ratio & min. ratio \\[0.5ex] 
  \hline\hline
- H-K algo & & & & & & & & & & & \\
- $3$-opt & & & & & & & & & & & \\
- NN heur. & & & & & & & & & & & \\
- RI heur. & & & & & & & & & & & \\
- LK heur. & & & & & & & & & & & \\
- ACO  & & & & & & & & & & & \\
- \hline\hline
- winner & & & & & & & & & & & \\
- \hline\hline
- optimal solution & & & & & & & & & & & \\
+ $3$-opt & 6\% & 3.2\% \\
+ Christofides & 7.4\% & 7.4\% \\  
+ NN heur. & 14.4\% & 14.4\% \\
+ RI heur. & 3.7\% & 2.9\% \\
+ LK heur. & 2\% & 0.9\%\\
+ ACO  & 34.7\% & 21\%\\
  \hline
 \end{tabular}
 \caption{k-opt comparison - artificial}

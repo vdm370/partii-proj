@@ -143,14 +143,14 @@ solution christofides(graph_dist g, int start = -1, bool greedy = false) {
 
 int main(int argc, char *argv[]) {
   int type = 0;
-  sscanf(argv[1], "%d", &type);
+  if(argc > 1) sscanf(argv[1], "%d", &type);
   graph_dist g = read_graph_dist();
   type ? puts("greedy version") : puts("optimal version");
   auto start = high_resolution_clock::now(); 
 	solution s = christofides(g, -1, type);
   auto end = high_resolution_clock::now(); 
-	s.print(true);
   cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
+  s.print(true);
 	return 0;
 }
 

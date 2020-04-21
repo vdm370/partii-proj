@@ -165,10 +165,10 @@ solution threeopt(graph_dist g) {
   solution sol = rand_greedy(g);
   double starting_point = sol.value;
   //assert(sol.sane(g));
-  int wait = g.nodes * g.nodes * g.nodes;
+  int wait = g.nodes * g.nodes;
   while(wait) {
     bool im = opt3_improve(sol, g);
-    if(im) wait = g.nodes * g.nodes * g.nodes;
+    if(im) wait = g.nodes * g.nodes;
     else wait -= 1;
   }
   printf("the starting value was %.2f\n", starting_point);
