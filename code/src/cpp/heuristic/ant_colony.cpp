@@ -3,11 +3,12 @@
 
 const double RHO = 0.5;
 const double ALPHA = 1;
-const double BETA = 1;
-const int ITERATIONS = 10000;
-const int ANTS = 20;
+const double BETA = 5;
+const int ITERATIONS = 5000;
+const int ANTS = 100;
 const double Q = 100;
 const bool DEBUG = false;
+using namespace std::chrono;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
@@ -104,7 +105,10 @@ solution ant_colony(graph_dist g) {
 int main() {
 	graph_dist g = read_graph_dist();
 	g.print();
+  auto start = high_resolution_clock::now(); 
 	solution s = ant_colony(g);
+  auto end = high_resolution_clock::now(); 
 	s.print(true);
+  cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
 	return 0;
 }

@@ -3,3 +3,4 @@
 
 // naive greedy solution
 solution greedy(graph_dist);
+solution rand_greedy(graph_dist);

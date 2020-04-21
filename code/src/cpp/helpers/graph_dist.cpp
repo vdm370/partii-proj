@@ -1,4 +1,5 @@
 #include "graph_dist.h"
+#include <bits/stdc++.h>
 graph_dist::graph_dist() {
 	nodes = 0;
 }

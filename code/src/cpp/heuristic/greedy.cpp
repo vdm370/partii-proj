@@ -1,5 +1,8 @@
 #include "greedy.h"
 #include <float.h>
+#include <bits/stdc++.h>
+using namespace std::chrono;
+
 solution greedy(graph_dist g, int start) {
 	double value = 0.0;
 	vector<bool> mark(g.nodes, false);
@@ -26,6 +29,12 @@ solution greedy(graph_dist g, int start) {
 	return solution(value, order);
 }
 
+solution rand_greedy(graph_dist g) {
+  srand(time(NULL));
+  int s = rand() % g.nodes;
+  return greedy(g, s);
+}
+
 solution greedy(graph_dist g) {
 	solution ans = greedy(g, 0);
 	for(int start = 1; start < g.nodes; start++) {
@@ -37,7 +46,6 @@ solution greedy(graph_dist g) {
 	return ans;
 }
 
-/*
 int main() {
 	graph_dist g = read_graph_dist();
 	printf("%d\n", g.nodes);
@@ -47,8 +55,11 @@ int main() {
 		}
 		printf("\n");
 	}
+  auto start = high_resolution_clock::now(); 
 	solution s = greedy(g);
+  auto end = high_resolution_clock::now(); 
 	s.print(true);
+  cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
 	return 0;
 }
-*/
+

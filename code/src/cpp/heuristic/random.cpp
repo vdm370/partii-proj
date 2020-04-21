@@ -1,5 +1,7 @@
 #include "random.h"
 
+using namespace std::chrono;
+
 using namespace std;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
@@ -22,7 +24,6 @@ solution random(graph_dist g) {
   return ans;
 }
 
-/*
 int main() {
 	graph_dist g = read_graph_dist();
 	printf("%d\n", g.nodes);
@@ -32,8 +33,10 @@ int main() {
 		}
 		printf("\n");
 	}
+  auto start = high_resolution_clock::now(); 
 	solution s = random(g);
+  auto end = high_resolution_clock::now(); 
 	s.print(true);
+  cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
 	return 0;
 }
-*/

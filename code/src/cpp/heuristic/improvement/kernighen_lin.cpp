@@ -3,6 +3,7 @@
 #include "random.h"
 #include <bits/stdc++.h>
 using namespace std;
+using namespace std::chrono;
 
 typedef pair<int, int> edge;
 typedef set<edge> edge_set;
@@ -232,7 +233,7 @@ bool lk_improve(graph_dist &g) {
 }
 
 solution lin_kernighen(graph_dist g) {
-  best_sol = random(g);
+  best_sol = rand_greedy(g);
   assert(best_sol.sane(g));
   bool improvement = true;
   while(improvement) {
@@ -244,7 +245,10 @@ solution lin_kernighen(graph_dist g) {
 int main() {
 	graph_dist g = read_graph_dist();
 	g.print();
+  auto start = high_resolution_clock::now(); 
 	solution s = lin_kernighen(g);
-	s.print(true);
+  auto end = high_resolution_clock::now(); 
+	cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
+  s.print(true);
 	return 0;
 }

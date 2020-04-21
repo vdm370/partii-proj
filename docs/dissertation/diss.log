@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2020.3.18)  26 MAR 2020 19:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2020.3.18)  20 APR 2020 19:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1033,25 +1033,32 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsfxsize=\dimen303
 \epsfysize=\dimen304
 \pspoints=\dimen305
-) (./diss.aux)
+) (./diss.aux
+
+LaTeX Warning: Label `table:3' multiply defined.
+
+
+LaTeX Warning: Label `table:3@cref' multiply defined.
+
+)
 \openout1 = `diss.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
 \AtBeginShipoutBox=\box77
-Package hyperref Info: Link coloring OFF on input line 61.
+Package hyperref Info: Link coloring OFF on input line 64.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -1060,9 +1067,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count289
 )
-LaTeX Info: Redefining \ref on input line 61.
-LaTeX Info: Redefining \pageref on input line 61.
-LaTeX Info: Redefining \nameref on input line 61.
+LaTeX Info: Redefining \ref on input line 64.
+LaTeX Info: Redefining \pageref on input line 64.
+LaTeX Info: Redefining \nameref on input line 64.
 
 (./diss.out) (./diss.out)
 \@outlinefile=\write4
@@ -1080,106 +1087,167 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.15} into 
 your preamble.
- on input line 61.
+ on input line 64.
 
 [1
 
 ] [2
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 98.
+LaTeX Font Info:    Try loading font information for U+msa on input line 101.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 98.
+LaTeX Font Info:    Try loading font information for U+msb on input line 101.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 98.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 101.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 98.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 101.
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 111.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 114.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (12.53038pt too wide) in paragraph at lines 98--113
+Overfull \hbox (12.53038pt too wide) in paragraph at lines 101--116
 []
  []
 
 [1
 
-] [2] [3] [4
+] [2] (./diss.toc [3
 
-] (./diss.toc [5
 
 ])
 \tf@toc=\write5
 \openout5 = `diss.toc'.
 
- [6] (./diss.lof)
+ [4] (./diss.lof)
 \tf@lof=\write6
 \openout6 = `diss.lof'.
 
- [7
+ [5
 
-] [8]
+] [6]
 Chapter 1.
 [1
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 177.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 179.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 177.
- [2] [3] [4]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 179.
+ [2]
 Chapter 2.
-[5
+[3
 
 
-] [6] [7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 375--376
-
+] [4] [5]
+Overfull \hbox (11.77701pt too wide) in paragraph at lines 341--362
+ [][] 
  []
 
-[10] [11] [12] [13] [14
+[6] [7] [8]
+
+LaTeX Warning: Hyper reference `http://elib.zib.de/pub/mp-testdata/tsp/tsplib/t
+splib.html' on page 9 undefined on input line 398.
+
+[9] [10
 
 ]
 Chapter 3.
-[15
+[11
 
-] [16
+] [12] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 515--516
+
+ []
+
+[14] [15] [16]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 578.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 578.
+
+[17] [18] [19] [20] [21] [22] [23] [24
 
 ]
 Chapter 4.
-[17
+[25
 
-] [18
+] [26]
+Overfull \hbox (160.15062pt too wide) in paragraph at lines 776--785
+ [][] 
+ []
+
+[27]
+Overfull \hbox (89.41232pt too wide) in paragraph at lines 795--804
+ [][] 
+ []
+
+
+Overfull \hbox (44.24843pt too wide) in paragraph at lines 820--830
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (44.00047pt too wide) in paragraph at lines 838--850
+ [][] 
+ []
+
+[28]
+Overfull \hbox (101.17268pt too wide) in paragraph at lines 856--868
+ [][] 
+ []
+
+[29]
+Overfull \hbox (32.40689pt too wide) in paragraph at lines 886--895
+ [][] 
+ []
+
+[30]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[31]
+Overfull \hbox (66.39323pt too wide) in paragraph at lines 1008--1024
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[32] [33] [34
 
 ]
 Chapter 5.
-[19
+[35
 
-] [20
+] [36
 
-] (./diss.bbl) [21
+] (./diss.bbl [37
 
-] [22
-
-]
+]) [38]
 Appendix A.
 (./temp_propbody.tex
 Underfull \hbox (badness 10000) in paragraph at lines 26--29
@@ -1196,7 +1264,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--40
 
  []
 
-[23
+[39
+
 
 
 
@@ -1205,7 +1274,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--46
 
  []
 
-[24]
+[40]
 Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
@@ -1225,33 +1294,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-[25]
+[41]
 Underfull \hbox (badness 10000) in paragraph at lines 62--64
 
  []
 
-[26] [27] [28]
+[42] [43] [44]
 Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
-[29] [30]) [31]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 517.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 517.
+[45] [46]) [47]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1053.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1053.
  (./diss.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 517.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 517.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1053.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1053.
+
 Package rerunfilecheck Info: File `diss.out' has not changed.
-(rerunfilecheck)             Checksum: 06B02AFCF41507747AF0D70D1A9ABC2C;2230.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 517.
+(rerunfilecheck)             Checksum: 37921D6CD2466D32615995F02CCEF058;3311.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1053.
  ) 
 Here is how much of TeX's memory you used:
- 32678 strings out of 492983
- 747390 string characters out of 6134922
- 975799 words of memory out of 5000000
- 35668 multiletter control sequences out of 15000+600000
- 29773 words of font info for 88 fonts, out of 8000000 for 9000
+ 32760 strings out of 492983
+ 748586 string characters out of 6134922
+ 982799 words of memory out of 5000000
+ 35747 multiletter control sequences out of 15000+600000
+ 34071 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,11n,96p,1255b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,17n,96p,1577b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on diss.dvi (41 pages, 118672 bytes).
+Output written on diss.dvi (55 pages, 217424 bytes).

@@ -1,6 +1,7 @@
 #include "cheapest_insertion_heuristic.h"
 #include <bits/stdc++.h>
 using namespace std;
+using namespace std::chrono;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
@@ -61,15 +62,18 @@ solution cheap_ins(graph_dist &g, int start) {
 
 solution cheapest_insertion_heuristic(graph_dist g) {
   solution best = cheap_ins(g, 0);
-  for(int i = 1; i < g.nodes; i++) {
+  /*for(int i = 1; i < g.nodes; i++) {
     best = min(best, cheap_ins(g, i));
-  }
+  }*/
   return best;
 }
 
 int main() {
   graph_dist g = read_graph_dist();
+  auto start = high_resolution_clock::now(); 
   auto sol = cheapest_insertion_heuristic(g);
+  auto end = high_resolution_clock::now();
   sol.print(true);
+  cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
   return 0;
 }

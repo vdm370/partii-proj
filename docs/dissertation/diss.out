@@ -2,33 +2,48 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
 \BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.2}{Algorithms}{chapter.1}% 4
-\BOOKMARK [2][-]{subsection.1.2.1}{Exact algorithms}{section.1.2}% 5
-\BOOKMARK [2][-]{subsection.1.2.2}{Approximation algorithms}{section.1.2}% 6
-\BOOKMARK [2][-]{subsection.1.2.3}{Improvement algorithms}{section.1.2}% 7
-\BOOKMARK [2][-]{subsection.1.2.4}{Heuristic algorithms}{section.1.2}% 8
-\BOOKMARK [2][-]{subsection.1.2.5}{Optimization algorithms}{section.1.2}% 9
-\BOOKMARK [0][-]{chapter.2}{Preparation}{}% 10
-\BOOKMARK [1][-]{section.2.1}{Complexity analysis}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.2}{TSP types}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.3}{Exact algorithms}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.3.1}{Bruteforce algorithm}{section.2.3}% 14
-\BOOKMARK [2][-]{subsection.2.3.2}{Held-Karp algorithm}{section.2.3}% 15
-\BOOKMARK [2][-]{subsection.2.3.3}{Branch and bound algorithm}{section.2.3}% 16
-\BOOKMARK [1][-]{section.2.4}{Approximation algorithms}{chapter.2}% 17
-\BOOKMARK [2][-]{subsection.2.4.1}{2-approximation algorithm}{section.2.4}% 18
-\BOOKMARK [2][-]{subsection.2.4.2}{Christofides algorithm}{section.2.4}% 19
-\BOOKMARK [1][-]{section.2.5}{Improvement algorithms}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.5.1}{k-opt algorithm}{section.2.5}% 21
-\BOOKMARK [2][-]{subsection.2.5.2}{Lin-Kernighan heuristic algorithm}{section.2.5}% 22
-\BOOKMARK [1][-]{section.2.6}{Heuristic algorithms}{chapter.2}% 23
-\BOOKMARK [2][-]{subsection.2.6.1}{Random algorithm}{section.2.6}% 24
-\BOOKMARK [2][-]{subsection.2.6.2}{NN \(greedy\) - algorithm}{section.2.6}% 25
-\BOOKMARK [2][-]{subsection.2.6.3}{Insertion heuristics}{section.2.6}% 26
-\BOOKMARK [1][-]{section.2.7}{Optimisation algorithms}{chapter.2}% 27
-\BOOKMARK [2][-]{subsection.2.7.1}{Ant colony optimisation algorithm}{section.2.7}% 28
-\BOOKMARK [0][-]{chapter.3}{Implementation}{}% 29
-\BOOKMARK [0][-]{chapter.4}{Evaluation}{}% 30
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 31
-\BOOKMARK [0][-]{chapter.5}{Bibliography}{}% 32
-\BOOKMARK [0][-]{chapter*.14}{Bibliography}{}% 33
-\BOOKMARK [0][-]{appendix.A}{Project Proposal}{}% 34
+\BOOKMARK [0][-]{chapter.2}{Preparation}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Computer characteristics}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Programming language choice}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{Knowledge necessary}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.4}{Complexity analysis}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.5}{TSP types}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.6}{Algorithm overview}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.7}{Algorithm types}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.7.1}{Exact algorithms}{section.2.7}% 13
+\BOOKMARK [2][-]{subsection.2.7.2}{Approximation algorithms}{section.2.7}% 14
+\BOOKMARK [2][-]{subsection.2.7.3}{Improvement algorithms}{section.2.7}% 15
+\BOOKMARK [2][-]{subsection.2.7.4}{Heuristic algorithms}{section.2.7}% 16
+\BOOKMARK [2][-]{subsection.2.7.5}{Local search algorithms}{section.2.7}% 17
+\BOOKMARK [1][-]{section.2.8}{Tested Data Sets}{chapter.2}% 18
+\BOOKMARK [0][-]{chapter.3}{Implementation}{}% 19
+\BOOKMARK [1][-]{section.3.1}{Exact algorithms}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.1.1}{Bruteforce algorithm}{section.3.1}% 21
+\BOOKMARK [2][-]{subsection.3.1.2}{Held-Karp algorithm}{section.3.1}% 22
+\BOOKMARK [2][-]{subsection.3.1.3}{Branch and bound algorithm}{section.3.1}% 23
+\BOOKMARK [1][-]{section.3.2}{Approximation algorithms}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.2.1}{2-approximation algorithm}{section.3.2}% 25
+\BOOKMARK [2][-]{subsection.3.2.2}{Christofides algorithm}{section.3.2}% 26
+\BOOKMARK [1][-]{section.3.3}{Improvement algorithms}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.1}{k-opt algorithm}{section.3.3}% 28
+\BOOKMARK [2][-]{subsection.3.3.2}{Lin-Kernighan heuristic algorithm}{section.3.3}% 29
+\BOOKMARK [1][-]{section.3.4}{Heuristic algorithms}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.4.1}{Random algorithm}{section.3.4}% 31
+\BOOKMARK [2][-]{subsection.3.4.2}{Nearest neighbour \(greedy\) - algorithm}{section.3.4}% 32
+\BOOKMARK [2][-]{subsection.3.4.3}{Insertion heuristics}{section.3.4}% 33
+\BOOKMARK [1][-]{section.3.5}{Local search algorithms}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.5.1}{Ant colony optimisation algorithm}{section.3.5}% 35
+\BOOKMARK [0][-]{chapter.4}{Evaluation}{}% 36
+\BOOKMARK [1][-]{section.4.1}{A priori knowledge}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.2}{Data sets}{chapter.4}% 38
+\BOOKMARK [1][-]{section.4.3}{Evaluation procedure}{chapter.4}% 39
+\BOOKMARK [1][-]{section.4.4}{CustomTODO comparisons}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.4.1}{Exact algorithm comparison}{section.4.4}% 41
+\BOOKMARK [2][-]{subsection.4.4.2}{k-opt implementation comparison}{section.4.4}% 42
+\BOOKMARK [2][-]{subsection.4.4.3}{Approximation algorithms comparison}{section.4.4}% 43
+\BOOKMARK [2][-]{subsection.4.4.4}{Insertion heuristics}{section.4.4}% 44
+\BOOKMARK [1][-]{section.4.5}{Comparison of the best algorithms}{chapter.4}% 45
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 46
+\BOOKMARK [0][-]{chapter.5}{Bibliography}{}% 47
+\BOOKMARK [0][-]{chapter*.27}{Bibliography}{}% 48
+\BOOKMARK [0][-]{appendix.A}{Project Proposal}{}% 49

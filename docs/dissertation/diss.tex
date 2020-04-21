@@ -39,6 +39,9 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
 \input{epsf}                            % to allow postscript inclusions
 % On thor and CUS read top of file:
 %     /opt/TeX/lib/texmf/tex/dvips/epsf.sty
@@ -114,8 +117,7 @@ by {\tt detex diss.tex | tr -cd '0-9A-Za-z $\tt\backslash$n' | wc -w}
 
 \section*{Original Aims of the Project}
 
-To code, compare and contrast different algorithms and approaches in solving one of the most famous problems ever to exist - the Travelling Salesman Problem. All the code done for this project is easy to use for anybody wishing to tackle this problem, and the overview of all the algorithms with the suggested usecase for each one is included as well.
-
+To code, compare and contrast different algorithms and approaches in solving the Travelling Salesman Problem. All the code done for this project is easy to use for anybody wishing to tackle this problem, and the overview of all the algorithms with the suggested usecase for each one is included as well.
 
 \section*{Work Completed}
 
@@ -123,7 +125,7 @@ All work that was done during this project will be mentioned in the dissertation
 
 \section*{Special Difficulties}
 
-Getting Lin-Kernighan algorithm to work significantly better than the other algorithms, reproducing the results mentioned on the original paper. Also, the Blossom algorithm for minimum weight perfect matching is hard to get working. % TODO
+Getting Lin-Kernighan algorithm to work significantly better than the other algorithms, reproducing the results mentioned on the original paper\cite{lin1973effective}. Also, the Blossom algorithm for minimum weight perfect matching is hard to get working. % TODO
  
 \newpage
 \section*{Declaration}
@@ -166,11 +168,11 @@ Add some acknowledgements here. Please, do add some acknowledgements here.
 
 \section{Motivation}
 
-My project tries to tackle one of the most famous problems in the history of Computer science - the Travelling Salesman problem. In that problem, we are given a weighted graph $G = (V, E, w)$, where $V$ denotes the set of vertices, $E$ denotes a set of edges, and $w : E \rightarrow \mathbb{R^{+}}$ is a weight function, mapping edges to weight that's assigned to them. We are interesting in finding a minimum-weight cycle in this graph. As we can see, a problem similar to this can arise in many real-world situations (a mailman having to visit a list of houses to deliver the mail, for example), so it is expected that a lot of effort has been put into solving this problem as efficiently as possible. This problem is known to be $\mathcal{NP}$-hard, basically meaning that there is no polynomial time algorithm solving this problem. With that in mind, we are forced to release some requirements of our algorithm: not demanding that we get a fully correct solution, only sufficiently close to the solution, and/or not demanding to finish in polynomial time, but sufficient fast. This project will try to give a summary of some more or less successful attemps, and analyze what are the advangates and disadvantages of the algorithms involved.
+The main aim of my CST Part II project is comparing the different approaches taken throughout the years for the Travelling Salesman problem - a very well-known optimisation problem. In that problem, we are given a weighted graph $G = (V, E, w)$, where $V$ denotes the set of vertices, $E$ denotes a set of edges, and $w : E \rightarrow \mathbb{R}^{+}$ is a weight function, mapping edges to weight that's assigned to them. We are interested in finding a minimum-weight Hamiltonian cycle (a cycle covering all the nodes) in this graph. More formally, if $n$ is the number of nodes in the graph (size of $V$), we are searching for a permutation of nodes $v_1, v_2, \dots, v_{n}$ such that $w(v_1 \rightarrow v_2) + w(v_2 \rightarrow v_3) + \dots + w(v_{n-1} \rightarrow v_n) + w(v_n \rightarrow v_1)$ is minimal possible. As we can see, a problem similar to this can arise in many real-world situations (a mailman having to visit a list of houses to deliver the mail, for example), so it is expected that a lot of effort has been put into solving this problem as efficiently as possible. This problem is known to be $\mathcal{NP}$-hard, basically meaning we cannot expert a polynomial time algorithm solving this problem. With that in mind, we see that we can compare the algorithms based on different metrices, including speed, space, approximation ratio, average closeness to the optimum and many more. This project will try to give a summary of some more or less successful attemps, and analyze what are the advangates and disadvantages of the algorithms involved.
 
 \section{Algorithms}
 
-In this section, I will list all the algorithms that I have taken into consideration for this project. I have made this choice after analyzing already existings benchhmarks about Travelling Salesman problem, trying to find the best tradeoff between complexity, running time, difficulty to reproduce and the result that the algorithm is producing. After having that finished, I have decided to split the algorithms in several classes, listed below:
+In this section, I will list all the algorithm types that I have taken into consideration for this project. I have made this choice after analyzing already existings benchmarks about Travelling Salesman problem, trying to find the best tradeoff between complexity, running time, difficulty to reproduce and the result that the algorithm is producing. After having that finished, I have decided to split the algorithms in several classes, listed below:
 
 \begin{itemize}
 
@@ -181,66 +183,66 @@ In this section, I will list all the algorithms that I have taken into considera
 \item {\bf Optimization algorithms} 
 \end{itemize}
 
-\subsection{Exact algorithms}
+%\subsection{Exact algorithms}
 
-{\bf Exact algorithms} are those algorithms which produce the correct solution every time they are run. Knowing the $\mathcal{NP}$-hardness of the TSP, we know that there is no algorithm of this kind running in polynomial time. I have considered 3 algorithms here:
+%{\bf Exact algorithms} are those algorithms which produce the correct solution every time they are run. Knowing the $\mathcal{NP}$-hardness of the TSP, we know that there is no algorithm of this kind running in polynomial time. I have considered 3 algorithms here:
 
-\begin{itemize}
+%%\begin{itemize}
 
-\item {\it Brute-force algorithm}
-\item {\it Held-Karp (dynamic programming) algorithm}
-\item {\it Branch-and-Bound algorithm}
+%%\item {\it Brute-force algorithm}
+%%\item {\it Held-Karp (dynamic programming) algorithm}
+%%\item {\it Branch-and-Bound algorithm}
 
-\end{itemize}
+%%\end{itemize}
 
-\subsection{Approximation algorithms}
+%\subsection{Approximation algorithms}
 
-{\bf Approximation algorithms} are ones that can guarantee some bound concerning the output of the algorithm. For example, the {\it 2-approximation algorithm} guarantees that the cost of the cycle it returned is at most two times larger than the cost of the optimal cycle. They usually run in polynomial time, and all the algorithms I've included in the project do belong in that category.
+%{\bf Approximation algorithms} are ones that can guarantee some bound concerning the output of the algorithm. For example, the {\it 2-approximation algorithm} guarantees that the cost of the cycle it returned is at most two times larger than the cost of the optimal cycle. They usually run in polynomial time, and all the algorithms I've included in the project do belong in that category.
 
-\begin{itemize}
+%%\begin{itemize}
 
-\item {\it 2-approximation algorithm}
-\item {\it Christofides-greedy algorithm}
-\item {\it Christofides algorithm}
+%%\item {\it 2-approximation algorithm}
+%%\item {\it Christofides-greedy algorithm}
+%%\item {\it Christofides algorithm}
 
-\end{itemize}
+%%\end{itemize}
 
-\subsection{Improvement algorithms}
+%\subsection{Improvement algorithms}
 
-{\bf Improvement algorithms} are those algorithm which consecutively try to improve an existing solution. Starting with some solution (greedy, for example), they try to alter it in a way that a better solution is produced. Running this algorithm for some time will eventually make the algorithm converge, getting a solution which we take as a final one. In practice, combining improvement techniques with some good strategies for the initial solution produce the best results, and a lot of best solutions on well-known TSP instances are obtained using improvement methods.
+%{\bf Improvement algorithms} are those algorithm which consecutively try to improve an existing solution. Starting with some solution (greedy, for example), they try to alter it in a way that a better solution is produced. Running this algorithm for some time will eventually make the algorithm converge, getting a solution which we take as a final one. In practice, combining improvement techniques with some good strategies for the initial solution produce the best results, and a lot of best solutions on well-known TSP instances are obtained using improvement methods.
 
-\begin{itemize}
+%%\begin{itemize}
 
-\item {\it 2-opt algorithm}
-\item {\it 3-opt algorithm}
-% TODO \item {\it 4-opt algorithm}
-\item {\it Lin-Kernighan algorithm}
+%%\item {\it 2-opt algorithm}
+%%\item {\it 3-opt algorithm}
+%%% TODO \item {\it 4-opt algorithm}
+%%\item {\it Lin-Kernighan algorithm}
 
-\end{itemize}
+%%\end{itemize}
 
-\subsection{Heuristic algorithms}
+%\subsection{Heuristic algorithms}
 
-{\bf Heuristic algorithms} are algorithms which usually have polynomial running time, usually do not have a guaranteed bound of error, but in general they produce results that are close to the optimal solution. There are a lot of different heuristic for tackling this problem, so I have selected a few that did produce some solid results. Also, these algorithms should not be too hard to code or to understand, in general, and it is surprising how good results can they achieve:
+%{\bf Heuristic algorithms} are algorithms which usually have polynomial running time, usually do not have a guaranteed bound of error, but in general they produce results that are close to the optimal solution. There are a lot of different heuristic for tackling this problem, so I have selected a few that did produce some solid results. Also, these algorithms should not be too hard to code or to understand, in general, and it is surprising how good results can they achieve.
 
-\begin{itemize}
+%%\begin{itemize}
 
-\item {\it Random algorithm}
-\item {\it Nearest neighbour algorithm (greedy)}
-\item {\it Insertion heuristic - cheapest, farthest, nearest, random}
-\item {\it Convex-hull heuristic algorithm}
+%%\item {\it Random algorithm}
+%%\item {\it Nearest neighbour algorithm (greedy)}
+%%\item {\it Insertion heuristic - cheapest, farthest, nearest, random}
+%%\item {\it Convex-hull heuristic algorithm}
 
-\end{itemize}
+%%\end{itemize}
 
-\subsection{Optimization algorithms}
+%\subsection{Local search algorithms}
 
-In {\bf optimization algorithms}, we are starting with random solutions, computing the results those solutions are producing and then adapting towards solutions which are more preferable (have less cost in this example). Running this iteratively, we converge to a solution which can be pretty close to the correct one, no guarantees shown. There are also quite some algorithms which perform the process outlined above, here are some:
+%In {\bf optimization algorithms}, we are starting with random solutions, computing the results those solutions are producing and then adapting towards solutions which are more preferable (have less cost in this example). Running this iteratively, we converge to a solution which can be pretty close to the correct one, no guarantees shown. There are quite some algorithms which perform the process outlined above.
 
-\begin{itemize}
+%%\begin{itemize}
 
-\item {\it Ant-colony optimization algorithm}
-\item {\it Simulated annealing algorithm}
+%%\item {\it Ant-colony optimization algorithm}
+%%\item {\it Simulated annealing algorithm}
 
-\end{itemize}
+%%\end{itemize}
 
 \cleardoublepage
 
@@ -248,11 +250,52 @@ In {\bf optimization algorithms}, we are starting with random solutions, computi
 
 \chapter{Preparation}
 
-In this chapter, I will describe, in full detail, all the algorithms and all the theoretical background needed to start the implementation part of the project, as well as some lemmas and proofs about working performance of the procedures described.
+In this chapter, I will describe, in full detail, all the algorithms and all the theoretical background needed to start the implementation part of the project, as well as finer details about some of the algorithms.
+
+\section{Computer characteristics}
+
+All the experiments in this project are run on my personal computer. Its characteristics are:
+
+\begin{itemize}
+\item CPU: Intel Pentium G2020 ($2.9$ GHz, dual-core)
+\item RAM: 16GB DDR3
+\item VGA: Nvidia GT 640
+\item HDD: 1TB
+\end{itemize}
+
+\section{Programming language choice}
+
+Before starting any kind of implemenation, a backup tool has to be chosen. I have chosen a union of two things - a private GitHub repository and a backup on my external HDD. I had no problems with losing any data during the project implementation, but having multiple backup tools kept me safe throughout.
+
+After considering multiple programming languages to be my language of implementation for this project, I chose C++. There are couple of reasons behind that decision: that is the language I am the most familiar with implementing competitive programming algorithms in it, and it also compares very solidly versus other options - which is the reason which makes it a primary competitive programming choice for most people. I am also very familiar with C++ Standard Template Library (more commonly known as STL), which helps me in writing optimised code faster, without the need to implement some commonly used data structures on my own. For easily keeping track of how long the program has been executing, I used the functions which can be found under the std::chrono namespace.
+
+The only external library I will use in this project is Library for Efficient Modeling and Optimization in Networks (LEMON)\cite{Dezs__2011} - an open source C++ library providing efficient implementations of some famous algorithms and data structures. I will use only the implementation of minumum weight perfect matching (Blossom algorithm), as a part of the implementation of the Christofides algorithm).
+
+Concerning the evaluation chapter, I had to make some plots. In order to automatise the testing phase, I wrote and used some bash scripts. They will be included with all the code for this project.
+
+Producing the plots is done in Python, using the matplotlib library.
+
+\section{Knowledge necessary}
+
+In order to understand and implement all the algorithms, I had to connect various areas of computer science, and in first two years of the Tripos a lot of stuff has been covered, but not all.
+
+A brief overview of the Tripos subjects that do intersect with the theme of this project is given below:
+
+\begin{itemize}
+
+\item {\bf Complexity theory} is definitely a must - all the knowledge needed to understand the complexity analysis section is covered in this Part IB course. 
+
+\item {\bf Algorithms} - this course is all about the TSP algorithms. The course has definitely helped me in writing the actual code. Also, my previous experience with coding has highly contributed to the speed of the actual implementation, as well as reducing the time necessary for finding flaws and fixing them fast.
+
+\item {\bf Programming in C and C++} - as already mentioned, the whole project is implemented in C++ programming language, so this course helped me not to run in some of C++ cavities.
+
+\item {\bf Artificial Intelligence} course has helped me to better understand the heuristic approaches in general, and some of the algorithms mentioned in this work are similar to some of the algorithms mentioned in the course - applied to different problems, however.
+
+\end{itemize}
 
 \section{Complexity analysis}
 
-I have already mentioned the fact that the Travelling Salesman Problem can not be solved in polynomial time. Now, we would like to see in which class does this problem belong to. In order to do that, we do not need the fully detailed definitions of them because they are not the main point of this dissertation - so I will give a brief and informal definition of complexity classes we take interest in here:
+I have already mentioned the fact that the Travelling Salesman Problem is not expected to be solved in polynomial time. Now, we would like to see in which class does this problem belong to. In order to do that, we do not need the fully detailed definitions of them because they are not the main point of this dissertation - so I will give a brief and informal definition of complexity classes we take interest in here:
 
 \begin{itemize}
 
@@ -267,7 +310,7 @@ Now, the Travelling Salesman Problem, defined in the introduction is not $\mathc
 
 \smallskip 
 
-It is not hard to see that the TSP does belong in $\mathcal{NP}$-hard, using my previous $\mathcal{NP}$ complexity class definition. Also, for the formal proof, Karp TODO showed in 1972. that the Hamiltonian cycle problem is $\mathcal{NP}$-complete, which implies the $\mathcal{NP}$-hardness of the TSP. But, surprisingly?, it does not belong to $\mathcal{NP}$. In the verification problem, we would be given a graph and one of cycles from that graph, and we are to judge whether that exact cycle is the shortest one. Note that we can not decide that without actually solving the TSP and knowing what the optimal cycle's cost is, so this can not be done in polynomial time knowing the fact we can not solve TSP in that time. So, this definition of the TSP is not in $\mathcal{NP}$, making it not in $\mathcal{NP}$-complete as well.
+It is not hard to see that the TSP does belong to the $\mathcal{NP}$-hard class, using my previous $\mathcal{NP}$ complexity class definition. Also, for the formal proof, Karp TODO showed in 1972. that the Hamiltonian cycle problem is $\mathcal{NP}$-complete, which implies the $\mathcal{NP}$-hardness of the TSP. But, surprisingly?, it does not belong to $\mathcal{NP}$. In the verification problem, we would be given a graph and one of cycles from that graph, and we are to judge whether that exact cycle is the shortest one. Note that we can not decide that without actually solving the TSP and knowing what the optimal cycle's cost is, so this can not be done in polynomial time knowing the fact we can not solve TSP in that time. So, this definition of the TSP is not in $\mathcal{NP}$, making it not in $\mathcal{NP}$-complete as well.
 
 \smallskip 
 
@@ -279,21 +322,100 @@ Conclusion to all this is that we definitely need and that it is actaully sensib
 
 \section{TSP types}
 
-The TSP, as defined in the beginning of the dissertation, can be solved on any kind of graph. However, a lot of real TSP instances do obey some further criteria on the edge weights. Some of these properties of TSP instances can help us in developing some algorithms which can profit from the fact that the weights are behaving somehow. In this section, I will introduce a couple of terms that will come in handy later.
+The TSP, as defined in the beginning of the dissertation, can be defined on any kind of graph. However, a lot of real TSP instances do satisfy some additional constraints regarding edge weights. Some of these properties of TSP instances can help us in developing some algorithms which can profit from the fact that the weights are behaving according to some further conditions. In this section, I will introduce a couple of terms that will come in handy later.
+
+In most of the algorithms, the graph distance matrix is going to be used as a way to represent the graph. A distance matrix is a $n \times n$ matrix $A$ representing the weights of edges of the graph, where $A_{i, j} = w(i \rightarrow j)$.
 
 \smallskip
 
-A TSP instance is called a {\bf Symmetric TSP} instance if and only if the distance matrix is symmetric. So, in the case of a symmetric TSP, for each $u$ and $v$, $w(u \rightarrow v) = w(v \rightarrow u)$. Note that most of the non-artificially generated graphs are symmetric, making this a very natural restriction on edge weights, so in most of the cases we will focus on this type of TSP. 
+A TSP instance is called a {\bf Symmetric TSP} instance if and only if the distance matrix is symmetric. So, in the case of a symmetric TSP, for each $u$ and $v$, $w(u \rightarrow v) = w(v \rightarrow u)$. Note that most of the non-artificially generated and in practice arising graphs are symmetric, making this a very natural restriction on edge weights, so I will focus exclusively on solving the symmetric TSP, if not explicitly said otherwise. Thus, I am able to write $w(a, b)$ instead of $w(a \rightarrow b)$.
 
-{\bf Metric TSP} is a subset of symmetric TSP where distance matrix obeys the {\it triangle inequality}. That means, for each triplet of vertices $a$, $b$, $c$ (we can assume they are pairwise connected so we don't have to deal with infinities), $w(a \rightarrow b) <= w(a \rightarrow c) + w(c \rightarrow b)$. It doesn't make sense that the triangle inequality doesn't hold for something which is a road network or similar. Specially, if we can represent our nodes as a points in a Euclidean space and the distances are Euclidean distances between the corresponding points, that graph belongs to a special subset of Metric TSP called the {\bf Euclidean TSP}\footnote{For Euclidean TSP, a PTAS (polynomial-time approximation scheme) algorithm can be applied, which finds the solution that is within a factor of $1 + \frac{1}{c}$ in $\mathcal{O}(n(\log n)^{(\mathcal{O}(c \sqrt{d}))^{d - 1}})$, where d is the dimension of the Euclidean space.}. % TODO ADD CITE
+{\bf Metric TSP} is a subset of symmetric TSP where distance matrix obeys the {\it triangle inequality}. That means, for each triplet of vertices $a$, $b$, $c$ (we can assume they are pairwise connected so we don't have to deal with infinities), $w(a \rightarrow b) \leq w(a \rightarrow c) + w(c \rightarrow b)$. It doesn't make sense that the triangle inequality doesn't hold for something which is a road network or similar. Specially, if we can represent our nodes as a points in a Euclidean space and the distances are Euclidean distances between the corresponding points, that graph belongs to a special subset of Metric TSP called the {\bf Euclidean TSP}\footnote{For Euclidean TSP, a PTAS\cite{Arora_1998} (polynomial-time approximation scheme) algorithm can be applied, which finds the solution that is within a factor of $1 + \frac{1}{c}$  in $\mathcal{O}(n(\log n)^{(\mathcal{O}(c \sqrt{d}))^{d - 1}})$ for every fixed $c > 1$, where $d$ is the dimension of the Euclidean space.}. % TODO ADD CITE
+
+\section{Algorithm overview}
+
+The Table \ref{table:1}\footnote{In the table, $n$ is the number of nodes in the graph} listing the important information for all the algorithms in the project can be found here.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c | c | c | c||} 
+ \hline
+ Name & Type & Running time & Reference \\ [0.5ex] 
+ \hline\hline
+ Bruteforce & Exact & $\mathcal{O}(n!)$ & folklore \\
+ Held-Karp algorithm & Exact & $\mathcal{O}(n^2 2^n)$ & \cite{Bellman_1962}, \cite{Held_1962} \\ 
+ Branch and bound algorithm & Exact & $\mathcal{O}(n!)$ & folklore \\
+ 2-approximation & Approximation & $\mathcal{O}(n^2)$ & TODO \\
+ Christofides & Approximation & $\mathcal{O}(n^3)$ & \cite{christofides1976worst} \\
+ $k$-opt & Improvement & $O(n^k)\footnote{Complexity per one iteration}$ & \cite{flood1956traveling}, \cite{Croes_1958} \\ 
+ Lin-Kernighan & Improvement & $~O(n^{2.2})$ & \cite{lin1973effective} \\
+ Random algorithm & Heuristic & $\mathcal{O}(n)$ & folklore \\
+ Nearest neighbour heuristic & Heuristic & $\mathcal{O}(n^2)$ & folklore \\
+ Cheapest insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & \cite{Rosenkrantz_1974} \\
+ Farthest insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & \cite{Rosenkrantz_1974} \\
+ Nearest insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & \cite{Rosenkrantz_1974} \\
+ Random insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & \cite{Rosenkrantz_1974} \\
+ Convex-hull insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & TODO \\
+ Ant colony optimization & Optimisation & $\mathcal{O}(cnt\_ants \cdot n^2) $ & TODO \\
+ \hline
+\end{tabular}
+\caption{Algorithms overview}
+\label{table:1}
+\end{table}
+
+\section{Algorithm types}
+
+\subsection{Exact algorithms}
+
+In this section, we will see a few algorithms that solve the Travelling Salesman problem optimally - their output is guaranteed to be correct. Algorithms with that guaranteed (probably the most widely-used algorithm category) is called an exact algorithm. As we have shown in the previous section, there can be no polynomial time algorithm belonging to this category. Furthermore, an open problem is whether there exists an algorithm solving the TSP with running time of $\mathcal{O^{*}}(1.99999^{n})$\cite{Woeginger2003}, where $n$ is the number of vertices of the graph. That doesn't stop us in comparing different algorithms here, because we can clearly infer that one algorithm is better than the other in certain circumstances.
+
+\subsection{Approximation algorithms}
+
+An approximation algorithm does not compute the optimal solution, but we will have some guarantees about the value we obtain using these algorithms. If we don't require our solution to be fully optimal, but we just don't want to be too wrong, approximation algorithms can guarantee the solution we want really fast.
+
+\smallskip
+
+We should note here that it is not possible to polynomially approximate the TSP as good as we want. Determining how good can we approximate the problem is still a major open problem in the field of computer science. A real number $r$ is said the be an inapproximability bound for an optimization problem $\mathbb{P}$ if it is proved that a problem having to find a solution that is better than $r$ times the optimal solution for $\mathbb{P}$ is $\mathcal{NP}$-hard. A paper TODO CITAT released in 2013 improves the inapproximability bounds to $185/184$ for the symmetric TSP, and $117/116$ for the asymmetric TSP., though there is no proof that we can't improve the bounds further.
+
+
+\subsection{Improvement algorithms}
+
+The general idea here is that we start from any solution, and try to iteratively improve the solution until we converge or until we are satisfied with the cycle found. There are no guarantees of any kind for iterative improvement algorithms, but we will empirically validate later on that they do perform better than some algorithms with stronger mathematical background.
+
+\subsection{Heuristic algorithms}
+
+The TSP is a really famous problem. Having that in mind, it's sensible that a lot of heuristics, some better than the other, were tried in order to get close to the optimal solution. In this section, we will discuss some of the attempts tried, and later we will show how do they compare to each other.
+
+
+\subsection{Local search algorithms}
+
+A lot of effort has been put in the solving of the TSP. Thus, a lot of general ideas have been applied to it, with more or less success. Genetic algorithms, tabu search algorithms, ant colony optimization algorithms, simulated annealing are just the small subset of general heuristics that have been tested on the TSP. In my work, I have implemented the ant colony optimization algorithm.
+
+\section{Tested Data Sets}
+
+After having covered all the algorithms in the project, we come to a part where we need some data to run the algorithms on. I have decided to split all the data I will be testing on in two large classes - {\bf synhetically generated data} and {\bf real-world data}. Among each of those, there will be several different TSP classes we need to take care of, including symmetric/asymmetric TSP, metric TSP, euclidean/non-euclidean, etc. We also need to make some decision when making the synthetic data - the biggest focus of synthetic data generation will be the Euclidean TSP.
+
+When speaking about real-world data, all the instances my implementation has been tested on is collected from the \hyperref[http://elib.zib.de/pub/mp-testdata/tsp/tsplib/tsplib.html]{TSPLIB} online library of TSP instances. There, we can find the optimal solution value for some TSP instances 
+I will test the algorithms on, so we can see how good our solution compares to the optimal one even if I can't fully solve the TSP test.
+
+All the data is in one of the TSPLIB formats availabe, and I have made all of my algorithms to run on distance matrix (apart from the convex hull heuristic, which uses a set of points). So, the code to convert all of different TSPLIB format into distance matrices is also included in the code repository attached to this project. 
+
+To convert the pairs of latitude and longitude in the distance, the {\it haversine formula} was implemented. The haversine formula is the special case of the {\it law of haversines}, a formula relating the sides and the angles of spherical triangles.
+
+\cleardoublepage
+\chapter{Implementation}
+
+%\section{Data generating}
+
+%The real-world data sets used for the evaluation of this project are available on the TSPLIB online library in one of several TSPLIB formats used. 
 
 \section{Exact algorithms}
 
-In this section, we will see a few algorithms that solve the Travelling Salesman problem optimally - their output is guaranteed to be correct. As we have shown in the previous section, there can be no polynomial time algorithm belonging to this category. Furthermore, there is no algorithm with running time $\mathcal{O}(1.99999^{n})$, where $n$ is the number of vertices of the graph. That doesn't stop us in comparing different algorithms here, because we can clearly infer that one algorithm is better than the other in certain circumstances.
-
 \subsection{Bruteforce algorithm}
 
-The very first idea that would come up on our minds when taking a look at this problem is that we can try all the possible cycles. Number of cycles in a graph is equal to the number of permutations of the set of vertices. If there are $n$ vertices in the graph, we have $n!$ permutations (and $n!$ candidate solutions). Implementing this naively, we need $\mathcal{O}(n)$ time to calculate the cost for a given cycle, so the naive implementation of this algorithm results in $O(n * n!)$ complexity.
+The very first idea that would come up on our minds when taking a look at this problem is that we can try all the possible Halimtonian cycles. Number of Hamiltonian cycles in a complete graph is equal to the number of permutations of the set of vertices. If there are $n$ vertices in the graph, we have $n!$ permutations (and $n!$ candidate solutions). However, we don't need to consider cyclic rotations of same permutation, so $(n - 1)!$ permutations are left to examine. Implementing this naively, we need $ \mathcal{O}(n) $ time to calculate the cost for a given cycle, so the naive implementation of this algorithm results in $ O(n \cdot (n - 1)! = n!) $ complexity.
+
+I am using the C++'s inbuilt function {\it bruteforce algorithm} for generating all the candidates for the solution (a permutation of all the nodes is equivalent to a cycle covering all the nodes), calculating the cost for each of them in $ O(n) $, and taking the overall minimum.
 
 \subsection{Held-Karp algorithm} % nekako nesto citiraj ovde TODO
 
@@ -305,11 +427,17 @@ Let us have currently visited $k < n$ vertices, and let those vertices be $v_{1}
 
 \smallskip
 
-Speaking about the algorithm, from one state we can transition to $O(n)$ new states, making the complexity of this algorithm $O(n^2 * 2^n)$. This complexity is still exponential, but it is much faster than previous algorithm. Just for the sake of clarity, if we want our algorithm to finish in couple of seconds on an average PC, we can run {\it bruteforce algorithm} for $n$ up to 12, where we can run our dynamic programming algorithm for $n$ up to 28 \footnote{These numbers are based on my implementation of algorithms ran on my PC}.
+Speaking about the algorithm, from one state we can transition to $O(n)$ new states, making the complexity of this algorithm $O(n^2 * 2^n)$. The space complexity is $O(n * 2^n)$. This complexity is still exponential, but it is much faster than previous algorithm. Just for the sake of clarity, if we want our algorithm to finish in couple of seconds on an average PC, we can run {\it bruteforce algorithm} for $n$ up to 12, where we can run our dynamic programming algorithm for $n$ up to 28 \footnote{These numbers are based on my implementation of algorithms ran on my PC}.
+
+\smallskip
+
+We can represent a set of nodes using a {\bf bitmask}. The bitmask is a number in the interval $[0, 2^{n})$ which represents a unique subset of the graph nodes. A subset corresponding to the bitmask $msk$ contains node $x$ if and only if $msk$ has $x$-th bit set. With this mapping, we mapped all the subsets to integers allowing us to have a dynamic programming matrix instead of having to keep track of sets of nodes in some different way.
+
+The dynamic programming base case is $$ dp[2^{i}][i] = 0 $$ and we can make the transition between states as $$ dp[msk \text{ rpr. } S][p] = \min_{i \in S, i \neq p} dp[msk \oplus 2^p \text{ rpr. } S - \{p\}][i] + cost(i \rightarrow p) \footnote{by rpr. I mean representing}$$
 
 \subsection{Branch and bound algorithm}
 
-Here, we come to the first algorithm which running time actually depends on the input data. From now on, TODO almost all the algorithms involved will have their correctness and running time impacted by the actual input. Branch and bound algorithms are, in general, basically `smart' bruteforce algorithms in which we don't explore a certain path if we know that there is no chance that we can find an optimal solution continuing along that path. Because this is, after all, a bruteforce algorithm, it's worst case running time has $n!$ as one of the factors, but we hope and that will empirically be shown that this algorithm actually finishes much faster than the bruteforce algorithms in most cases. Also, which might be not completely intuitive, this algorithms is also better than the Held-Karp algorithm on average, being able to solve some TSP instances with $n = 40$ in couple of seconds.
+Here, we come to the first algorithm which running time actually depends on the input data and not only the input size! From now on, all the algorithms involved will have their running time impacted by the actual input, apart from the approximation algorithms. Branch and bound algorithms are, in general, basically `smart' bruteforce algorithms in which we don't explore a certain path if we know that there is no chance that we can find an optimal solution continuing along that path. Because this is, after all, a bruteforce algorithm, it's worst case running time has $n!$ as one of the factors, but we hope and that will empirically be shown that this algorithm actually finishes much faster than the bruteforce algorithms in most cases. Also, which might be not completely intuitive, this algorithms is also better than the Held-Karp algorithm on average, being able to solve some TSP instances with $n = 40$ in couple of seconds.
 
 \smallskip
 
@@ -325,19 +453,17 @@ We can perform the same procedure on the colums of the new matrix (repeating the
 
 \smallskip
 
-Finally, the idea of the branch and bound algorithm here is that we will discard all the states where $current\_cost + tsp\_approximation(current\_state) >= best\_solution\_so\_far$. This termination condition is not the strongest one we can find in polynomial time, but it works quite good. In evaluation chapter, we will see some numbers about number of explored states using this algorithm.
-
-\section{Approximation algorithms}
-
-We will not produce the optimal solutions here, but we will have some guarantees about the value we obtain using these algorithms. If we don't require our solution to be fully optimal, but we just don't want to be too wrong, approximation algorithms can guarantee the solution we want really fast.
+Finally, the idea of the branch and bound algorithm here is that we will discard all the states where $current\_cost + lower\_bound\_remaining(current\_state) \geq best\_solution\_so\_far$. This termination condition is not the strongest one we can find in polynomial time, but it works quite well. In evaluation chapter, we will see some numbers about number of explored states using this algorithm.
 
 \smallskip
 
-We should note here that it is not possible to polynomially approximate the TSP as good as we want. Determining how good can we approximate the problem is still a major open problem in the field of computer science. A real number $r$ is said the be an inapproximability bound for an optimization problem $\mathbb{P}$ if it is proved that a problem having to find a solution that is better than $r$ times the optimal solution for $\mathbb{P}$ is $\mathcal{NP}$-hard. A paper TODO CITAT released in 2013 improves the inapproximability bounds to $185/184$ for the symmetric TSP, and $117/116$ for the asymmetric TSP., though there is no proof that we can't improve the bounds further.
+Concerning the evaluation part, the decision is to always open the node with the minimum current cost. A data structure that allows me to do so efficiently is a priority queue, which is implemented in the standard library. The data structure representing the current state of an algorithm is a triplet of current distance matrix state, current cost and the current path we have taken. I also defined a custom comparator which I can pass to the priority queue as one of the initialization arguments, trying to utilise everything C++ allows the programmer.
+
+\section{Approximation algorithms}
 
 \subsection{2-approximation algorithm}
 
-If we try to think of a something in the graph which is impacted by all the nodes, have it's cost minimal and is easy to calculate, we remember that there is something called a {\bf minimum spanning tree}. That is a subgraph of the graph which is a tree\footnote{A tree graph is a connected acyclic graph. A tree with $n$ nodes has $n - 1$ edges.}, with vertex set equal to the vertex set of the original graph, with minimal sum of the weights of all the edges.
+If we try to think of a something in the structure which is impacted by all the nodes, have it's cost minimal and is easy to calculate, we remember that there is a subgraph of the graph called a {\bf minimum spanning tree}. That is a subgraph of the graph which is a tree\footnote{A tree graph is a connected acyclic graph. A tree with $n$ nodes has $n - 1$ edges.}, with vertex set equal to the vertex set of the original graph, with minimal sum of the weights of all the edges.
 
 \smallskip
 
@@ -346,8 +472,8 @@ Our 2-approximation algorithm runs as follows:
 \begin{enumerate}
 
 \item Pick a start vertex {\it start} - it doesn't matter how we choose this one.
-\item Construct a MST with 1 as root, using, for example, Prim's algorithm
-\item List all the vertices according to preorder walk, and add {\it start} to the end
+\item Construct a MST with 1 as root, using, for example, Prim's algorithm.
+\item List all the vertices according to preorder walk, and add {\it start} to the end.
 
 \end{enumerate}
 
@@ -355,12 +481,12 @@ This gaves us a cycle of all $n$ vertices.
 
 \smallskip
 
-We will first state and prove one lemma here.
+We will first state and prove two lemmas here.
 
 \begin{lemma}
 
-\label{mstlemma}
-The cost of a MST is less than or equal to the cost of a minimum cycle.
+\label{mstlemma} ({\bf MST Lemma})
+The cost of a MST, in a graph with non-negative weights, is less than or equal to the cost of a minimum cycle.
 
 \end{lemma}
 
@@ -370,9 +496,23 @@ This is pretty straightforward, because the cost of a TSP is less than or equal 
 
 \end{proof}
 
+\begin{lemma}
+
+\label{shortcutting} ({\bf Shortcutting lemma})
+The shortcutting (skipping some nodes in the cycle) does not increase the cycle length in a metric TSP problem.
+
+\end{lemma}
+
+\begin{proof}
+
+We can prove that removing one node from the path cannot increase the path length. If there are some three consecutive nodes $a$, $b$, and $c$, and we are to remove node $b$ from the cycle, the length of the path prior to the removal of $b$ is $w(a \rightarrow b) + w(b \rightarrow c)$, and after removal the cost is $w(a \rightarrow c)$. Because the TSP is metric, the triangle inequality holds, we know that for every triplet of nodes $a$, $b$, and $c$, $w(a \rightarrow c) \leq w(a \rightarrow b) + w(b \rightarrow c)$, so the latter cost cannot be greater than the previous cost. Hence, removal of one node cannot increase the cost, so the removal of any number of nodes cannot increase the cost as well.
+
+\end{proof}
+
+
 \begin{theorem}[2-approx theorem]
 
-For metric TSP, the cost of the cycle obtained above is at most 2 times more expensive that the optimal cycle. \\
+For the metric TSP, the cost of the cycle obtained above is at most 2 times more expensive that the optimal cycle. \\
 
 \end{theorem}
 
@@ -384,17 +524,21 @@ Let's consider a full preorder walk  of the graph - basically a preorder walk, b
 
 \item The cost of a full preorder walk is at most two times larger than the cost of MST - every edge of the MST is visited at most twice.
 
-\item The cost of a cycle generated by this algorithm is not greater than the cost of a full preorder walk - this is easily shown using the triangle inequality property\footnote{This is the part that requires the TSP to be metric} of the TSP, because two adjacent edges are constantly being replaced by one connecting non-adjacent ends when transitioning from a full preorder walk to the cycle above.
+\item The cost of a cycle generated by this algorithm is not greater than the cost of a full preorder walk - this is easily shown using the \hyperref[shortcutting]{Lemma 2} proven above.
 
 \end{itemize}
 
-Using these two facts, as well as \hyperref[mstlemma]{MST lemma} TODO we conclude that the theorem 1 holds.
+Using these two facts, as well as \hyperref[mstlemma]{MST lemma} we conclude that the theorem 1 holds.
 
 \end{proof}
 
-\subsection{Christofides algorithm} %TODO citat
+The complexity of this algorithms is the same as the complexity of computing the minimum spanning tree. The maximum node of edges a $n$-node graph can have is $\frac{n(n - 1)}{2}$, so I will consider $|E| = \mathcal{O}(n^2)$ in further analysis.
 
-This algorithm gives us a 1.5 approximation to the metric TSP. It was developed by Nicos Christofides in 1976., and as of 2019 it is the best approximation ratio that has been proven for the TSP on general metric spaces, although there are some better approximation for some special cases (e.g. Euclidean TSP).
+The algorithm I chose for the minimum spanning tree problem is Kruskal's algorithm. Implemented using the disjoint-set union (DSUCITAT) data structure, which runs in $ \mathcal{O}(|E|\alpha(n)) = \mathcal{O}(n^2\alpha(n)) $, where $\alpha(n)$ is the inverse of the single-valued Ackermann function, a function that grows extremely slowly and is less than 5 for any reasonable $n$.
+
+\subsection{Christofides algorithm}
+
+This algorithm gives us a 1.5 approximation to the metric TSP. It was developed by Nicos Christofides in 1976\cite{christofides1976worst}, and as of 2020 it is the best approximation ratio that has been proven for the TSP on general metric spaces, although there are significantly better approximation algorithms for some special cases (e.g. Euclidean TSP).
 
 The algorithm runs as follows:
 
@@ -402,7 +546,7 @@ The algorithm runs as follows:
 
 \item Let $G$ be the starting graph. Find a MST of $G$, call it $T$.
 \item Create a subraph of $G$, $O$, consisting of vertices with odd degree in $T$ and all the edges between them.
-\item Let $PM$ be the minimum-weight perfect matching in $O$. Let $T'$ be the graph with all the nodes and all the edges from both $T$ and $PM$.
+\item Let $M$ be the minimum-weight perfect matching in $O$. Let $T'$ be the graph with all the nodes and all the edges from both $T$ and $M$.
 \item Construct any Eulerian cycle on $T'$, and reduce it to a Hamiltonian circuit by skipping repeated nodes. Return that Hamiltonian cycle.
 
 \end{itemize}
@@ -415,53 +559,83 @@ For metric TSP, the cost of the cycle obtained above is at most 1.5 times larger
 
 \begin{proof}
 
-Christofides proof here.
+Let $S$ be the optimal solution to the TSP - a cycle with minimum cost. Now, we can remove all the nodes not in $O$ from this cycle, maintaning the relative order of all the others node - giving us $S'$. Using the \hyperref[shortcutting]{shortcutting lemma}, $cost(S') \leq cost(S)$. We now have a cycle with even number of nodes. We can show this using a famous handshaking lemma - the sum of degrees of all the nodes in the graph has to be even, because that sum is equal to doubled number of edges.
+
+\small
+
+Let's enumerate the nodes of $S'$ going around the cycle, from 1 do $m$, where $m$ is the number of nodes in $O$. We can now split $S'$ into two sets of edges, $E_1$ and $E_2$, where $E_1$ contains all the nodes having first node (going counter-clockwise, for example) odd, and $E_2$ all the others. Those two sets are definitely two perfect matchings on the nodes of $O$, so $cost(E_1) \geq cost(M)$ and $cost(E_2) \geq cost(M)$ holds, where $M$ is the minimal perfect matching on the nodes of $O$. Also, we know that $cost(S) \geq cost(S') = cost(E_1) + cost(E_2)$, so by symmetry argument we can conclude that $\min(cost(E_1), cost(E_2)) \leq \frac{1}{2}cost(S)$. That implies $cost(M) \leq \frac{1}{2}cost(S)$. Cost of all the edges in the union of $M$ and $T$ is then at most $\frac{3}{2} cost(S)$, and the solution we are getting has to be at most $\frac{3}{2} cost(S)$, using the \hyperref[shortcutting]{Lemma 2} one final time.
 
 \end{proof}
 
+The same MST computation technique is used again - the Kruskal's algorithm. The big challenge we are facing is the computation of the minimum weight perfect matching. An algorithm solving this problem is the Blossom algorithms, developed by Jack Edmonds in 1965CITE. This algorithm runs in $\mathcal{O}(|E||V|^2) = \mathcal{O}(n^4)$ time complexity, and that is the computation part taking the most time. We can find the Euler tour using HierholzerCITE's algorithm in linear time, so the total complexity of Christofides algorithm is $\mathcal{O}(n^4)$.
+
+A variation of this algorithm, with the minimum weight perfect matching approximated by greedy heuristic has been fully implemented by me. The LEMON library has been used to produce the minimum weight perfect matching to be used in the Christofides algorithm in this project.
+
 \section{Improvement algorithms}
 
-The general idea here is that we start from any solution, and try to iteratively improve the solution until we converge or until we are satisfied with the cycle found. There are no guarantees of any kind for iterative improvement algorithms, but we will empirically validate later on that they do perform better than some algorithms with stronger mathematical background.
+In each of these algorithms, we need to establish what we are going to use as a starting point - the initial cycle. The difference in the result produced when starting from totally random cycle and the output of some of the other algorithms implemented in this work is not significant - however, the running time of the randomised version (explained below) is greatly reduced when starting from a good results in the first place. I am using the output of nearest neighbour starting point as an entry point for all the algorithms in this section.
 
-\subsection{k-opt algorithm}
+\subsection{$k$-opt algorithm}
 
-The idea behind k-opt heuristic, for given $k$, is as follows: until convergence or until some other stopping point, cut the cycle in $k$ chains, and try to rearrange these chains to obtain the least expensive cycle. Note that there is a significant tradeoff between running time for one iteration (which is $\mathcal{O(nk!)}$) and the improvement we can get (more small parts we cut it into, we have greater probability of being able to improve it). In a degenerate case, picking $k = n$ would yield a optimal solution after one iteration, but that iteration would take the same amount of time bruteforce does. 
+The idea behind $k$-opt heuristic, for given $k$, is as follows: until convergence or until some other stopping condition, cut the cycle in $k$ chains, and try to rearrange these chains to obtain the least expensive cycle. Note that there is a significant tradeoff between running time for one iteration (which is $\mathcal{O(nk!)}$) and the improvement we can get (more small parts we cut it into, we have greater probability of being able to improve it). In a degenerate case, picking $k = n$ would yield a optimal solution after one iteration, but that iteration would take the same amount of time bruteforce does. 
 
 \smallskip
 
-It is empirically validated that picking $k >= 4$ is worse than picking $k <= 3$. In my implementation, I have coded 2-opt and 3-opt separately TODO, and shown that 3-opt performs better than 2-opt.
+It is empirically validated that picking $k \geq 4$ is worse than picking $k \leq 3$, the so I have implemented 2-opt and 3-opt versions of $k$-opt algorithm.
+
+For both 2-opt and 3-opt versions, two different variations are implemented - a randomised and a deterministic one. In the randomised implementation, each iteration step consists of picking random indices at which we can cut our cycle, and then trying all the combinations to see whether we can improve the solution. Opposed to that, in the deterministic one, an iteration consists of trying all the possible cuts, making the complexity of one iteration for 2-opt and 3-opt $\mathcal{O}(n^2)$ and $\mathcal{O}(n^3)$ respectively. Later, we will see how these versions compare versus each other. A thing to node is that we can run the randomised version multiple times and take the best result obtained in any of the runs, while the deterministic version always produces the same result if the starting point is the same. Note that, if the procedure generating the initial cycle is not deterministic we can take the minimum of several runs in both versions of the algorithm.
 
 \subsection{Lin-Kernighan heuristic algorithm}
 
-The problem with k-opt is that we are setting the value of $k$ in advance. Lin-Kernighan algorithms is basically a generalization of k-opt, at each iteration trying to pick the best value of $k$ to do the interchange. It is one of the most successful TSP heuristic today, and it is a heuristic giving the best results in my implementation.
+The problem with the performance of k-opt is that we are setting the value of $k$ in advance. Lin-Kernighan algorithms manages to generalise of k-opt, at each iteration trying to pick the best value of $k$ to do the interchange. It is one of the most successful TSP heuristic today, and it is a heuristic giving the best results in my implementation.
 
-The procedure runs as follows:
-
-LKH here
+The algorithm tries to find two sets $X$ (edges to remove) and $Y$ (edges to insert) such that they respect the following criteria: the exchange is sequential, forcing the latter node of $X_i$ to be the former node of $Y_i$, the running sum $G = \sum_{i}^{|X|} w(X_i) - w(Y_i)$ has to be positive (meaning each step of the algorithm improves the tour), and two sets have to be disjoint. The described procedure is running until we can find such sets to improve the solution. This project implements one of many variations of the Lin-Kernighan heuristic, first introduced by K. Helsgaun\cite{Helsgaun_2000}. 
 
 \section{Heuristic algorithms}
 
-The TSP is a really famous problem. Having that in mind, it's sensible that a lot of heuristics, some better than the other, were tried in order to get close to the optimal solution. In this section, we will discuss some of the attempts tried, and later we will show how do they compare to each other.
-
 \subsection{Random algorithm}
 
-This algorithm isn't really something one would try in order to solve the TSP, but it is included in the project so we would get an idea of how good other algorithms really are. We will just take the best solution out of some predefined number of random cycles.
+This algorithm is not really something one would try in order to solve the TSP, but it is included in the project so we would get an idea of how good other algorithms really are. We will just take the best solution out of some predefined number of random cycles.
 
-\subsection{NN (greedy) - algorithm}
+We can use the inbuilt random shuffle function (random\_shuffle) in C++ to generate random solution, compute the weights of paths and take the minumum afterwards. The complexity is $\mathcal{O}(IT \times n)$, where $IT$ denotes the number of paths we will take the minimum of.
+
+\subsection{Nearest neighbour (greedy) - algorithm}
 
 The nearest neighbour greedy algorithm is probably the first one to come up to someone's mind when tackling this problem. Also, it doesn't require knowing anything about the whole graph when making the decision, only about the surroundings, so it is not strange that an actual salesman from the problem name would use it if necessary. 
 
-\smallskip
+The idea is, being at a certain node, take the edge with minimum weight that takes us to some node which is not already visited. We constantly need to keep track of which nodes we have visited, take a look at all the edges incident to the node and take the minumum one. After the arrival to the last unvisited node, we have to return to the node from which we started - we don't know anything about the weight of this edge at this point. The implementation is pretty straightforward and it's complexity is $\mathcal{O}(n^2)$. 
 
-When in a certain node, the algorithms chooses the edge with minimum cost leading to some, so far unvisited, node and traverses to there. After visiting all the nodes, it returns to the node where the path has started. It is not hard to see that the solution depends on the choice of the starting node, hence we can start from all the nodes and take the minimum solution which improves the solution with only a factor of $n$. 
+We can pick any node as a starting node, so we can take the minimum when starting from all the nodes, paying a factor of $n$ in the time complexity.
 
-\smallskip
+The additional memory complexity remains $\mathcal{O}(n)$.
 
-This algorithm can go horribly wrong, and we can construct a case where the solution obtained this way is arbitrarily times longer than the optimal solution. Still, it performs surprisingly fine on average.
+\smallskip 
+
+\begin{theorem}
+
+If $a_c$ is the cost of the tour generated by this algorithm and $o_c$ is the cost of the optimal solution, $\frac{a_c}{o_c} \leq \frac{1}{2}(\lceil\log(n) + 1\rceil)$.
+
+\end{theorem}
+
+We won't prove this theorem here, but the proof can be found here. % TODO
 
 \subsection{Insertion heuristics}
 
-With all the insertion heuristics, the recipe is the same: starting from a single node with a self-loop (an one node cycle), we are searching for an optimal node and an optimal spot. Having found that, we insert the node at a proposed place, and keep going until we insert all the nodes, resulting in a solution. Also, starting from different nodes might lead to a different solution, so we can try all the possible starts.
+With all the insertion heuristics, the recipe is the same: starting from a single node with a self-loop (an one node cycle), we are searching for an optimal node and an optimal spot. Having found that, we insert the node at a proposed place, and keep going until we insert all the nodes, resulting in a solution. Also, starting from different nodes might lead to a different solution, so we can try all the possible starts. All the heuristic can be implemented in quadratic time apart from the cheapest insertion, where one extra logarithmic factor is a must.
+
+\smallskip
+
+For all these heuristics, we need to define one very useful function: the value of inserting a node $b$ between nodes $a$ and $c$. We will define that as $$insert\_cost(a, b, c) = w(a \rightarrow b) + w(b \rightarrow c) - w(a \rightarrow c)\footnote{$w(a \rightarrow a) = 0$ for every $a$}$$ Insert code of three nodes is the value by which the cost of the cycle increases when adding the node.
+
+We can calculate the insert cost in constant time, so there is no need of precalculating anything.
+
+\smallskip
+
+If our current cycle is $v_1$, $v_2$, $\dots$, $v_l$, $v_1$, and we are to insert node $u$ in that cycle, we will always insert the node after node $$i = \argmax_{i = 1}^{l} insert\_cost(v_i, u, v_{i + 1})\footnote{In this expression, $l + 1 = 1$ (the addition wraps around)}$$ We further define $min\_insert\_cost(T, u)$ as the minimal cost needed to insert $u$ at any position in $T$.
+
+\smallskip
+
+In each of the algorithms, we start with a one-node cycle in the beginning, and then iteratively add all the other nodes. We can choose that node arbitratily, but what I do is calculate the solution for all the possible starting nodes and output the minimum amongst those solutions.
 
 \smallskip
 
@@ -469,25 +643,387 @@ There are multiple variations here, and the ones I have implemented can be found
 
 \subsubsection{Cheapest insertion heuristic}
 
-\subsubsection{Farthest insertion heuristic}
+Here, we calculate the optimal insertion cost for all the nodes which are not currently in the cycle, and we do insert the node with minimal value on it's optimal place. We continue this process until all the nodes are a part of the cycle - then we can return that cycle as a solution. With some extensive usage of data structures (C++ standard library implementations are used), we can implement this in $ \mathcal{O}(n^2 \log n) $ time.
 
 \subsubsection{Nearest insertion heuristic}
 
+This heuristic is a bit different from the previous one - at each step of the iteration, we pick a node which is closest to the current tour. We define a distance between a tour and a node as the minimum distance between any of the tour's nodes and the node given. Then, we insert that node at it's optimal position.
+
+We will first prove a lemma that will help us prove the approximation ratio of these two heuristics.
+
+\begin{lemma}
+
+\label{insertlemma} ({\bf Insertion lemma})
+Let $A$ and $B$ be two sets of nodes. Define $min\_edge(A, B) = \min\{w(a, b) | a \in A, b \in B\}$. In our insertion heuristic, denote by $T_i$ the tour we have after inserting exactly $i$ nodes, and by $v_{i+1}$ the node we are inserting as $(i+1)$-th node. If we have an algorithm where $$ min\_insert\_cost(T_i, v_{i + 1}) \leq 2 \times min\_edge(T_i, V - T_i)\footnote{V is the set of all the nodes, $-$ sign is just the set difference} $$ holds for each $i \in \{1, \dots, n - 1\}$, then $$ cost(output) \leq 2 \times cost(MST) $$ where output is the output of the algorithm satisfying the above criteria, and MST being the minimum spanning tree of the graph.
+
+\end{lemma}
+
+\begin{proof}
+
+% TODO
+
+\end{proof}
+
+\begin{theorem}
+
+Both {\it cheapest insertion heuristic} and {\it nearest insertion heuristic} on a metric TSP provide a 2-approximation to the TSP.
+
+\end{theorem}
+
+\begin{proof}
+
+We will show this using \hyperref[insertlemma]{insertion lemma}, by showing that both cheapest and nearest insertion heuristics obey the criteria which is necessary for lemma to be applied.
+
+\smallskip
+
+Let $T$ be the current tour created. Let the minimum weight edge among all the edges stretching between $T$ and $V - T$ be $a \leftrightarrow c$, where $a \in T$. Let $b$ be any neighbour of $a$ in $T$. We can easily show that $insert\_cost(a, b, c) \leq 2 \times w(a, c)$ using the triangle inequality.
+
+Now, in cheapest insertion heuristic the insert cost has to be at most $insert\_cost(a, b, c)$, so the lemma criterium holds. We can easily conclude the same thing for nearest insertion heuristic as well.
+
+With this shown, we can apply the previously mentioned lemma to prove the theorem. Remember the \hyperref[mstlemma]{MST lemma}.
+
+\end{proof}
+
+\subsubsection{Farthest insertion heuristic}
+
+In this heuristic, we are doing something which might sound a bit strange, however, it can perform better than some of the above on some TSP instances. Instead of choosing the closest node to the tour, we are choosing the farthest one, inserting it first. This makes sense because we are interested in optimally positioning the 'far-away' nodes in the beginning - finding a better placement to outlier nodes contribute to the solution more than the optimal placement of nodes which are next to each other. This is a handwavy explanation, but we will see its good performance in the evaluation chapter. We can prove that the ratio between this solution and the optimal one is less than the constant times the logarithmic function with number of nodes as it's argument. This heuristic gives a logarithmic approximation, meaning that the ratio of the solution obtained and the optimal one is less than the constant times the logarithm of $n$.
+
 \subsubsection{Random insertion heuristic}
+
+Instead of choosing the node using some heuristic - we can choose the next node to insert arbitrarily. After choosing it, we insert it to it's optimal place in the tour. This improves the time needed for the algorithm to finish, and actually doesn't decrease the performance a lot. This gives the logarithmic approximation as well.
 
 \subsubsection{Convex-hull insertion heuristic}
 
-\section{Optimisation algorithms}
+When dealing with {\bf euclidean TSP}, we have some further facts to utilise. 
+
+\begin{lemma}
+
+In Euclidean TSP, the optimal cycle does not intersect itself.
+
+\end{lemma}
+
+\begin{proof}
+
+Let $a \rightarrow c$ and $d \rightarrow b$ (with $a$ and $b$ being in same connected component after removing those two edges, WLOG) be the edges in the optimal cycle intersecting each other. By the triangle inequality, which holds from the fact that the TSP is euclidean, we can easily show that removing thoes edges and adding $a \rightarrow d$ and $c \rightarrow b$ improves the solution, making the assumption that the cycle is optimal false. Hence, the optimal cycle cannot intersect itself. 
+
+\end{proof}
+
+Then, we can conclude that all the points on the convex hull of all the points are going to be in same order both in TSP optimal solution as well as in the convex hull. We can create the convex hull using the Graham scanCITE algorithm in $ \mathcal{O}(n \log n) $ time, and then use any of the previous heuristics to add all the other nodes. The cheapest insertion heuristic was chosen here.
+
+\section{Local search algorithms}
 
 \subsection{Ant colony optimisation algorithm}
 
-\cleardoublepage
-\chapter{Implementation}
+In general, the {\bf ant colony optimization} algorithm ({\bf ACO}) is a method of solving various graph problems, most of them about finding a path that is good evaluated on some metric. The TSP is no expection - we can easily fit its formulation into the general framework for the ACO.
 
+This algorithm is inspired by the behaviour of real ants and their pheromone-based communication. An ant, initially walking randomly, will mark the paths that are better than the other by leaving some amount of pheromone on its path. Future ants will be guided by the pheromone smell so more ants will be attracted to good paths, though there is still a posibility of going in all the directions so all the paths will be investigated. This converges at some point, giving us a solution that can be pretty close to the optimal one.
 
+The algorithm resembles the ant behaviour, leaving 'pheromone' on all the edges, where the edge distance is one of the factors in choosing the next edge. Releasing a large number of ants will lead us to the convergence. Implementation-wise, we can have a matrix with dimension $n \times n$ where we can store the concentration on pheromone on every edge. When an ant is present in some node, it chooses the edge to take among all the unvisited nodes respecting the probability mass distribution, which is a function of the length of the path and the pheromone concentration. We define some hyperparameters in order to weigh the strength of pheromone versus the path length.
+
+There are several iterations of the algorithm - in one, we make a number of ant cycles and calculate the weights of their cycles. Then, we change the pheromone matrix based on all the cycles obtained in this iteration, and move on. We don't update after every ant finishes it's trajectory in order to stabilize the algorithm, making it less prune to failing if some bad paths get chosen in the beginning. We also need to define a starting point, and we can either limit the number of iterations/ants to run or we can stop when the length of the cycle stops decreasing. 
 
 \cleardoublepage
 \chapter{Evaluation}
+
+\section{A priori knowledge}
+
+Prior to starting the evaluation part, I surely had some thoughts about which algorithm is going to outperform all the others, speaking about some fixed data set. In the later sections of this chapter, the actaul results tell us whether the expectations turned out to be right. Below is an overview of several facts we will test onwards.
+
+\begin{itemize}
+
+\item Focusing on the exact algorithms, the dynamic programming approach does always perform better than the bruteforce approach. However, even knowing the fact that the worst case complexity of branch-and-bound algorithms is the same as the bruteforce approach, I expect it to outperform, time-wise, the dynamic programming algorithm, on both generated and real-world data.
+
+\item I expect the randomized implementation of k-opt heuristic to outperform the deterministic one, because the wider set of cycles gets its chance to be a stage of the improvement. However, there is no easy way to estimate the running time of the randomized k-opt before it converges, so that will be further tested in this chapter. 
+
+\item The algorithms of Christofides (both with greedy matching and with optimal one) are expected to outperform the 2-approximation algorithm on average and I would be really surprised if that doesn't show true, even though that doesn't have to be the case. Also, it is expected that the Christofides implementation with calculating the minimum weight perfect matching outperforms its greedy heuristic approximation.
+
+\item I am expecting the Convex hull heuristic to find cycles significantly better than the other heuristic on the TSP instances with Euclidean metric - the convex hull heuristic uses the fact that the points in the optimal solution have the same order as in the convex hull, thus starting the greedy insertion from a much better starting point. Also, I expect its performance to raise as the percentage of the points in the set belong to its convex hull.
+
+\item I don't expect other insertion heuristic(s) to vary a lot. The farthest insertion heuristic is a bit favourised even though it does the insertion 'in the strangest' way, but a good starting point will be established. I think, even though this is not tested, that a hybrid algorithm starting with farthest insertions and continuing with cheapest/nearest insertion could outperform all of the insertion heuristics implemented here, though the improvement wouldn't be any large.
+
+\item Finally, starting from a solid starting point (nearest neighbour algorithm, in this case), the Lin-Kernighan heuristic will obtain the best results out of all the non-exact algorithms implemented in this project. Nowadays, the best results are obtained by procedures having the variation of this algorithm - chained LKHCITE as the starting point for the further improvement. The solver that managed to successfully solve all the instances in the TSPLIB archive, the ConcordeCITE solver, is no exception. It uses a smarter version of branch-and-bound algorithms described in this dissertation after nicely bounding the solution using the abovementioned heuristic.
+
+\end{itemize}
+
+\section{Data sets}
+
+After collecting the data from the TSPLIB as well as generating my own data, there are several categories each of the tests belongs to. The plots, starting from the following section will be clearly marked to which category do they belong, and the main goal of the project is to see which algorithms gets advantage of a test belonging to some category.
+
+First, all the data has been split in two disjoint sets - real data, collected from the TSPLIB, and synthetic data, generated by me. Data generation techniques are explained in this writeup, as well.
+
+I will focus primarily on the symmetric TSP in this work, as the asymmetric TSP is not commonly seen and much less effort has been put in developing heuristic for solving it. Nonetheless, some of the algorithms do perform equally good when placed in the asymmetric world, and that will be mentioned where suitable.
+
+The test cases will be split in metric/non-metric group as well, however more attention will be paid to metric TSP because that is the scenario that is seen more often. Also, a subset of metric TSP, Euclidean TSP, will be separated, knowing that we expect some algorithms to run better on it.
+
+Also, the cases will also be split in several size categories, by the number of the nodes of the graph. I will consider all the graphs to be complete ones, because we can turn any non-complete to a complete ones by adding a infinite-weighted edge between each two nodes not originally connected.
+
+
+\newcommand{\TLE}{{\bf TLE}}
+\newcommand{\MLE}{{\bf MLE}}
+
+\section{Evaluation procedure}
+
+All the evaluation procedures have been run on my machine, previously described hereTODO. 
+
+Unless specified, all the numbers in any of the tables are average of exactly 5 runs of the algorithms. Also, some thresholds on the running time and memory consumption have to be established - the verdict of the execution will be described as Time Limit Exceeded (\TLE) if the execution takes more than 5 minutes. Also, if the memory the program request the amount of memory unable to run on my computer previously described, the verdict will be characterised as Memory Limit Exceeded (\MLE).
+
+\section{CustomTODO comparisons}
+ 
+\subsection{Exact algorithm comparison}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c | c | c | c||} 
+ \hline
+ Algorithm & Average time complexity & Worst-case time complexity & Memory complexity \\ [0.5ex] 
+ \hline\hline
+ Bruteforce & $\mathcal{O}(n!)$ & $\mathcal{O}(n!)$ & $\mathcal{O}(n)$ \\
+ Held-Karp algorithm & $\mathcal{O}(n^2 2^n)$ & $\mathcal{O}(n^2 2^n)$ & $\mathcal{O}(n 2^n)$ \\ 
+ Branch and bound algorithm & $\mathcal{O}(n!)\footnote{But we expect to finish much faster than this}$ & $\mathcal{O}(n!)$ & $\mathcal{O}(n!)\footnote{But we expect to finish much faster than this}$ \\
+ \hline
+\end{tabular}
+\caption{Exact algorithms}
+\label{table:2}
+\end{table}
+
+All of these algorithms do find the optimal solution to the TSP when they finish, so we will compare their time complexities in this subsection. These algorithms are not affected by the fact whether the TSP instance is real/artificial or whether is symmetric or not, hence I will compare them on a set of randomly generated symmetric testcases.
+
+The results can be found in following figure\footnote{sym$n$ stands for a symmetric TSP instance with $n$ nodes}:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c || c | c | c | c | c | c | c | c | c||} 
+ \hline
+ Algorithm & sym5 & sym8 & sym10 & sym12 & sym13 & sym16 & sym20 & sym22 & sym25 \\ [0.5ex] 
+ \hline\hline
+ Bruteforce & 1ms & 12ms & 1s & 12s & 157s & \TLE & \TLE & \TLE & \TLE \\
+ Held-Karp & 1ms & 1ms & 1ms & 7ms & 14ms & 139ms & 3s & 17s & \MLE\\ 
+ Branch and bound & 1ms & 5ms & 7ms & 35ms & 91ms & 308ms & 48s & 75s & \MLE\\
+ \hline
+\end{tabular}
+\caption{Exact algorithm comparison}
+\label{comparison:1}
+\end{table}
+
+A modification that has been tried is to initially bound the solution of branch and bound with some good approximation. Christofides and 3-opt were tried, but the performance gains for the biggest testcases this algorithm manages to solve were negligible, so that hybrid is omitted.
+
+As we can see, the branch and bound algorithm never managed to outperform the dynamic programming approach on totally randomly generated test cases. However, there definitely are some examples of instances where the branch and bound clearly wins against the Held-Karp algorithm. An example of that are test cases bb\_suitable50 and bb\_suitable100 (both have exactly one cycle which is many times better than all the other cycles we can make). The branch and bound algorithm manages to find the correct solution in less than a second even for a 100 node graph, which is clearly undoable via any other exact algorithm.
+
+\subsection{k-opt implementation comparison}
+
+The algorithms here perform the same type of improvement step - given the cutting spots in the cycle, the procedures searches for the best way to rearrange the parts. Two variations we will consider here is going through all the pairs/triples for 2-opt/3-opt respectively in some order, or randomly choosing a suitable triplet on every iteration. We will compare the result obtained as well as the running time until it stops further improving.
+
+The starting point for all of these algorithms is a nearest neighbour solution starting from a random node - just so we add some extra non-determinism everywhere.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c | c | c||} 
+ \hline
+ Algorithm & Number of iterations & Memory complexity \\ [0.5ex] 
+ \hline\hline
+ 2-opt random & $n^2$ without further improvement & $\mathcal{O}(n)$ \\
+ 2-opt deterministic & until no further improvement (at least $n^2$) & $\mathcal{O}(n)$ \\
+ 3-opt random  & $n^3$ without further improvement & $\mathcal{O}(n)$ \\
+ 3-opt deterministic  & until no further improvement (at least $n^3$) & $\mathcal{O}(n)$ \\
+ \hline
+\end{tabular}
+\caption{k-opt algorithms}
+\label{table:3}
+\end{table}
+
+For this comparison, I have chosen 4 TSPLIB instances (burma14, att48, ch130, a280), as well as 4 randomly generated symmetric instances (sym20, sym50, sym100, sym300). The results can be found below (the table entries are ordered pairs of average solution, and the running time):
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c || c | c | c | c||} 
+ \hline
+ Algorithm & burma14 & att48 & ch130 & a280 \\ [0.5ex] 
+ \hline\hline
+ 2opt-full & (3432.4, 1ms) & (11039.4, 1ms) & (6660, 3ms) & (2866.2, 12ms) \\
+ 2opt-random & (3672, 1ms) & (11576.4, 1ms) & (6942.8, 14ms) & (2946.4, 63ms) \\
+ 3opt-full & (3397.2, 1ms) & (10832.4, 110ms) & (6359.8, 1.9s) & (2708.8, 19s) \\
+ 3opt-random & (3376.6, 1ms) & (10797, 252ms) & (6316, 5.7ms) & (2776.6, 59s) \\
+ \hline\hline
+ optimal solution & 3323 & 10628 & 6110 & 2579 \\
+ \hline
+\end{tabular}
+\caption{k-opt comparison - real}
+\label{comparison:2}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c || c | c | c | c||} 
+ \hline
+ Algorithm & sym20 & sym50 & sym100 & sym300 \\ [0.5ex] 
+ \hline\hline
+ 2opt-full & (2535, 1ms) & (2627.6, 1ms) & (2974.8, 2ms) & (3113.4, 20ms) \\
+ 2opt-random & (3029.6, 1ms) & (2795.8, 1ms) & (3297.2, 6ms) & (3598, 59ms) \\
+ 3opt-full & (2440.4, 6ms) & (2227.8, 96ms) & (2394.6, 900ms) & (2223.4, 63s) \\
+ 3opt-random & (2462.6, 21ms) & (2198.8, 324ms) & (2312.4, 2.4s) & (2192, 122s) \\
+ \hline\hline
+ optimal solution & 3323 & unknown ($\leq$ 2102) & unknown ($\leq$ 2246) & unknown ($\leq$ 2144)\\
+ \hline
+\end{tabular}
+\caption{k-opt comparison - artificial}
+\label{comparison:3}
+\end{table}
+
+First thing we notice is that there is no visible difference between real and synthetically generated test cases when evaluating k-opt heuristic.
+
+This has shown that 3-opt clearly outperforms 2-opt, no matter what variation of each we take into consideration. Examining the difference between the variations, we can notice that 2-opt deterministic works quite better than its randomised counterpart. However, if we would have taken the minimum value obtained in multiple runs, on a lot of occasions the randomised versions would win, but the variance is just too high. A good example of that are results of 2-opt randomised on sym20 test case: $(2334, 3177, 2531, 3447, 2480)$, where the minimum result (2480) is better than all the results obtained using the deterministic version. Taking a look at the running time, 3-opt full and 3-opt random difference in accuracy is not extremely large while the running time gap is substantial in favour of full version, so there is a tradeoff between those two.
+
+Taking these results into account, we will continue the comparison with 2-opt full as it is clearly dominant, and we will proceed with both version of 3-opt for the further evaluation.
+
+\subsection{Approximation algorithms comparison}
+
+We will see how our approximation algorithms compare versus each other, and how do the compare versus the optimal solution. Because we would like to have the optimal solution calculated for all instances, I am using TSPLIB instances with optimal solution attached to them.
+
+The algorithms we are considering here are:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c | c | c | c||} 
+ \hline
+ Algorithm & Approximation ratio & Time complexity & Memory complexity \\ [0.5ex] 
+ \hline\hline
+ 2-approximation & $2$ & $\mathcal{O}(n^2 \alpha(n))$ & $\mathcal{O}(n^2)$ \\
+ Christofides-greedy & $2\footnote{Would be $\frac{3}{2}$ if the matching would be optimal}$ & $\mathcal{O}(n^2\alpha(n))$ & $\mathcal{O}(n^2)$ \\ 
+ Christofides & $\frac{3}{2}$ & $\mathcal{O}(n^3\log(n))\footnote{This is the complexity of Blossom algorithm implemented in LEMON library}$ & $\mathcal{O}(n^2)$ \\
+ \hline
+\end{tabular}
+\caption{Approximation algorithms}
+\label{table:3}
+\end{table}
+
+For evaluation, a set of 10 TSPLIB instances is used: burma14, gr21, berlin52, gr120, ch130, d198, pr226, a280, fl417, att532. All of these algorithms are deterministic, so only one run is enough. Also, they are all sufficiently fast and do not require a lot of memory, so the correctness is the metric in focus. Results are shown:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c || c ||} 
+ \hline
+ Algorithm & Approximation ratio \\ [0.5ex] 
+ \hline\hline
+ 2-approximation & 34.7\% \\
+ Christofides-greedy &  13.8\% \\
+ Christofides & 7.4\% \\
+ \hline
+\end{tabular}
+\caption{Approximation comparison}
+\label{comparison:4}
+\end{table}
+
+\subsection{Insertion heuristics} 
+
+First, the overview of all insertion heuristics implemented in this work is given. Note that this table gives the time complexity for starting from one starting node, but for the sake of comparison the best solution of $n$ runs will be included as a separate entry.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c | c | c | c||} 
+ \hline
+ Algorithm & Time complexity & Approximation ratio \\ [0.5ex] 
+ \hline\hline
+ Random insertion heuristic & $ \mathcal{O}(n^2) $ & $ \mathcal{O}(\log n) $ \\
+ Cheapest insertion heuristic & $ \mathcal{O}(n^2\log n) $ & 2 \\
+ Nearest insertion heuristic & $ \mathcal{O}(n^2) $ & 2 \\
+ Farthest insertion heuristic & $ \mathcal{O}(n^2) $ & $ \mathcal{O}(\log n) $ \\
+ Convex-hull cheapest insertion & $ \mathcal{O}(n^2 \log n) $ & 2 \\
+ \hline
+\end{tabular}
+\caption{Approximation algorithms}
+\label{table:4}
+\end{table}
+
+All of these algorithm do not require some extensive memory usage and the time complexities are almost identical, so the closeness of the solution produced versus the optimal solution will be the point of focus once more. The instances used are 10 TSPLIB instances, same ones used as in approximate algorithms evaluation. We can also find the comparison between the heuristic which has shown the best results in the first evaluation versus the convex hull heuristic - but only on Euclidean TSP instances.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c || c ||} 
+ \hline
+ Algorithm & Approximation ratio \\ [0.5ex] 
+ \hline\hline
+ Random insertion heuristic\footnote{The average of 5 runs is taken} &  8.8\% \\
+ Random insertion heuristic ($n$ runs) & 3.4\% \\
+ Cheapest insertion heuristic &  15.6\% \\
+ Cheapest insertion heuristic ($n$ runs) & 10.8\% \\
+ Nearest insertion heuristic & 19\% \\
+ Nearest insertion heuristic ($n$ runs) & 14.8\% \\
+ Farthest insertion heuristic & 22.8\% \\
+ Farthest insertion heuristic ($n$ runs) & 15.6\% \\
+ \hline
+\end{tabular}
+\caption{Insertion heuristics comparison}
+\label{comparison:5}
+\end{table}
+
+As we can see from the table, the random heuristic outperforms all the other, probably because it gets to explore much more solutions than the others. The random insertion heuristic ran $n$ times produces the results that were not worse than 10\% in any of the given tests, which is an outstanding result obtained by something that simple.
+
+The following table depicts the  comparison of random heuristic ran multiple times with or without previously calculating the convex hull. It will be tested on a set of 5 Euclidean TSP instances: berlin52, ch130, pr226, a280 and gr666.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c || c ||} 
+ \hline
+ Algorithm & Approximation ratio \\ [0.5ex] 
+ \hline\hline
+ Convex hull + random insertion &  7.7\% \\
+ Random insertion & 9\% \\
+ Convex hull + random insertion ($n$ times) &  3.1\% \\
+ Random insertion ($n$ times) & 3.6\% \\
+ \hline
+\end{tabular}
+\caption{Convex hull heuristic comparison}
+\label{comparison:6}
+\end{table}
+
+As we can see from this table, the convex hull heuristic definitely improves the solution, which is completely sensible - we are starting with a cycle which is definitely a subsequence of optimal cycle.
+
+\section{Comparison of the best algorithms}
+
+In this section, I am presenting a cross-comparison of the algorithms that were the best in the previous comparisons, with addition of nearest-neighbour heuristic and the ant colony optimisation algorithm. The representative algorithm chosen for this final evaluation are shown in the table below.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c | c | c | c||} 
+ \hline
+ Algorithm & Time complexity & Algorithm type \\ [0.5ex] 
+ \hline\hline
+ Held-Karp algorithm & $\mathcal{O}(n^2 \cdot 2^n)$ & exact \\
+ $3$-opt full & $\mathcal{O}(n^3)$ per it. & improvement \\
+ Christofides algorithm & $\mathcal{O}(n^3 \log(n))$ & approximation \\
+ Nearest neighbour heuristic & $\mathcal{O}(n^2) $ & heuristic \\
+ Random insertion heuristic & $\mathcal{O}(n^2)$ & heuristic \\
+ Lin-Kernighan heuristic & $\mathcal{O}(n^2.2)$ & heuristic \\
+ Ant colony optimization & $\mathcal{O}(cnt\_ants \cdot n^2)$ & local search \\
+ \hline
+\end{tabular}
+\caption{Final comparison algorithms}
+\label{table:5}
+\end{table}
+
+These algorithm will be tested on a set of 10 TSPLIB instances, and their average on 10 runs, as well as the best tour obtained will be shown.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c || c | c | c | c | c | c | c | c | c | c | c||} 
+ \hline
+ Algorithm & tc1 & tc2 & tc3 & tc4 & tc5 & tc6 & tc7 & tc8 & tc9 & tc10 & avg. appr. ratio\\ [0.5ex] 
+ \hline\hline
+ H-K algo & & & & & & & & & & & \\
+ $3$-opt & & & & & & & & & & & \\
+ NN heur. & & & & & & & & & & & \\
+ RI heur. & & & & & & & & & & & \\
+ LK heur. & & & & & & & & & & & \\
+ ACO  & & & & & & & & & & & \\
+ \hline\hline
+ winner & & & & & & & & & & & \\
+ \hline\hline
+ optimal solution & & & & & & & & & & & \\
+ \hline
+\end{tabular}
+\caption{k-opt comparison - artificial}
+\label{comparison:7}
+\end{table}
 
 \cleardoublepage
 \chapter{Conclusion}
@@ -498,7 +1034,7 @@ There are multiple variations here, and the ones I have implemented can be found
 % the bibliography
 
 \addcontentsline{toc}{chapter}{Bibliography}
-\nocite*{\bibliography{refs}}
+\bibliography{refs}
 \cleardoublepage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

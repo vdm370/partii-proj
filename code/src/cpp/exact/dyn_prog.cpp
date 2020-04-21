@@ -1,11 +1,13 @@
 #include "dyn_prog.h"
 #include <float.h>
+#include <bits/stdc++.h>
 using namespace std;
+using namespace std::chrono;
 
 // I will use the approach with the memoization
-// Here, I assume N <= 25 for example
+// Here, I assume N <= 22 for example
 
-const int N = 25;
+const int N = 22;
 pair<double, int> dp[N][1 << N];
 
 vector<int> reconstruct(int node, int mask, int steps) {
@@ -68,7 +70,10 @@ int main() {
 		}
 		printf("\n");
 	}
+	auto start = high_resolution_clock::now(); 
 	solution s = dyn_prog(g);
+	auto end = high_resolution_clock::now(); 
+	cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
 	s.print(true);
 	return 0;
 }

@@ -1,7 +1,10 @@
 #include "convex_hull_heuristic.h"
 using namespace std;
 
+using namespace std::chrono;
 const bool DEBUG = true;
+
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 struct point {
   int id;
@@ -11,7 +14,9 @@ struct point {
   }
   void read(int _id) {
     id = _id;
-    scanf("%lf %lf", &x, &y);
+    int xx;
+    scanf("%d %lf %lf", &xx, &x, &y);
+    assert(xx == _id + 1);
   }
 };
 
@@ -69,6 +74,10 @@ double dist(point &a, point &b) {
     return sqrt(sqr(a.x - b.x) + sqr(a.y - b.y));
 }
 
+inline double insert_cost(vector<point> &g, int i, int j, int k) {
+  return dist(g[i], g[j]) + dist(g[j], g[k]) - dist(g[i], g[k]);
+}
+
 double calculate_value(vector<point> &g, vector<int> &path) {
   double ans = 0.0;
   for(int i = 0; i + 1 < (int)path.size(); i++) {
@@ -83,36 +92,29 @@ solution convex_hull_heuristic(vector<point> g) {
   vector<int> path = convex_hull(g);
   if(DEBUG) printf("convex hull size is %d\n", (int)path.size());
   if(DEBUG) for(auto &x : path) printf("%d ", x); printf("\n");
-  unordered_set<int> untaken;
+  vector<int> untaken;
+  unordered_set<int> ch;
+  for(auto &p : path) ch.insert(p);
   for(int i = 0; i < n; i++) {
-    untaken.insert(i);
-  }
-  for(auto &p : path) {
-    untaken.erase(untaken.find(p));
+    if(!ch.count(i)) untaken.push_back(i);
   }
   path.push_back(path[0]);
   while(!untaken.empty()) {
     if(DEBUG) printf("%d left to insert\n", (int)untaken.size());
-    double best_ratio = DBL_MAX;
-    int best_node = -1, best_place = -1;
-    for(auto &x : untaken) {
-      double min_value = DBL_MAX;
-      int best_pos = -1;
-      for(int i = 0; i + 1 < (int)path.size(); i++) {
-        if(dist(g[path[i]], g[x]) + dist(g[x], g[path[i + 1]]) < min_value) {
-          min_value = dist(g[path[i]], g[x]) + dist(g[x], g[path[i + 1]]);
-          best_pos = i;
-        }
-      }
-      double ratio_here = dist(g[path[best_pos]], g[x]) + dist(g[x], g[path[best_pos + 1]]);
-      if(ratio_here < best_ratio) {
-        best_ratio = ratio_here;
-        best_node = x;
-        best_place = best_pos;
+    //I need to chose one of untaken, randomly
+    int idx = uniform_int_distribution<int>(0, (int)untaken.size() - 1)(rng);
+    int node = untaken[idx];
+    untaken.erase(untaken.begin() + idx);
+    int best_place = 0;
+    double best_cost = insert_cost(g, path[0], node, path[1]);
+    for(int i = 1; i < (int)path.size() - 1; i++) {
+      double cost_here = insert_cost(g, path[i], node, path[i + 1]);
+      if(cost_here < best_cost) {
+        best_cost = cost_here;
+        best_place = i;
       }
     }
-    path.insert(path.begin() + best_place, best_node);
-    untaken.erase(untaken.find(best_node));
+    path.insert(path.begin() + best_place + 1, node);
   }
   path.pop_back();
   return solution(calculate_value(g, path), path);
@@ -128,9 +130,23 @@ vector<point> read_points() {
   return ret;
 }
 
+solution convex_times(int tm, vector<point> &g) {
+  tm -= 1;
+  solution best = convex_hull_heuristic(g);
+  while(tm >= 1) {
+    best = min(best, convex_hull_heuristic(g));
+    tm -= 1;
+  }
+  return best;
+}
+
 int main() {
   vector<point> g = read_points();
-  auto sol = convex_hull_heuristic(g);
+  printf("points: %d\n", g.size());
+  auto start = high_resolution_clock::now(); 
+  auto sol = convex_times((int)g.size(), g);
+  auto end = high_resolution_clock::now();
   sol.print(true);
+  cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
   return 0;
 }

@@ -4,8 +4,8 @@
 #include "solution.h"
 #include "unweighted_graph.h"
 #include "graph_dist.h"
-#include "christofides_greedy_matching.h"
+#include "christofides_matching.h"
 
-solution christofides(graph_dist, int);
+solution christofides(graph_dist, int, bool);
 
 #endif

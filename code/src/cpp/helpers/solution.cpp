@@ -23,6 +23,8 @@ bool solution::sane(graph_dist &g) {
 		if(x < 0 || x >= n) return false;
 		act.insert(x);
 	}
+  printf("total nodes: %d\n", n);
+  printf("different nodes: %d\n", (int)act.size());
 	if((int)act.size() != n) return false;
 	puts("all nodes are correct");
 	double cost = 0;
@@ -30,14 +32,15 @@ bool solution::sane(graph_dist &g) {
 		cost += g.dist[order[i]][order[i + 1]];
 	}
 	cost += g.dist[order.back()][order[0]];
+	printf("%.3f %.3f\n", cost, value);
 	return abs(cost - value) < EPS;
 }
 void solution::print(bool path) {
-	printf("Solved the TSP with: %.2f\n", value);
 	if(path) {
 		for(int i = 0; i < (int)order.size(); i++) {
 			if(i + 1 == (int)order.size()) printf("%d\n", order[i]);
 			else printf("%d ", order[i]);
 		}
 	}
+  printf("Solved the TSP with: %.2f\n", value);
 }

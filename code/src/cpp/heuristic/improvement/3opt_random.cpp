@@ -2,6 +2,7 @@
 #include "greedy.h"
 #include <bits/stdc++.h>
 using namespace std;
+using namespace std::chrono;
 
 const bool DEBUG = false;
 
@@ -155,26 +156,32 @@ bool opt3_improve(solution &sol, graph_dist &g) {
   }
   sol.value -= improvement;
   adapt(n, sol.order, a, b, c, perturbs[best].second);
-  sol.print(true);
-  assert(sol.sane(g));
+  //sol.print(true);
+  //assert(sol.sane(g));
   return true;
 }
 
 solution threeopt(graph_dist g) {
-  solution sol = greedy(g);
-  puts("printing greedy");
-  sol.print(true);
-  const int ITERATIONS = 1000000;
-  for(int _iteration = 0; _iteration < ITERATIONS; _iteration++) {
-    opt3_improve(sol, g);
+  solution sol = rand_greedy(g);
+  double starting_point = sol.value;
+  //assert(sol.sane(g));
+  int wait = g.nodes * g.nodes * g.nodes;
+  while(wait) {
+    bool im = opt3_improve(sol, g);
+    if(im) wait = g.nodes * g.nodes * g.nodes;
+    else wait -= 1;
   }
+  printf("the starting value was %.2f\n", starting_point);
   return sol;
 }
 
 int main() {
 	graph_dist g = read_graph_dist();
 	g.print();
+	auto start = high_resolution_clock::now(); 
 	solution s = threeopt(g);
-	s.print(true);
+	auto end = high_resolution_clock::now(); 
+	cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
+  s.print(true);
 	return 0;
 }

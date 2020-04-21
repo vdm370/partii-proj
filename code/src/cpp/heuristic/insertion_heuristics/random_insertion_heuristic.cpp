@@ -1,5 +1,6 @@
 #include "random_insertion_heuristic.h"
 #include <bits/stdc++.h>
+using namespace std::chrono;
 
 using namespace std;
 
@@ -42,15 +43,18 @@ solution random_ins(graph_dist &g, int start) {
 
 solution random_insertion_heuristic(graph_dist g) {
   solution best = random_ins(g, 0);
-  for(int i = 1; i < g.nodes; i++) {
+  /*for(int i = 1; i < g.nodes; i++) {
     best = min(best, random_ins(g, i));
-  }
+  }*/
   return best;
 }
 
 int main() {
   graph_dist g = read_graph_dist();
+	auto start = high_resolution_clock::now(); 
   auto sol = random_insertion_heuristic(g);
+  auto end = high_resolution_clock::now();
   sol.print(true);
+  cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
   return 0;
 }

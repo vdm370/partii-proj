@@ -1,5 +1,6 @@
 #include "nearest_insertion_heuristic.h"
 using namespace std;
+using namespace std::chrono;
 
 inline double insert_cost(graph_dist &g, int i, int j, int k) {
   return g.dist[i][j] + g.dist[j][k] - g.dist[i][k];
@@ -51,15 +52,18 @@ solution near_ins(graph_dist &g, int start) {
 solution nearest_insertion_heuristic(graph_dist g) {
   srand(time(NULL));
   solution best = near_ins(g, 0);
-  for(int i = 1; i < g.nodes; i++) {
+  /*for(int i = 1; i < g.nodes; i++) {
     best = min(best, near_ins(g, i));
-  }
+  }*/
   return best;
 }
 
 int main() {
   graph_dist g = read_graph_dist();
+  auto start = high_resolution_clock::now(); 
   auto sol = nearest_insertion_heuristic(g);
+  auto end = high_resolution_clock::now();
   sol.print(true);
+  cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
   return 0;
 }

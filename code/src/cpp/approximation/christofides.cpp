@@ -1,7 +1,9 @@
 #include <bits/stdc++.h>
 #include "christofides.h"
+#include "christofides_matching.h"
 using namespace std;
 
+using namespace std::chrono;
 struct edge {
 	int u, v;
 	double f;
@@ -90,7 +92,7 @@ solution solve_euler(unweighted_graph &g, graph_dist &d, int start) {
 		return solution(ans, path);
 }
 
-solution christofides(graph_dist g, int start = -1) {
+solution christofides(graph_dist g, int start = -1, bool greedy = false) {
 	assert(start >= -1);
 	assert(start < g.nodes);
 	//assumption: g is undirected graph
@@ -119,7 +121,7 @@ solution christofides(graph_dist g, int start = -1) {
 		}
 	}
 	assert(o.size() % 2 == 0);
-	auto odds_matching = matching(o, g);
+	auto odds_matching = matching(o, g, greedy);
 	unweighted_graph mst_enhanced(g.nodes);
 	for(auto &idx : edge_indices) {
 		int u = edges[idx].u, v = edges[idx].v;
@@ -139,16 +141,16 @@ solution christofides(graph_dist g, int start = -1) {
 	return solve_euler(mst_enhanced, g, start);
 }
 
-int main() {
-	graph_dist g = read_graph_dist();
-	printf("%d\n", g.nodes);
-	for(int i = 0; i < g.nodes; i++) {
-		for(int j = 0; j < g.nodes; j++) {
-			printf("%.2f ", g.dist[i][j]);
-		}
-		printf("\n");
-	}
-	solution s = christofides(g);
+int main(int argc, char *argv[]) {
+  int type = 0;
+  sscanf(argv[1], "%d", &type);
+  graph_dist g = read_graph_dist();
+  type ? puts("greedy version") : puts("optimal version");
+  auto start = high_resolution_clock::now(); 
+	solution s = christofides(g, -1, type);
+  auto end = high_resolution_clock::now(); 
 	s.print(true);
+  cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
 	return 0;
 }
+

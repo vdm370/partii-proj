@@ -1,9 +1,10 @@
 #include "branch_and_bound.h"
-
+#include <bits/stdc++.h>
 const int ROOT = 0;
 const double INF = std::numeric_limits<double>::infinity();
-const bool DEBUG = false;
+const bool DEBUG = true;
 const double EPS = 1e-8;
+using namespace std::chrono;
 
 struct bb_node {
   vector<int> cur_path;
@@ -70,29 +71,27 @@ void inf_col(vector<vector<double>> &m, int col_idx) {
 }
 
 void prepare_bnb(vector<vector<double>> &g) {
-  for(auto &x : g) {
-    for(auto &y : x) {
-      if(abs(y) < EPS) y = INF;
-    }
+  for(int i = 0; i < (int)g.size(); i++) {
+    g[i][i] = INF;
   }
 }
 
-solution branch_and_bound(graph_dist g) {
+solution branch_and_bound(graph_dist g, double starting_point = INF) {
   prepare_bnb(g.dist);
   int n = g.nodes;
   double ans = INF;
-  double upper = INF;
+  double upper = starting_point;
   vector<int> ans_path;
   priority_queue<bb_node> que;
   vector<vector<double>> start_g = g.dist;
   double val = reduce(start_g);
-  printf("starting val = %.1f\n", val);
-  int start = 1;
+  //printf("starting val = %.1f\n", val);
+  int start = 0;
   que.push(bb_node({start}, val, start_g));
   while(!que.empty() && que.top().cost < upper) {
-    if(DEBUG) printf("current size of que: %d\n", (int)que.size());
+    //if(DEBUG) printf("current size of que: %d\n", (int)que.size());
     bb_node cur = que.top();
-    if(DEBUG) cur.print();
+    //if(DEBUG) cur.print();
     que.pop();
     if((int)cur.cur_path.size() == n) {
       //this is a leaf
@@ -116,7 +115,7 @@ solution branch_and_bound(graph_dist g) {
           double val = reduce(g_mat);
           double new_cost = cur.cost + cur.g[cur.cur_path.back()][nn] + val;
           bb_node ins(new_path, new_cost, g_mat);
-          if(DEBUG) printf("NEW COST INSERTED %.1f\n", new_cost);
+          //if(DEBUG) printf("NEW COST INSERTED %.1f\n", new_cost);
           que.push(ins);
         }
       }
@@ -128,7 +127,10 @@ solution branch_and_bound(graph_dist g) {
 int main() {
 	graph_dist g = read_graph_dist();
 	g.print();
-	solution s = branch_and_bound(g);
+	auto start = high_resolution_clock::now(); 
+	solution s = branch_and_bound(g, -1);
+	auto end = high_resolution_clock::now(); 
 	s.print(true);
+	cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
 	return 0;
 }

@@ -1,6 +1,7 @@
 #include "2approx.h"
 using namespace std;
 
+using namespace std::chrono;
 struct edge {
 	int u, v;
 	double f;
@@ -91,7 +92,10 @@ int main() {
 		}
 		printf("\n");
 	}
+  auto start = high_resolution_clock::now(); 
 	solution s = approx2(g);
+  auto end = high_resolution_clock::now(); 
 	s.print(true);
+  cout << "The computation has taken " << (duration_cast<milliseconds>(end - start)).count() << "ms" << endl;
 	return 0;
 }
