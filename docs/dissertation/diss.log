@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2020.3.18)  21 APR 2020 22:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex 2020.3.18)  21 APR 2020 23:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1040,6 +1040,12 @@ LaTeX Warning: Label `table:3' multiply defined.
 
 LaTeX Warning: Label `table:3@cref' multiply defined.
 
+
+LaTeX Warning: Label `comparison:7' multiply defined.
+
+
+LaTeX Warning: Label `comparison:7@cref' multiply defined.
+
 )
 \openout1 = `diss.aux'.
 
@@ -1233,6 +1239,14 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+
+Overfull \hbox (126.69124pt too wide) in paragraph at lines 1027--1035
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 [32] [33] [34
 
 ]
@@ -1301,14 +1315,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--115
  []
 
 [45] [46]) [47]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1048.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1048.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1064.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1064.
  (./diss.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1048.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1048.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1064.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1064.
 
 Package rerunfilecheck Info: File `diss.out' has not changed.
-(rerunfilecheck)             Checksum: 37921D6CD2466D32615995F02CCEF058;3311.
+(rerunfilecheck)             Checksum: 80EF45221DE0DBA8A12B50F6D4D8565C;3311.
 
 
 LaTeX Warning: There were undefined references.
@@ -1316,7 +1330,7 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1048.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1064.
  ) 
 Here is how much of TeX's memory you used:
  32760 strings out of 492983
@@ -1327,4 +1341,4 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  62i,17n,96p,1577b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on diss.dvi (55 pages, 215364 bytes).
+Output written on diss.dvi (55 pages, 217484 bytes).

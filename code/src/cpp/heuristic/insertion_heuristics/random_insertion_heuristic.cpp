@@ -49,6 +49,7 @@ solution random_insertion_heuristic(graph_dist g) {
   return best;
 }
 
+/*
 int main() {
   graph_dist g = read_graph_dist();
 	auto start = high_resolution_clock::now(); 
@@ -58,3 +59,4 @@ int main() {
   sol.print(true);
   return 0;
 }
+*/

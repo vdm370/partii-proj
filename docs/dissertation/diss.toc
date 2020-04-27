@@ -50,9 +50,9 @@
 \contentsline {section}{\numberline {4.5}Comparison of the best algorithms}{32}{section.4.5}
 \contentsline {chapter}{\numberline {5}Conclusion}{35}{chapter.5}
 \contentsline {chapter}{Bibliography}{37}{chapter.5}
-\contentsline {chapter}{Bibliography}{37}{chapter*.27}
+\contentsline {chapter}{Bibliography}{37}{chapter*.28}
 \contentsline {chapter}{\numberline {A}Project Proposal}{39}{appendix.A}
-\contentsline {paragraph}{Algorithms}{42}{section*.30}
-\contentsline {paragraph}{Artificial Intelligence I/II}{42}{section*.31}
-\contentsline {paragraph}{Programming in C/C++}{42}{section*.32}
-\contentsline {paragraph}{Complexity Theory}{42}{section*.33}
+\contentsline {paragraph}{Algorithms}{42}{section*.31}
+\contentsline {paragraph}{Artificial Intelligence I/II}{42}{section*.32}
+\contentsline {paragraph}{Programming in C/C++}{42}{section*.33}
+\contentsline {paragraph}{Complexity Theory}{42}{section*.34}

@@ -1,2 +1,2 @@
 #!/bin/bash
-./run.sh "exec/other/aco" "../data/tests/tsplib/burma14.dm ../data/tests/tsplib/gr21.dm ../data/tests/tsplib/berlin52.dm ../data/tests/tsplib/gr120.dm ../data/tests/tsplib/ch130.dm ../data/tests/tsplib/d198.dm ../data/tests/tsplib/pr226.dm ../data/tests/tsplib/a280.dm ../data/tests/tsplib/fl417.dm ../data/tests/tsplib/att532.dm" 10
+./run.sh "exec/best" "../data/tests/tsplib/burma14.dm ../data/tests/tsplib/gr21.dm ../data/tests/tsplib/berlin52.dm ../data/tests/tsplib/gr120.dm ../data/tests/tsplib/ch130.dm ../data/tests/tsplib/d198.dm ../data/tests/tsplib/pr226.dm ../data/tests/tsplib/a280.dm ../data/tests/tsplib/fl417.dm ../data/tests/tsplib/att532.dm" 10

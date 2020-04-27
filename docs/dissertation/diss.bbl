@@ -26,7 +26,7 @@ G.~A. Croes.
 
 \bibitem{Dezs__2011}
 Bal{\'{a}}zs Dezs{\H{o}}, Alp{\'{a}}r Jüttner, and P{\'{e}}ter Kov{\'{a}}cs.
-\newblock {LEMON} {\textendash} an open source c++ graph template library.
+\newblock {LEMON} {\textendash} an open source {C++} graph template library.
 \newblock {\em Electronic Notes in Theoretical Computer Science},
   264(5):23--45, jul 2011.
 
