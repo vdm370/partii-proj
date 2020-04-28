@@ -1,7 +1,8 @@
 \contentsline {chapter}{List of Figures}{v}{chapter*.7}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Algorithms}{1}{section.1.2}
+\contentsline {section}{\numberline {1.2}History}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Algorithms}{2}{section.1.3}
 \contentsline {chapter}{\numberline {2}Preparation}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Computer characteristics}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}Programming language choice}{3}{section.2.2}
@@ -26,7 +27,7 @@
 \contentsline {subsection}{\numberline {3.2.2}Christofides algorithm}{15}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Improvement algorithms}{17}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}$k$-opt algorithm}{17}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Lin-Kernighan heuristic algorithm}{17}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.2}Lin-Kernighan heuristic algorithm}{18}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Heuristic algorithms}{18}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}Random algorithm}{18}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}Nearest neighbour (greedy) - algorithm}{18}{subsection.3.4.2}
@@ -34,15 +35,15 @@
 \contentsline {subsubsection}{Cheapest insertion heuristic}{20}{section*.10}
 \contentsline {subsubsection}{Nearest insertion heuristic}{20}{section*.11}
 \contentsline {subsubsection}{Farthest insertion heuristic}{21}{section*.12}
-\contentsline {subsubsection}{Random insertion heuristic}{21}{section*.13}
-\contentsline {subsubsection}{Convex-hull insertion heuristic}{21}{section*.14}
+\contentsline {subsubsection}{Random insertion heuristic}{22}{section*.13}
+\contentsline {subsubsection}{Convex-hull insertion heuristic}{22}{section*.14}
 \contentsline {section}{\numberline {3.5}Local search algorithms}{22}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Ant colony optimisation algorithm}{22}{subsection.3.5.1}
 \contentsline {chapter}{\numberline {4}Evaluation}{25}{chapter.4}
 \contentsline {section}{\numberline {4.1}A priori knowledge}{25}{section.4.1}
 \contentsline {section}{\numberline {4.2}Data sets}{26}{section.4.2}
 \contentsline {section}{\numberline {4.3}Evaluation procedure}{27}{section.4.3}
-\contentsline {section}{\numberline {4.4}CustomTODO comparisons}{27}{section.4.4}
+\contentsline {section}{\numberline {4.4}Custom comparisons}{27}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Exact algorithm comparison}{27}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}k-opt implementation comparison}{28}{subsection.4.4.2}
 \contentsline {subsection}{\numberline {4.4.3}Approximation algorithms comparison}{30}{subsection.4.4.3}

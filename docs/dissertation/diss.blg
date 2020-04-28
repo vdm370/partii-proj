@@ -3,46 +3,49 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: diss.aux
 The style file: plain.bst
 Database file #1: refs.bib
+Warning--empty booktitle in Dorigo_1991
+Warning--empty booktitle in Karp_1972
+Warning--empty booktitle in inproceedings
 Warning--can't use both author and editor fields in Woeginger2003
-You've used 11 entries,
+You've used 17 entries,
             2118 wiz_defined-function locations,
-            584 strings with 6241 characters,
-and the built_in function-call counts, 3499 in all, are:
-= -- 361
-> -- 117
-< -- 1
-+ -- 52
-- -- 36
-* -- 258
-:= -- 578
-add.period$ -- 35
-call.type$ -- 11
-change.case$ -- 49
+            626 strings with 7245 characters,
+and the built_in function-call counts, 5871 in all, are:
+= -- 589
+> -- 223
+< -- 5
++ -- 96
+- -- 72
+* -- 424
+:= -- 945
+add.period$ -- 54
+call.type$ -- 17
+change.case$ -- 85
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 136
-empty$ -- 299
-format.name$ -- 36
-if$ -- 726
+cite$ -- 21
+duplicate$ -- 235
+empty$ -- 491
+format.name$ -- 72
+if$ -- 1242
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 13
-newline$ -- 58
-num.names$ -- 22
-pop$ -- 43
+int.to.str$ -- 17
+missing$ -- 19
+newline$ -- 88
+num.names$ -- 34
+pop$ -- 90
 preamble$ -- 1
-purify$ -- 40
+purify$ -- 70
 quote$ -- 0
-skip$ -- 88
+skip$ -- 162
 stack$ -- 0
-substring$ -- 274
-swap$ -- 22
-text.length$ -- 1
+substring$ -- 424
+swap$ -- 52
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 40
-warning$ -- 1
-while$ -- 41
-width$ -- 13
-write$ -- 124
-(There was 1 warning)
+type$ -- 64
+warning$ -- 4
+while$ -- 63
+width$ -- 19
+write$ -- 188
+(There were 4 warnings)

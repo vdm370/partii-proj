@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{85900}
+David Applegate, Robert Bixby, Vasek Chvátal, William Cook, Daniel Espinoza,
+  Marcos Goycoolea, and Keld Helsgaun.
+\newblock Certification of an optimal tsp tour through 85,900 cities.
+\newblock {\em Oper. Res. Lett.}, 37:11--15, 01 2009.
+
 \bibitem{Arora_1998}
 Sanjeev Arora.
 \newblock Polynomial time approximation schemes for euclidean traveling
@@ -18,6 +24,11 @@ N.~Christofides and Carnegie-Mellon~University of~Pittsburgh PA management
   Salesman Problem}.
 \newblock Management sciences research report. Defense Technical Information
   Center, 1976.
+
+\bibitem{Dorigo_1991}
+Alberto Colorni, Marco Dorigo, and Vittorio Maniezzo.
+\newblock Distributed optimization by ant colonies.
+\newblock 01 1991.
 
 \bibitem{Croes_1958}
 G.~A. Croes.
@@ -48,16 +59,36 @@ Keld Helsgaun.
 \newblock {\em European Journal of Operational Research}, 126(1):106--130, oct
   2000.
 
+\bibitem{Karp_1972}
+Richard Karp.
+\newblock Reducibility among combinatorial problems.
+\newblock volume~40, pages 85--103, 01 1972.
+
 \bibitem{lin1973effective}
 Shen Lin and Brian~W Kernighan.
 \newblock An effective heuristic algorithm for the traveling-salesman problem.
 \newblock {\em Operations research}, 21(2):498--516, 1973.
+
+\bibitem{inproceedings}
+Zhibei Ma, Lantao Liu, and Gaurav Sukhatme.
+\newblock An adaptive k-opt method for solving traveling salesman problem.
+\newblock pages 6537--6543, 12 2016.
 
 \bibitem{Rosenkrantz_1974}
 D.~J. Rosenkrantz, R.~E. Stearns, and P.~M. Lewis.
 \newblock Approximate algorithms for the traveling salesperson problem.
 \newblock In {\em 15th Annual Symposium on Switching and Automata Theory (swat
   1974)}. {IEEE}, oct 1974.
+
+\bibitem{Rosenkrantz_1977}
+Daniel~J. Rosenkrantz, Richard~E. Stearns, and II~Philip M.~Lewis.
+\newblock An analysis of several heuristics for the traveling salesman problem.
+\newblock {\em {SIAM} Journal on Computing}, 6(3):563--581, sep 1977.
+
+\bibitem{Schrijver_2005}
+Alexander Schrijver.
+\newblock On the history of combinatorial optimization (till 1960).
+\newblock In {\em Discrete Optimization}, pages 1--68. Elsevier, 2005.
 
 \bibitem{Woeginger2003}
 Gerhard~J. Woeginger.

@@ -170,6 +170,11 @@ Add some acknowledgements here. Please, do add some acknowledgements here.
 
 The main aim of my CST Part II project is comparing the different approaches taken throughout the years for the Travelling Salesman problem - a very well-known optimisation problem. In that problem, we are given a weighted graph $G = (V, E, w)$, where $V$ denotes the set of vertices, $E$ denotes a set of edges, and $w : E \rightarrow \mathbb{R}^{+}$ is a weight function, mapping edges to weight that's assigned to them. We are interested in finding a minimum-weight Hamiltonian cycle (a cycle covering all the nodes) in this graph. More formally, if $n$ is the number of nodes in the graph (size of $V$), we are searching for a permutation of nodes $v_1, v_2, \dots, v_{n}$ such that $w(v_1 \rightarrow v_2) + w(v_2 \rightarrow v_3) + \dots + w(v_{n-1} \rightarrow v_n) + w(v_n \rightarrow v_1)$ is minimal possible. As we can see, a problem similar to this can arise in many real-world situations (a mailman having to visit a list of houses to deliver the mail, for example), so it is expected that a lot of effort has been put into solving this problem as efficiently as possible. This problem is known to be $\mathcal{NP}$-hard, basically meaning we cannot expert a polynomial time algorithm solving this problem. With that in mind, we see that we can compare the algorithms based on different metrices, including speed, space, approximation ratio, average closeness to the optimum and many more. This project will try to give a summary of some more or less successful attemps, and analyze what are the advangates and disadvantages of the algorithms involved.
 
+\section{History} 
+
+First mathematical problems related to the Travelling Salesman problem date back to 1800s, where the problem similar to this one was treated by the Irish mathematician Sir W. R. Hamilton and by the British mathematician T. P. Kirkman. Since then, the problem was a topic for many famous mathematicians. An thorough overview of their early work can be found in the Graph Theory, 1736-1936 book written by N. Biggs, E. K. Lloyd and R. J. Wilson. The TSP, in the form we are tackling it today appears to be first studied in 1930s by Karl Menger in Vienna and Harvard. Throughout the years, the problem attracted much more attention because of the various ways to utilise its solution in many technology areas. A very good description of early studies concerning the TSP can be located in A. Schrijver's paper ``On the history of combinatiorial optimisation (till 1960)""\cite{Schrijver_2005}.
+
+Nowadays, even though the NP-hardness of the TSP was proven more than half a century ago, the algorithms approximating this problem are getting better and better. The Concorde TSP solver (\url{http://www.math.uwaterloo.ca/tsp/concorde/index.html}), created by Applegate et al. in early 2000s, is the fastest TSP solver as of 2020, holding the record of fully solving the 85,900 nodes TSP instance\cite{85900} and solving all of the TSPLIB instances available. Some further optimal solutions to large TSP instances can be found on the following hyperlink: \url{http://www.math.uwaterloo.ca/tsp/optimal/index.html}.
 \section{Algorithms}
 
 In this section, I will list all the algorithm types that I have taken into consideration for this project. I have made this choice after analyzing already existings benchmarks about Travelling Salesman problem, trying to find the best tradeoff between complexity, running time, difficulty to reproduce and the result that the algorithm is producing. After having that finished, I have decided to split the algorithms in several classes, listed below:
@@ -310,7 +315,7 @@ Now, the Travelling Salesman Problem, defined in the introduction is not $\mathc
 
 \smallskip 
 
-It is not hard to see that the TSP does belong to the $\mathcal{NP}$-hard class, using my previous $\mathcal{NP}$ complexity class definition. Also, for the formal proof, Karp TODO showed in 1972. that the Hamiltonian cycle problem is $\mathcal{NP}$-complete, which implies the $\mathcal{NP}$-hardness of the TSP. But, surprisingly?, it does not belong to $\mathcal{NP}$. In the verification problem, we would be given a graph and one of cycles from that graph, and we are to judge whether that exact cycle is the shortest one. Note that we can not decide that without actually solving the TSP and knowing what the optimal cycle's cost is, so this can not be done in polynomial time knowing the fact we can not solve TSP in that time. So, this definition of the TSP is not in $\mathcal{NP}$, making it not in $\mathcal{NP}$-complete as well.
+It is not hard to see that the TSP does belong to the $\mathcal{NP}$-hard class, using my previous $\mathcal{NP}$ complexity class definition. Also, for the formal proof, R. Karp showed in 1972.\cite{Karp_1972} that the Hamiltonian cycle problem is $\mathcal{NP}$-complete, which implies the $\mathcal{NP}$-hardness of the TSP. But, surprisingly?, it does not belong to $\mathcal{NP}$. In the verification problem, we would be given a graph and one of cycles from that graph, and we are to judge whether that exact cycle is the shortest one. Note that we can not decide that without actually solving the TSP and knowing what the optimal cycle's cost is, so this can not be done in polynomial time knowing the fact we can not solve TSP in that time. So, this definition of the TSP is not in $\mathcal{NP}$, making it not in $\mathcal{NP}$-complete as well.
 
 \smallskip 
 
@@ -355,8 +360,8 @@ The Table \ref{table:1}\footnote{In the table, $n$ is the number of nodes in the
  Farthest insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & \cite{Rosenkrantz_1974} \\
  Nearest insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & \cite{Rosenkrantz_1974} \\
  Random insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & \cite{Rosenkrantz_1974} \\
- Convex-hull insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & TODO \\
- Ant colony optimization & Optimisation & $\mathcal{O}(cnt\_ants \cdot n^2) $ & TODO \\
+ Convex-hull insertion heuristic & Heuristic & $\mathcal{O}(n^2\log n)$ & folklore \\
+ Ant colony optimization & Optimisation & $\mathcal{O}(cnt\_ants \cdot n^2) $ & \cite{Dorigo_1991} \\
  \hline
 \end{tabular}
 \caption{Algorithms overview}
@@ -528,7 +533,7 @@ Let's consider a full preorder walk  of the graph - basically a preorder walk, b
 
 \end{itemize}
 
-Using these two facts, as well as \hyperref[mstlemma]{MST lemma} we conclude that the theorem 1 holds.
+Using these two facts, as well as \hyperref[mstlemma]{Lemma 1} we conclude that the theorem 1 holds.
 
 \end{proof}
 
@@ -559,7 +564,7 @@ For metric TSP, the cost of the cycle obtained above is at most 1.5 times larger
 
 \begin{proof}
 
-Let $S$ be the optimal solution to the TSP - a cycle with minimum cost. Now, we can remove all the nodes not in $O$ from this cycle, maintaning the relative order of all the others node - giving us $S'$. Using the \hyperref[shortcutting]{shortcutting lemma}, $cost(S') \leq cost(S)$. We now have a cycle with even number of nodes. We can show this using a famous handshaking lemma - the sum of degrees of all the nodes in the graph has to be even, because that sum is equal to doubled number of edges.
+Let $S$ be the optimal solution to the TSP - a cycle with minimum cost. Now, we can remove all the nodes not in $O$ from this cycle, maintaning the relative order of all the others node - giving us $S'$. Using the \hyperref[shortcutting]{Lemma 2}, $cost(S') \leq cost(S)$. We now have a cycle with even number of nodes. We can show this using a famous handshaking lemma - the sum of degrees of all the nodes in the graph has to be even, because that sum is equal to doubled number of edges.
 
 \small
 
@@ -581,7 +586,7 @@ The idea behind $k$-opt heuristic, for given $k$, is as follows: until convergen
 
 \smallskip
 
-It is empirically validated that picking $k \geq 4$ is worse than picking $k \leq 3$, the so I have implemented 2-opt and 3-opt versions of $k$-opt algorithm.
+In practice, the $k$-opt algorithm is implemented in that form for $k = 2$ and $k = 3$\cite{inproceedings}. For $k > 3$, some additional heuristics are used in order to prioritise some $k$-opt moves over another, because the computational complexity of trying all the moves is too high. This is why only $2$-opt and $3$-opt heuristics are implemented in this algorithm, and some additional algorithms to test would be a variations of $k$-opt for $k \geq 4$.
 
 For both 2-opt and 3-opt versions, two different variations are implemented - a randomised and a deterministic one. In the randomised implementation, each iteration step consists of picking random indices at which we can cut our cycle, and then trying all the combinations to see whether we can improve the solution. Opposed to that, in the deterministic one, an iteration consists of trying all the possible cuts, making the complexity of one iteration for 2-opt and 3-opt $\mathcal{O}(n^2)$ and $\mathcal{O}(n^3)$ respectively. Later, we will see how these versions compare versus each other. A thing to node is that we can run the randomised version multiple times and take the best result obtained in any of the runs, while the deterministic version always produces the same result if the starting point is the same. Note that, if the procedure generating the initial cycle is not deterministic we can take the minimum of several runs in both versions of the algorithm.
 
@@ -617,7 +622,7 @@ If $a_c$ is the cost of the tour generated by this algorithm and $o_c$ is the co
 
 \end{theorem}
 
-We won't prove this theorem here, but the proof can be found here. % TODO
+We won't prove this theorem here, but the proof can be found here\cite{Rosenkrantz_1977}.
 
 \subsection{Insertion heuristics}
 
@@ -660,7 +665,7 @@ Let $A$ and $B$ be two sets of nodes. Define $min\_edge(A, B) = \min\{w(a, b) | 
 
 \begin{proof}
 
-% TODO
+We can find a bijection between each insertion step in the creation of the tour using this algorithm and one of the MST's edges, such that the condition that the insert cost is not more than twice expensive than the MST edge. After summing all that up, we can use \hyperref{mstlemma}[Lemma 1] to show that the theorem holds. More details can be found here\cite{Rosenkrantz_1977}.
 
 \end{proof}
 
@@ -672,7 +677,7 @@ Both {\it cheapest insertion heuristic} and {\it nearest insertion heuristic} on
 
 \begin{proof}
 
-We will show this using \hyperref[insertlemma]{insertion lemma}, by showing that both cheapest and nearest insertion heuristics obey the criteria which is necessary for lemma to be applied.
+We will show this using \hyperref[insertlemma]{Lemma 3}, by showing that both cheapest and nearest insertion heuristics obey the criteria which is necessary for lemma to be applied.
 
 \smallskip
 
@@ -680,7 +685,7 @@ Let $T$ be the current tour created. Let the minimum weight edge among all the e
 
 Now, in cheapest insertion heuristic the insert cost has to be at most $insert\_cost(a, b, c)$, so the lemma criterium holds. We can easily conclude the same thing for nearest insertion heuristic as well.
 
-With this shown, we can apply the previously mentioned lemma to prove the theorem. Remember the \hyperref[mstlemma]{MST lemma}.
+With this shown, we can apply the previously mentioned lemma to prove the theorem. Remember the \hyperref[mstlemma]{Lemma 1}.
 
 \end{proof}
 
@@ -757,7 +762,6 @@ The test cases will be split in metric/non-metric group as well, however more at
 
 Also, the cases will also be split in several size categories, by the number of the nodes of the graph. I will consider all the graphs to be complete ones, because we can turn any non-complete to a complete ones by adding a infinite-weighted edge between each two nodes not originally connected.
 
-
 \newcommand{\TLE}{{\bf TLE}}
 \newcommand{\MLE}{{\bf MLE}}
 
@@ -767,7 +771,7 @@ All the evaluation procedures have been run on my machine, previously described 
 
 Unless specified, all the numbers in any of the tables are average of exactly 5 runs of the algorithms. Also, some thresholds on the running time and memory consumption have to be established - the verdict of the execution will be described as Time Limit Exceeded (\TLE) if the execution takes more than 5 minutes. Also, if the memory the program request the amount of memory unable to run on my computer previously described, the verdict will be characterised as Memory Limit Exceeded (\MLE).
 
-\section{CustomTODO comparisons}
+\section{Custom comparisons}
  
 \subsection{Exact algorithm comparison}
 
@@ -1039,6 +1043,7 @@ As we can see from this table, the algorithm with the best results obtained is d
 \cleardoublepage
 \chapter{Conclusion}
 
+
 \cleardoublepage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1053,7 +1058,6 @@ As we can see from this table, the algorithm with the best results obtained is d
 \appendix
 
 \cleardoublepage
-
 
 \cleardoublepage
 
